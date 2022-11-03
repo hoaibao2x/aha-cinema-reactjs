@@ -1,74 +1,60 @@
-import React from 'react'
-import './AdminStyle.css'
-
-
-function AdminHome() {
-    return (
-        <div className="wrapper">
-            {/* Sidebar  */}
-            <nav id="sidebar">
-                <div className="sidebar-header">
-                    <a href="#">
-                        <h3>Admin Site</h3>
-                    </a>
-                </div>
-                <ul className="list-unstyled components">
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">QL. Người dùng</a>
-                        <ul className="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">DS. Người dùng</a>
-                            </li>
-                            <li>
-                                <a href="#">Thêm người dùng</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">QL. Phim</a>
-                        <ul className="collapse list-unstyled" id="pageSubmenu2">
-                            <li>
-                                <a href="#">DS. Phim</a>
-                            </li>
-                            <li>
-                                <a href="#">Thêm Phim</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Tạo lịch chiếu</a>
-                    </li>
-                </ul>
-            </nav>
-            {/* Page Content  */}
-            <div id="content">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <div className="container-fluid">
-                        <button type="button" id="sidebarCollapse" className="btn btn-info">
-                            <i className="fas fa-align-left mr-1" />
-                            <span>Toggle Sidebar</span>
-                        </button>
-
-                        <div className="btn-group dropleft">
-                            <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                Admin
-                            </button>
-                            <div className="dropdown-menu">
-                                {/* Dropdown menu links */}
-                                <div>
-                                    <button className="dropdown-item" type="button">Cập nhật thông tin</button>
-                                    <button className="dropdown-item" type="button">Đăng xuất</button>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </nav>
-            </div>
-        </div>
-
-    )
+import {
+    DesktopOutlined,
+    FileOutlined,
+    PieChartOutlined,
+    TeamOutlined,
+    UserOutlined,
+} from '@ant-design/icons';
+import { Breadcrumb, Layout, Menu } from 'antd';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+const { Header, Content, Footer, Sider } = Layout;
+function getItem(label, key, icon, children) {
+    return {
+        key,
+        icon,
+        children,
+        label,
+    };
 }
+const items = [
+    getItem(<NavLink to='/'>Admin Site</NavLink>),
+    getItem(<NavLink to="/test">Test</NavLink>, 'test1'),
+    getItem('QL.Người dùng', 'sub1', <UserOutlined />, [
+        getItem('DS.Người dùng', '3'),
+        getItem('Thêm người dùng', '4')
+    ]),
+    getItem('QL.Phim', 'sub2', <TeamOutlined />, [getItem('DS.Phim', '6'), getItem('Thêm phim', '7')]),
+    getItem('Lịch chiếu', '9', <FileOutlined />),
+];
+const AdminHome = () => {
+    const [collapsed, setCollapsed] = useState(false);
+    return (
+        <Layout
+            style={{
+                minHeight: '100vh',
+            }}
+        >
+            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+                <div className="logo" />
+                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+            </Sider>
+            <Layout className="site-layout">
+                {/* <Header
+                    className="site-layout-background"
+                    style={{
+                        padding: 0,
+                    }}
+                /> */}
+                <Content
+                    style={{
+                        margin: '0 16px',
+                    }}
+                >
+                </Content>
 
-export default AdminHome
+            </Layout>
+        </Layout>
+    );
+};
+export default AdminHome;
