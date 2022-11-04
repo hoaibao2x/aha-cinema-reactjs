@@ -3,18 +3,19 @@ import './App.css';
 import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import AdminHome from './pages/Admins/AdminHome';
-import Test from './pages/Admins/Test';
+import { AdminTemplate } from './templates/Admins/AdminTemplate';
+import PhimListComponent from './pages/Admins/QL.Films/PhimListComponent';
 
 export const history = createBrowserHistory();
 
 function App() {
   return (
     <Router history={history}>
-      <AdminHome />
+      {/* <AdminHome /> */}
       <Switch>
         {/* Khi không có trang cụ thể thì mặc định địa chỉ */}
-        <Route exact path="/admin" component={AdminHome} />
-        <Route exact path="/test" component={Test} />
+        <AdminTemplate exact path='/admin/films' component={PhimListComponent} />
+        <Route exact path='/admin' component={AdminHome} />
       </Switch>
     </Router>
   );

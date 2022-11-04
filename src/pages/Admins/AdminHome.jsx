@@ -6,7 +6,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu } from 'antd';
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { NavLink } from 'react-router-dom';
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -18,13 +18,12 @@ function getItem(label, key, icon, children) {
     };
 }
 const items = [
-    getItem(<NavLink to='/'>Admin Site</NavLink>),
-    getItem(<NavLink to="/test">Test</NavLink>, 'test1'),
+    getItem(<NavLink to='/admin'>Admin Site</NavLink>),
     getItem('QL.Người dùng', 'sub1', <UserOutlined />, [
         getItem('DS.Người dùng', '3'),
         getItem('Thêm người dùng', '4')
     ]),
-    getItem('QL.Phim', 'sub2', <TeamOutlined />, [getItem('DS.Phim', '6'), getItem('Thêm phim', '7')]),
+    getItem('QL.Phim', 'sub2', <TeamOutlined />, [getItem(<NavLink to='/admin/films'>DS.Phim</NavLink>, '6'), getItem('Thêm phim', '7')]),
     getItem('Lịch chiếu', '9', <FileOutlined />),
 ];
 const AdminHome = () => {
@@ -51,6 +50,7 @@ const AdminHome = () => {
                         margin: '0 16px',
                     }}
                 >
+                   {/* <Component {...propsRoute} /> */}
                 </Content>
 
             </Layout>
