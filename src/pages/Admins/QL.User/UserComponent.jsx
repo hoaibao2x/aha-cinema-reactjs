@@ -1,102 +1,98 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect} from 'react'
 import { Table } from 'antd';
+import { NavLink } from 'react-router-dom'
 
-import { AudioOutlined } from '@ant-design/icons';
+import { AudioOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
 import { Button } from 'antd/lib/radio';
+import { getFilmsListAction } from '../../../redux/action/admin/getListUserAction';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 
 const { Search } = Input;
 
 export default function UserComponent() {
+  let { arrUserDefault } = useSelector(state => state.QLNDreducer)
 
+  let dispatch = useDispatch();
+  console.log(arrUserDefault);
+  
 
+  useEffect(() => {  
+    let action  = getFilmsListAction()
+    dispatch(action)
+  },[])
 
 
   const columns = [
+    // {
+    //   "taiKhoan": "adam_test",
+    //   "hoTen": "Nam Anh",
+    //   "email": "namanh99@gmail.com",
+    //   "soDT": "012343212",
+    //   "matKhau": "1",
+    //   "maLoaiNguoiDung": "QuanTri"
+    // },
+
     {
-      title: 'Name',
-      dataIndex: 'name',
-      filters: [
-        {
-          text: 'Joe',
-          value: 'Joe',
-        },
-        {
-          text: 'Jim',
-          value: 'Jim',
-        },
-        {
-          text: 'Submenu',
-          value: 'Submenu',
-          children: [
-            {
-              text: 'Green',
-              value: 'Green',
-            },
-            {
-              text: 'Black',
-              value: 'Black',
-            },
-          ],
-        },
-      ],
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
-      onFilter: (value, record) => record.name.indexOf(value) === 0,
-      sorter: (a, b) => a.name.length - b.name.length,
-      sortDirections: ['descend'],
+      title: 'Tài Khoảng',
+      dataIndex: 'taiKhoan',
+     
+      sorter: (a, b) => b.taiKhoan.length - a.taiKhoan.length,
+      sortDirections: ['descend','ascend'],
+     
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
+      title: 'Họ Tên',
+      dataIndex: 'hoTen',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => a.age - b.age,
+      sorter: (a, b) => b.hoTen.length - a.hoTen.length,
+      sortDirections: ['descend','ascend'],
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      filters: [
-        {
-          text: 'London',
-          value: 'London',
-        },
-        {
-          text: 'New York',
-          value: 'New York',
-        },
-      ],
-      onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: 'email',
+      dataIndex: 'email',
+     
+ 
     },
+    {
+      title: 'Số Điện Thoại',
+      dataIndex: 'soDT',
+     
+     
+    },
+    {
+      title: 'Mật Khẩu',
+      dataIndex: 'matKhau',
+     
+      
+    },
+    {
+      title: 'Mã Loại Người Dùng',
+      dataIndex: 'maLoaiNguoiDung',
+     
+      
+    },
+    {
+      title :"Chỉnh sữa",
+      dataIndex : "chinhSua",
+      render : ()=>{
+        return <Fragment>
+          <NavLink className="" to="/home"><EditOutlined/> </NavLink>
+          <NavLink className="" to="/home"><DeleteOutlined/></NavLink>
+        </Fragment>
+
+      }
+
+
+    }
+    
+    
   ];
 
-  const data = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-    {
-      key: '4',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-  ];
+  const data = arrUserDefault;
 
   const suffix = (
     <AudioOutlined

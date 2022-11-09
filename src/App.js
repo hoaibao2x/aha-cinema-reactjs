@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import UserComponent from './pages/Admins/QL.User/UserComponent';
+import { AdminTemplate } from './templates/Admin/AdminUser/AdminUserTemplates';
+
 
 export const history = createBrowserHistory();
 
@@ -11,7 +13,7 @@ function App() {
    
     <Router history={history}>
       <Switch>
-      <Route exact path='/admin-user' component={UserComponent} />
+      <AdminTemplate exact path='/admin-user' component={UserComponent} />
       </Switch>
     </Router>
   );
