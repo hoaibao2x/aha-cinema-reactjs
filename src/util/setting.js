@@ -12,9 +12,8 @@ http.interceptors.request.use((config) => {
     config.headers = {
         ...config.headers,
         'TokenCybersoft': TOKEN_MOVIE,
-        // 'Authorization': 'Bearer' + JSON.parse(localStorage.getItem(TOKEN))
+        // 'Authorization': 'Bearer' + JSON.parse(localStorage.getItem(TOKEN))  
     }
-
     return config;
 }, (errors) => {
     // Do something with request error

@@ -2,11 +2,14 @@ import axios from 'axios';
 import { http } from '../../util/setting';
 import { DOMAIN, GP_ID, TOKEN_MOVIE } from '../../util/varsSetting';
 
-export default class ManagerFilms {
-    // Lấy danh sách phim
-    getFilmsList = () => {
-        return http.get(`/QuanLyPhim/LayDanhSachPhim?MaNhom=${GP_ID}`)
-    }
+// Lấy danh sách phim
+const getFilmsList = () => {
+    return http.get(`/QuanLyPhim/LayDanhSachPhim?MaNhom=${GP_ID}`)
+}
+
+export const themPhimUploadHinh = (formData) => {
+    return http.post(`/QuanLyPhim/ThemPhimUploadHinh`, formData);
+}
 
     // getTest = async () => {
     //     try {
@@ -23,4 +26,3 @@ export default class ManagerFilms {
     //     }
     // }
 
-}
