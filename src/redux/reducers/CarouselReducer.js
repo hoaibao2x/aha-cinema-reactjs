@@ -1,3 +1,5 @@
+import { SET_CAROUSEL } from "../types/CarouselType"
+
 const initialState = {
   bannerList:[
     {
@@ -11,8 +13,9 @@ const initialState = {
 export const CarouselReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        // case "":
-        //     return { ...state }
+        case SET_CAROUSEL:
+         state.bannerList = action.bannerList
+            return {...state}
 
         default:
             return state

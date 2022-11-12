@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 export default function Header() {
   return (
     <header >
-      <nav className="styleNav navbar navbar-expand-sm navbar-dark bg-dark">
+      <nav className="styleNav navbar navbar-expand-sm navbar-dark">
         <a className="navbar-brand" href="#"><img src="https://movflxx.netlify.app/img/logo/logo.png" alt="" /></a>
         <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />

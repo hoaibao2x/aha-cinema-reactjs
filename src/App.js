@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
-import Resgister from './pages/Resgister/Resgister';
+import DangNhap from './pages/DangNhap/DangNhap';
+import DangKy from './pages/DangKy/DangKy';
 import LichChieu from './pages/LichChieu/LichChieu';
 import Cumrap from './pages/CumRap/Cumrap';
 import TinTuc from './pages/TinTuc/TinTuc';
@@ -22,8 +22,8 @@ function App() {
         <HomeTemplate exact path={"/cumrap"} component={Cumrap}/>
         <HomeTemplate exact path={"/tintuc"} component={TinTuc}/>
         <HomeTemplate exact path={"/ungdung"} component={UngDung}/>
-        <Route exact path={"/login"} component={Login}/>
-        <Route exact path={"register"} component={Resgister}/>
+        <Route exact path={"/dangnhap"} component={DangNhap}/>
+        <Route exact path={"dangky"} component={DangKy}/>
         <HomeTemplate exact path={"/"} component={Home}/>
       </Switch>
     </Router>
