@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { getFilmsListAction } from '../../../redux/Admins/action/getFilmsListAction';
 import { object } from 'yup';
 import { NavLink } from 'react-router-dom';
+import { history } from '../../../App';
 
 const { Search } = Input;
 
@@ -42,7 +43,7 @@ function AdminFilm() {
             title: 'Mã phim',
             dataIndex: 'maPhim',
             value: (text, object) => { return <span>{text}</span> },
-            width: 100,
+            width: 150,
 
             sorter: (a, b) => a.maPhim - b.maPhim,
             sortDirections: ['descend', 'ascend'],
@@ -100,7 +101,7 @@ function AdminFilm() {
             width: 200,
             render: (text, film) => {
                 return <>
-                    <NavLink className='btn btn-info mr-2' to= '/'><EditOutlined /></NavLink>
+                    <NavLink className='btn btn-info mr-2' to='/'><EditOutlined /></NavLink>
                     <NavLink className='btn btn-danger' to='/'><DeleteOutlined /></NavLink>
                 </>
             },
@@ -119,7 +120,9 @@ function AdminFilm() {
     return (
         <div className='container mx-auto'>
             <h3>Quản lý phim</h3>
-            <Button className='mb-3'>Thêm phim</Button>
+            <Button className='mb-3' onClick={() => {
+                history.push('/admin/films/addnew')
+            }}>Thêm phim</Button>
             <Search
                 className='mb-5'
                 placeholder="input search text"
