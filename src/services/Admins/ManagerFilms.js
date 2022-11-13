@@ -23,6 +23,36 @@ class ManagerFilms {
     // getFilmsList = () => {
     //     return http.get(`/QuanLyPhim/LayDanhSachPhim?MaNhom=${GP_ID}`)
     // }
+    getBanner = async () => {
+        try {
+            let result = await axios({
+                method: 'get',
+                url: `${DOMAIN}/QuanLyPhim/LayDanhSachBanner`,
+                headers: {
+                    "TokenCybersoft": TOKEN_MOVIE
+                }
+            });
+            return result;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    getFilmList = async () => {
+        try {
+            let result = await axios({
+                method: 'get',
+                url: `${DOMAIN}/QuanLyPhim/LayDanhSachPhim?maNhom=${GP_ID}`,
+                headers: {
+                    "TokenCybersoft": TOKEN_MOVIE
+                }
+            });
+            return result;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 }
 
 export const managerFilms = new ManagerFilms();
