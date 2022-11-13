@@ -17,7 +17,7 @@ export default function UserComponent() {
   let { arrUserDefault } = useSelector(state => state.QLNDreducer)
 
   let dispatch = useDispatch();
-  console.log(arrUserDefault);
+  // console.log(arrUserDefault);
   
 
   useEffect(() => {  
