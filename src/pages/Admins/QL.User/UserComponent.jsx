@@ -112,7 +112,7 @@ export default function UserComponent() {
   return (
     <div className='container'>
      
-      <h1>Quản Lý Người Dùng</h1>
+      <h3>Quản Lý Người Dùng</h3>
       <Button className='btn'>Thêm Người Dùng</Button>
       
       <Search 

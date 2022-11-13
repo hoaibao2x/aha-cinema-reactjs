@@ -30,8 +30,8 @@ function App() {
 
 
         {/* Admin Route */}
-        <Route exact path='/admin/films' component={AdminFilm} />
-        <Route exact path='/admin/films/addnew' component={AddFilm} />
+        <AdminTemplate exact path='/admin/films' component={AdminFilm} />
+        <AdminTemplate exact path='/admin/films/addnew' component={AddFilm} />
 
         {/* Default Route */}
         <HomeTemplate exact path={"/home"} component={Home}/>
@@ -42,7 +42,7 @@ function App() {
         <Route exact path={"/dangnhap"} component={DangNhap}/>
         <Route exact path={"dangky"} component={DangKy}/>
         <HomeTemplate exact path={"/"} component={Home}/>
-        <AdminTemplate exact path='/admin-user' component={UserComponent} />
+        <AdminTemplate exact path='/admin/users' component={UserComponent} />
       </Switch>
     </Router>
   );
