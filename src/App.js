@@ -6,6 +6,7 @@ import UserComponent from './pages/Admins/QL.User/UserComponent';
 import { AdminTemplate } from './templates/Admin/AdminUser/AdminUserTemplates';
 
 import AdminFilm from './pages/Admins/QL.Films/AdminFilm';
+import AddFilm from './pages/Admins/QL.Films/AddFilm';
 import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
 import DangNhap from './pages/DangNhap/DangNhap';
@@ -28,6 +29,7 @@ function App() {
 
         {/* Admin Route */}
         <Route exact path='/admin/films' component={AdminFilm} />
+        <Route exact path='/admin/films/addnew' component={AddFilm} />
 
         {/* Default Route */}
         <HomeTemplate exact path={"/home"} component={Home}/>
