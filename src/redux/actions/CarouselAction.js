@@ -1,12 +1,12 @@
 
 import axios from "axios";
-import { managerFilms } from "../../services/Admins/ManagerFilms";
+import { getBanner } from "../../services/Admins/ManagerFilms";
 import { SET_CAROUSEL } from "../types/CarouselType";
 
 export const getCarouselAction = () => {
   return async (dispatch2) => {
     try {
-      const result = await managerFilms.getBanner()
+      const result = await getBanner()
       dispatch2({
         type: SET_CAROUSEL,
         bannerList: result.data.content

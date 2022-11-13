@@ -5,6 +5,7 @@ import { createBrowserHistory } from 'history';
 import UserComponent from './pages/Admins/QL.User/UserComponent';
 import { AdminTemplate } from './templates/Admin/AdminUser/AdminUserTemplates';
 
+import AdminFilm from './pages/Admins/QL.Films/AdminFilm';
 import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
 import DangNhap from './pages/DangNhap/DangNhap';
@@ -22,6 +23,13 @@ function App() {
     
     <Router history={history}>
       <Switch>
+        {/* User Route */}
+
+
+        {/* Admin Route */}
+        <Route exact path='/admin/films' component={AdminFilm} />
+
+        {/* Default Route */}
         <HomeTemplate exact path={"/home"} component={Home}/>
         <HomeTemplate exact path={"/lichchieu"} component={LichChieu}/>
         <HomeTemplate exact path={"/cumrap"} component={Cumrap}/>
