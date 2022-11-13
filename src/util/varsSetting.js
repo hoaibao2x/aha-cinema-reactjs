@@ -5,3 +5,5 @@ export const DOMAIN = "https://movienew.cybersoft.edu.vn/api";
 export const GP_ID = "GP15";
 
 export const TOKEN = 'access_token';
+
+export const USERLOGIN = 'userLogin';
