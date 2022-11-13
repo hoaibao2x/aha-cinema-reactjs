@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
     FilmsManagerReducer,
     UserReducers,
     QuanLyPhimReducer,
-    CarouselReducer
+    CarouselReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
