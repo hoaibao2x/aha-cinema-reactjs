@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import AdminFilm from './pages/Admins/QL.Films/AdminFilm';
 import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
 import DangNhap from './pages/DangNhap/DangNhap';
@@ -17,6 +18,13 @@ function App() {
   return (
     <Router history={history}>
       <Switch>
+        {/* User Route */}
+
+
+        {/* Admin Route */}
+        <Route exact path='/admin/films' component={AdminFilm} />
+
+        {/* Default Route */}
         <HomeTemplate exact path={"/home"} component={Home}/>
         <HomeTemplate exact path={"/lichchieu"} component={LichChieu}/>
         <HomeTemplate exact path={"/cumrap"} component={Cumrap}/>
