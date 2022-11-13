@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import AdminFilm from './pages/Admins/QL.Films/AdminFilm';
 import AddFilm from './pages/Admins/QL.Films/AddFilm';
+import LoginComponent from './pages/Users/LoginPage/LoginComponent';
 import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
 import DangNhap from './pages/DangNhap/DangNhap';
@@ -20,6 +21,7 @@ function App() {
     <Router history={history}>
       <Switch>
         {/* User Route */}
+        <Route exact path='/login' component={LoginComponent} />
 
 
         {/* Admin Route */}

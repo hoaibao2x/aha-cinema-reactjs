@@ -1,0 +1,16 @@
+.login__content {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: url('../../../assets/Users/imgs/login-page-background.jpg');
+    background-repeat: no-repeat;
+}
+
+.login__content .content__form {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    border-radius: 15px;
+    padding: 10px 20px;
+}
