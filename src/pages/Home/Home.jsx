@@ -30,8 +30,9 @@ export default function Home(props) {
                     width: '100%',
                     height: '400px'
                 }}
-                cover={<img style={{height:'300px'}} className='img-fluid' alt="example" src={phim.hinhAnh} />}
-            >
+                cover={<img style={{height:'300px'}} className='img-fluid' alt="example" src=   
+                    {phim.hinhAnh} />}
+>
                 <Meta  title={phim.tenPhim} description={phim.danhGia}   />
             </Card>
         </Col>
