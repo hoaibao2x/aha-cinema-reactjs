@@ -6,6 +6,7 @@ import { DOMAIN, GP_ID, TOKEN_MOVIE } from '../../util/varsSetting';
 const getFilmsList = () => {
     return http.get(`/QuanLyPhim/LayDanhSachPhim?MaNhom=${GP_ID}`)
 }
+
 export const getTest = async () => {
     try {
         let result = await axios({
@@ -20,6 +21,7 @@ export const getTest = async () => {
         console.log(error)
     }
 }
+
 export const themPhimUploadHinh = (formData) => {
     return http.post(`/QuanLyPhim/ThemPhimUploadHinh`, formData);
 }
@@ -54,7 +56,6 @@ export const getFilmList = async () => {
     }
 }
 
-
-
-
-
+export const getFilmInfo = (maPhim) => {
+    return http.get(`/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`)
+}

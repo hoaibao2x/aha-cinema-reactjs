@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getBanner } from "../../services/Admins/ManagerFilms";
-import { SET_CAROUSEL } from "../types/CarouselType";
+import { getBanner } from "../../../services/Admins/ManagerFilms";
+import { SET_CAROUSEL } from "../type/CarouselType";
 
 export const getCarouselAction = () => {
 

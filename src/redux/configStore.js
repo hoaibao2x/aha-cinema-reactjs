@@ -1,10 +1,11 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { QLNDreducer } from '../reducer/QLNDreducer';
+import { QLNDreducer } from './Admins/reducers/QLNDreducer';
 import { FilmsManagerReducer } from './Admins/reducers/FilmsManagerReducer';
 import { UserReducers } from './Users/reducers/UserReducers';
-import { CarouselReducer } from './reducers/CarouselReducer';
-import { QuanLyPhimReducer } from './reducers/QuanLyPhimReducer';
+import { CarouselReducer } from './Users/reducers/CarouselReducer';
+import { QuanLyPhimReducer } from './Users/reducers/QuanLyPhimReducer';
+
 const rootReducer = combineReducers({
     FilmsManagerReducer,
     UserReducers,

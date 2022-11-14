@@ -1,8 +1,7 @@
 import axios from "axios";
-import { managerFilms } from "../../services/Admins/ManagerFilms";
-import { DOMAIN, GP_ID } from "../../util/varsSetting";
+// import { managerFilms } from "../../services/Admins/ManagerFilms";
+import { DOMAIN, GP_ID, TOKEN_MOVIE } from "../../../util/varsSetting";
 // import { GET_FILMLIST } from "../types/FilmListType";
-import { TOKEN_MOVIE } from "../../util/varsSetting"
 
 export const getFilmListAction = () => {
     return (dispatch) => {

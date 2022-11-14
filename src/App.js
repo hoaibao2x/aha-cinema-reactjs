@@ -3,19 +3,19 @@ import './App.css';
 import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import UserComponent from './pages/Admins/QL.User/UserComponent';
-import { AdminTemplate } from './templates/Admin/AdminUser/AdminUserTemplates';
+import { AdminTemplate } from './templates/Admin/AdminTemplates';
 
 import AdminFilm from './pages/Admins/QL.Films/AdminFilm';
 import AddFilm from './pages/Admins/QL.Films/AddFilm';
 import LoginComponent from './pages/Users/LoginPage/LoginComponent';
-import { HomeTemplate } from './templates/HomeTemplate';
-import Home from './pages/Home/Home';
-import DangNhap from './pages/DangNhap/DangNhap';
+import { HomeTemplate } from './templates/Users/HomeTemplate';
+import Home from './pages/Users/Home/Home';
 import DangKy from './pages/DangKy/DangKy';
 import LichChieu from './pages/LichChieu/LichChieu';
 import Cumrap from './pages/CumRap/Cumrap';
 import TinTuc from './pages/TinTuc/TinTuc';
 import UngDung from './pages/UngDung/UngDung';
+import EditFilm from './pages/Admins/QL.Films/EditFilm';
 
 export const history = createBrowserHistory();
 
@@ -32,14 +32,14 @@ function App() {
         {/* Admin Route */}
         <AdminTemplate exact path='/admin/films' component={AdminFilm} />
         <AdminTemplate exact path='/admin/films/addnew' component={AddFilm} />
+        <AdminTemplate exact path='/admin/films/edit/:id' component={EditFilm} />
 
-        {/* Default Route */}
+        {/* Default Route */} 
         <HomeTemplate exact path={"/home"} component={Home}/>
         <HomeTemplate exact path={"/lichchieu"} component={LichChieu}/>
         <HomeTemplate exact path={"/cumrap"} component={Cumrap}/>
         <HomeTemplate exact path={"/tintuc"} component={TinTuc}/>
         <HomeTemplate exact path={"/ungdung"} component={UngDung}/>
-        <Route exact path={"/dangnhap"} component={DangNhap}/>
         <Route exact path={"dangky"} component={DangKy}/>
         <HomeTemplate exact path={"/"} component={Home}/>
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
