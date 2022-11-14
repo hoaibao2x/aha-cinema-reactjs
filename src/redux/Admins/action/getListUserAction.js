@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { DOMAIN, TOKEN_MOVIE, GP_ID } from '../../../util/varsSetting';
 
-export const getFilmsListAction =  () => {
+export const getUserListAction =  () => {
 
     return  (dispatch2) => {
         let promise = axios({

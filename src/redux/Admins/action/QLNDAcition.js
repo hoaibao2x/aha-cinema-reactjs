@@ -3,7 +3,7 @@ import axios from "axios";
 import { history } from "../../../App";
 import { TOKEN,TOKEN_MOVIE,DOMAIN,GP_ID,USERLOGIN } from "../../../util/varsSetting";
 
-export const dangKyAction = (userInfo) => {
+export const themNguoiDungAction = (userInfo) => {
     return (dispatch2) => {
         let promies = axios({
             url: `${DOMAIN}/QuanLyNguoiDung/ThemNguoiDung`,
