@@ -101,8 +101,8 @@ function AdminFilm() {
             width: 200,
             render: (text, film) => {
                 return <>
-                    <NavLink className='btn btn-info mr-2' to='/'><EditOutlined /></NavLink>
-                    <NavLink className='btn btn-danger' to='/'><DeleteOutlined /></NavLink>
+                    <NavLink key={1} className='btn btn-info mr-2' to={`/admin/films/edit/${film.maPhim}`}><EditOutlined /></NavLink>
+                    <NavLink key={2} className='btn btn-danger' to='/'><DeleteOutlined /></NavLink>
                 </>
             },
             sortDirections: ['descend', 'ascend'],
