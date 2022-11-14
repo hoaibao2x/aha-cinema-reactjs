@@ -52,11 +52,5 @@ export default function CarouselHome(props) {
     <Carousel effect='fade'>
       {renderBanner()}
     </Carousel>
-
-
-
-
-
-
   )
 }
