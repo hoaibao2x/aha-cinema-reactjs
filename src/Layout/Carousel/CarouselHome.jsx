@@ -39,7 +39,7 @@ export default function CarouselHome(props) {
     return bannerList.map((item, index) => {
       return <div key={index}>
         <div style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})` }}>
-          <img style={{ opacity: 0, marginTop: '70px' }} src={item.hinhAnh}               className='img-fluid' alt={item.hinhAnh} />
+          <img style={{ opacity: 0, marginTop: '70px' }} src={item.hinhAnh} className='img-fluid' alt={item.hinhAnh} />
         </div>
 
       </div>

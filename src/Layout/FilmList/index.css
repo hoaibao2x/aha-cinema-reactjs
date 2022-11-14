@@ -1,0 +1,8 @@
+.slick-dots-bottom {
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 3rem!important;
+}

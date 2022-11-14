@@ -5,6 +5,7 @@ import CarouselHome from '../../../Layout/Carousel/CarouselHome';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilmListAction } from '../../../redux/Users/action/GetFilmListAction';
 import "../Home/index.css";
+import FilmList from '../../../Layout/FilmList/FilmList';
 
 
 
@@ -21,23 +22,23 @@ export default function Home(props) {
     }, [])
 
 
-    const renderPhim = () => {
-        return arrFilm.map((phim, index) => {
-            return  <Col className='styleCol px-4 py-3' span={6} key={index}>
-            <Card className='styleCard'
-                hoverable
-                style={{
-                    width: '100%',
-                    height: '400px'
-                }}
-                cover={<img style={{height:'300px'}} className='img-fluid' alt="example" src=   
-                    {phim.hinhAnh} />}
->
-                <Meta  title={phim.tenPhim} description={phim.danhGia}   />
-            </Card>
-        </Col>
-        })
-    }
+//     const renderPhim = () => {
+//         return arrFilm.map((phim, index) => {
+//             return  <Col className='styleCol px-4 py-3' span={6} key={index}>
+//             <Card className='styleCard'
+//                 hoverable
+//                 style={{
+//                     width: '100%',
+//                     height: '400px'
+//                 }}
+//                 cover={<img style={{height:'300px'}} className='img-fluid' alt="example" src=   
+//                     {phim.hinhAnh} />}
+// >
+//                 <Meta  title={phim.tenPhim} description={phim.danhGia}   />
+//             </Card>
+//         </Col>
+//         })
+//     }
 
 
 
@@ -46,15 +47,10 @@ export default function Home(props) {
 
             <CarouselHome />
             <div className='container'>
-
-            
-             
-               <Row style={{marginTop:"150px"}} >
+               {/* <Row style={{marginTop:"150px"}} >
                      {renderPhim()}
-                </Row>
-                   
-                
-
+                </Row> */}
+                <FilmList arrFilm={arrFilm}/>
                 <HomeMenu />
             </div>
         </div>
