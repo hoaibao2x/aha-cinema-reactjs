@@ -4,17 +4,16 @@ import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import UserComponent from './pages/Admins/QL.User/UserComponent';
 import { AdminTemplate } from './templates/Admin/AdminTemplates';
-
 import AdminFilm from './pages/Admins/QL.Films/AdminFilm';
 import AddFilm from './pages/Admins/QL.Films/AddFilm';
 import LoginComponent from './pages/Users/Login/LoginComponent';
 import { HomeTemplate } from './templates/Users/HomeTemplate';
 import Home from './pages/Users/Home/Home';
 import DangKy from './pages/Users/DangKy/DangKy';
-import LichChieu from './pages/LichChieu/LichChieu';
-import Cumrap from './pages/CumRap/Cumrap';
-import TinTuc from './pages/TinTuc/TinTuc';
-import UngDung from './pages/UngDung/UngDung';
+import LichChieu from './pages/Users/LichChieu/LichChieu';
+import Cumrap from './pages/Users/CumRap/Cumrap';
+import TinTuc from './pages/Users/TinTuc/TinTuc';
+import UngDung from './pages/Users/UngDung/UngDung';
 import EditFilm from './pages/Admins/QL.Films/EditFilm';
 
 export const history = createBrowserHistory();
