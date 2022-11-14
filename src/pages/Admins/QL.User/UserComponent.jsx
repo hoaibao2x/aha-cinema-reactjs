@@ -7,6 +7,10 @@ import { Input, Space } from 'antd';
 import { Button } from 'antd/lib/radio';
 import { getFilmsListAction } from '../../../redux/action/admin/getListUserAction';
 import { useDispatch, useSelector } from 'react-redux';
+import { history } from '../../../App';
+// import ApiRFC from '../../../componentHook/DSuser';
+
+
 
 
 
@@ -113,7 +117,9 @@ export default function UserComponent() {
     <div className='container'>
      
       <h3>Quản Lý Người Dùng</h3>
-      <Button className='btn'>Thêm Người Dùng</Button>
+      <Button className='btn' onClick={()=>{
+        history.push("/admin/users/adduser")
+      }}>Thêm Người Dùng</Button>
       
       <Search 
       className='py-5'

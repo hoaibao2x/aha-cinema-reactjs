@@ -16,6 +16,8 @@ import LichChieu from './pages/LichChieu/LichChieu';
 import Cumrap from './pages/CumRap/Cumrap';
 import TinTuc from './pages/TinTuc/TinTuc';
 import UngDung from './pages/UngDung/UngDung';
+import AddUser from './pages/Admins/QL.User/AddUser';
+
 
 export const history = createBrowserHistory();
 
@@ -43,6 +45,7 @@ function App() {
         <Route exact path={"dangky"} component={DangKy}/>
         <HomeTemplate exact path={"/"} component={Home}/>
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
+        <AdminTemplate exact path='/admin/users/adduser' component={AddUser} />
       </Switch>
     </Router>
   );

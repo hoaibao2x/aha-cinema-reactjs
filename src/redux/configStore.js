@@ -11,6 +11,7 @@ const rootReducer = combineReducers({
     QuanLyPhimReducer,
     CarouselReducer,
     QLNDreducer,
+    
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
