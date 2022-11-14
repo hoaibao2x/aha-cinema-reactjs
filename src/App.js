@@ -7,10 +7,10 @@ import { AdminTemplate } from './templates/Admin/AdminTemplates';
 
 import AdminFilm from './pages/Admins/QL.Films/AdminFilm';
 import AddFilm from './pages/Admins/QL.Films/AddFilm';
-import LoginComponent from './pages/Users/LoginPage/LoginComponent';
+import LoginComponent from './pages/Users/Login/LoginComponent';
 import { HomeTemplate } from './templates/Users/HomeTemplate';
 import Home from './pages/Users/Home/Home';
-import DangKy from './pages/DangKy/DangKy';
+import DangKy from './pages/Users/DangKy/DangKy';
 import LichChieu from './pages/LichChieu/LichChieu';
 import Cumrap from './pages/CumRap/Cumrap';
 import TinTuc from './pages/TinTuc/TinTuc';
