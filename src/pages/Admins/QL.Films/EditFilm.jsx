@@ -50,12 +50,12 @@ const EditFilm = (props) => {
             tenPhim: Yup.string().required('Tên phim không được để trống !'),
             trailer: Yup.string().required('Trailer không được để trống !'),
             moTa: Yup.string().required('Mô tả không được để trống !'),
-            ngayKhoiChieu: Yup.string().required('Thời gian không được để trống !').length(10, 'Thời gian không được để trống !'),
+            ngayKhoiChieu: Yup.string().required('Thời gian không được để trống !'),
             danhGia: Yup.number().required('Số sao không được để trống !').min(1, 'Đánh giá tối thiểu là 1 !').max(10, 'Đánh giá tối thiểu là 10 !')
         }),
         onSubmit: (values) => {
             // setSubmitStatus(true)
-            console.log(values);
+            console.log(values)
             values.maNhom = GP_ID;
 
             // Tạo đối tượng formData => Đưa giá trị values từ formik vào formData
@@ -69,14 +69,13 @@ const EditFilm = (props) => {
             }
 
             // Gọi API gửi các giá trị formData về back-end
-            dispatch(themPhimUploadHinhAction(formData));
 
             // console.log('formik', formData.get('tenPhim'));
         }
     })
 
     const handleChangeDatePicker = (value) => {
-        let dateFormat = moment(value).format('DD/MM/YYYY');
+        let dateFormat = moment(value);
         formik.setFieldValue('ngayKhoiChieu', dateFormat);
     }
 
