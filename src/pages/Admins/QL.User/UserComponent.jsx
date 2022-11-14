@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { AudioOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
 import { Button } from 'antd/lib/radio';
-import { getFilmsListAction } from '../../../redux/action/admin/getListUserAction';
+import { getFilmsListAction } from '../../../redux/Admins/action/getListUserAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../../../App';
 // import ApiRFC from '../../../componentHook/DSuser';

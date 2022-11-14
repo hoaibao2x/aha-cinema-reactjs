@@ -4,7 +4,7 @@ import { Carousel } from 'antd';
 
 import '../HeaderHome/index.css';
 import { useEffect } from 'react';
-import { getCarouselAction } from '../../redux/actions/CarouselAction';
+import { getCarouselAction } from '../../redux/Users/action/CarouselAction';
 
 
 

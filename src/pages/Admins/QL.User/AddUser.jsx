@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { GP_ID } from '../../../util/varsSetting';
 import { useDispatch } from 'react-redux';
-import { dangKyAction } from '../../../redux/action/admin/QLNDAcition';
+import { dangKyAction } from '../../../redux/Admins/action/QLNDAcition';
 import { Button, Checkbox, Form, Input } from 'antd';
 
 

@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect } from 'react'
 import HomeMenu from './HomeMenu/HomeMenu'
 import { Card, Col, Row } from 'antd';
-import CarouselHome from '../../Layout/Carousel/CarouselHome';
+import CarouselHome from '../../../Layout/Carousel/CarouselHome';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilmListAction } from '../../redux/actions/GetFilmListAction';
+import { getFilmListAction } from '../../../redux/Users/action/GetFilmListAction';
 import "../Home/index.css";
 
 

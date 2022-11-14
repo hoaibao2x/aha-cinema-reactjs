@@ -1,4 +1,4 @@
-import { GET_FILMLIST } from "../types/FilmListType"
+import { GET_FILMLIST } from "../type/FilmListType"
 
 const initialState = {
     arrFilm: [
