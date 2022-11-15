@@ -15,8 +15,10 @@ import Cumrap from './pages/Users/CumRap/Cumrap';
 import TinTuc from './pages/Users/TinTuc/TinTuc';
 import UngDung from './pages/Users/UngDung/UngDung';
 import EditFilm from './pages/Admins/QL.Films/EditFilm';
-// import AddUser from './pages/Admins/QL.User/AddUser';
+
 import AddNewUser from './pages/Admins/QL.User/AddUser2';
+import EditUser from './pages/Admins/QL.User/EditUser';
+
 
 
 
@@ -48,6 +50,7 @@ function App() {
 
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
         <AdminTemplate exact path='/admin/users/adduser' component={AddNewUser} />
+        {/* <AdminTemplate exact path='/admin/users/edituser/:id' component={EditUser} /> */}
       </Switch>
     </Router>
   );

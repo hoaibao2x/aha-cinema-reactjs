@@ -8,7 +8,7 @@ import { Button } from 'antd/lib/radio';
 import { getUserListAction } from '../../../redux/Admins/action/getListUserAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../../../App';
-// import ApiRFC from '../../../componentHook/DSuser';  
+// import ApiRFC from '../../../componentHook/DSuser';    
 
 
 
@@ -84,8 +84,8 @@ export default function UserComponent() {
       dataIndex : "chinhSua",
       render : ()=>{
         return <Fragment>
-          <NavLink className="" to="/home"><EditOutlined/> </NavLink>
-          <NavLink className="" to="/home"><DeleteOutlined/></NavLink>
+          <NavLink key={1} className="" to="/home"><EditOutlined/> </NavLink>
+          <NavLink key={2} className="" to="/home"><DeleteOutlined/></NavLink>
         </Fragment>
 
       }

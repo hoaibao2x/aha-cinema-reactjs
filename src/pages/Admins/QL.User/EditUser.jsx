@@ -39,7 +39,7 @@ const formItemLayout = {
     },
 };
 
-const AddNewUser = () => {
+const EditNewUser = () => {
     const dispatch = useDispatch();
 
 
@@ -180,4 +180,4 @@ const AddNewUser = () => {
         </Form>
     );
 };
-export default AddNewUser;
+export default EditNewUser;
