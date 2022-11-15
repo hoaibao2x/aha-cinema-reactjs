@@ -15,6 +15,7 @@ import Cumrap from './pages/Users/CumRap/Cumrap';
 import TinTuc from './pages/Users/TinTuc/TinTuc';
 import UngDung from './pages/Users/UngDung/UngDung';
 import EditFilm from './pages/Admins/QL.Films/EditFilm';
+import RegisterComponent from './pages/Users/Register/RegisterComponent';
 
 export const history = createBrowserHistory();
 
@@ -26,6 +27,7 @@ function App() {
       <Switch>
         {/* User Route */}
         <Route exact path='/login' component={LoginComponent} />
+        <Route exact path='/register' component={RegisterComponent} />
 
 
         {/* Admin Route */}

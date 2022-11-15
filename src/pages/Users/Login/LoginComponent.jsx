@@ -4,6 +4,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { userLoginAction } from '../../../redux/Users/action/userAction'
 import './index.css'
+import { history } from '../../../App'
+import { NavLink } from 'react-router-dom'
 
 function LoginComponent() {
 
@@ -39,9 +41,12 @@ function LoginComponent() {
                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} type="password" name='matKhau' className="form-control" id="exampleInputPassword1" />
                     {formik.touched.matKhau && formik.errors.matKhau ? (<div className="alert alert-danger mt-2">{formik.errors.matKhau}</div>) : null}
                 </div>
-                <div className="form-action">
-                    <button className="btn btn-success mr-3">Đăng nhập</button>
-                    <button type='button' className="btn btn-info">Đăng ký</button>
+                <div className="form-action d-flex justify-content-between">
+                    <div>
+                        <button className="btn btn-success mr-3">Đăng nhập</button>
+                        <button onClick={() => { history.push('/register') }} type='button' className="btn btn-info">Đăng ký</button>
+                    </div>
+                    <NavLink className="" to='/'><i className="fa-solid fa-arrow-right-to-bracket"></i> Quay về trang chủ</NavLink>
                 </div>
             </form>
         </div>
