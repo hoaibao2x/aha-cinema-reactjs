@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Tabs } from 'antd';
+import FilmList from '../../../../Layout/FilmList/FilmList';
+import { NavLink } from 'react-router-dom';
+import moment from 'moment';
+
+
 
 
 const { TabPane } = Tabs;
@@ -8,6 +13,8 @@ const { TabPane } = Tabs;
 
 
 export default function HomeMenu(props) {
+
+
   const [state, setState] = useState({
     tabPosition: 'left'
   });
@@ -16,37 +23,71 @@ export default function HomeMenu(props) {
   };
   const { tabPosition } = state;
 
+  const renderSystemsCinema = () => {
+    return props.arrSystemsCinema.map((item, index) => {
+    <hr/>
+      return <TabPane tab={
+        <div>
+          <img src={item.logo} alt="" style={{ width: '50px' }} />
+          <hr />
+        </div>} key={index}>
+
+        <Tabs tabPosition={tabPosition}>
+          {item.lstCumRap?.slice(0,5).map((cinema, index) => {
+            return <TabPane tab={
+              <Fragment>
+                <div style={{ width: "320px", display: "flex" }}>
+                  <img src={cinema.hinhAnh} alt="" style={{ width: '50px' }} />
+                  <div className='text-left ml-2'>
+                    {cinema.tenCumRap}
+                    <br />
+                    {cinema.diaChi.length > 35 ? <span>{cinema.diaChi.slice(0, 35)} ...</span> : <span>
+                      {cinema.diaChi}</span>}
+                  </div>
+                </div>
+                <hr />
+              </Fragment>
+            } key={index}>
+              {cinema.danhSachPhim?.slice(0,4).map((film, index) => {
+                return <Fragment key={index}>
+                  <div style={{ display: "flex" }}>
+                    <img style={{ width: 75, height: 75 }} src={film.hinhAnh} alt={film.tenPhim} onError={(e) => {
+                      e.target.onerror = null; e.target.src = "http://picsum.photos/75/75"
+                    }} />
+                    <div className='ml-2'>
+                      <h3 className='text-primary'>{film.tenPhim}</h3>
+                      <p style={{ color: "#000", fontWeight: "600" }}>{cinema.diaChi}</p>
+
+                      <div className='ml-3'>
+                        {film.lstLichChieuTheoPhim?.slice(0,5).map((timeShow, index) => {
+                          return <NavLink style={{ fontSize: "18px", color: "" }} className="mr-2 text-success" to="/" key={index}>
+                            {moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}
+                          </NavLink>
+                        })}
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <hr />
+                </Fragment>
+              })}
+            </TabPane>
+          })}
+
+        </Tabs>
+      </TabPane>
+
+    })
+  }
+
+
+
   return (
-    <div className='container'>
-
-        <Tabs
-          tabPosition={tabPosition}>
-              <TabPane  tab={<img src='http://movie0706.cybersoft.edu.vn/hinhanh/bhd-star-cineplex.png' alt='' style={{width:'50px'}}></img>} key='1'>
-                  Content of tab 1
-              </TabPane>
-              <TabPane tab={<img src='http://movie0706.cybersoft.edu.vn/hinhanh/cgv.png' alt='' style={{width:'50px'}}></img>} key='2'>
-                  Content of tab 2
-              </TabPane>
-              <TabPane tab={<img src='http://movie0706.cybersoft.edu.vn/hinhanh/cinestar.png' alt='' style={{width:'50px'}}></img>} key='3'>
-                  Content of tab 3
-              </TabPane>
-              <TabPane tab={<img src='http://movie0706.cybersoft.edu.vn/hinhanh/galaxy-cinema.png' alt='' style={{width:'50px'}}></img>} key='4'>
-                  Content of tab 4
-              </TabPane>
-              <TabPane tab={<img src='http://movie0706.cybersoft.edu.vn/hinhanh/lotte-cinema.png' alt='' style={{width:'50px'}}></img>} key='5'>
-                  Content of tab 5
-              </TabPane>
-              <TabPane tab={<img src='http://movie0706.cybersoft.edu.vn/hinhanh/megags.png' alt='' style={{width:'50px'}}></img>} key='6'>
-                  Content of tab 6
-              </TabPane>
-          </Tabs>
-
-        
-      
-
-
-
-
+    <div style={{ marginTop: "70px" }} className='container'>
+      <Tabs tabPosition={tabPosition}>
+        {renderSystemsCinema()}
+      </Tabs>
     </div>
   )
 };

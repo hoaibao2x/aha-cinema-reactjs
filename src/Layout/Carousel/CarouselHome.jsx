@@ -10,7 +10,7 @@ import { getCarouselAction } from '../../redux/Users/action/CarouselAction';
 
 
 const contentStyle = {
-  height: '750px',
+  height: '770px',
   color: '#fff',
   lineHeight: '160px',
   textAlign: 'center',

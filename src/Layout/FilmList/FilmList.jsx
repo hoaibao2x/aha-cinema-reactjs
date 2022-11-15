@@ -31,9 +31,6 @@ function SamplePrevArrow(props) {
     );
 }
 
-
-
-
 const FilmList = (props) => {
 
     const dispath = useDispatch();
@@ -52,14 +49,16 @@ const FilmList = (props) => {
                         alt="example" src=
                         {film.hinhAnh} />}>
 
-                    <Meta title={film.tenPhim}/>
+                    <Meta title={film.tenPhim} />
                     <button className="btn btn-danger btnDatve">Đặt Vé</button>
                 </Card>
             </Col>
         })
     }
+
     let activeFilmDC = dangChieu === true ? 'classActiveFilm' : 'noneActiveFilm';
     let activeFilmSC = sapChieu === true ? 'classActiveFilm' : 'noneActiveFilm';
+
     const settings = {
         className: "center",
         centerMode: true,
@@ -74,20 +73,20 @@ const FilmList = (props) => {
     };
 
     return (
-        <div style={{marginTop:"100px"}}>
-            <button className={`${activeFilmDC} `} style={{ padding: "10px", marginRight: "10px", borderRadius: "5px", backgroundColor: "red", color: "white", fontWeight: "700" }} onClick={() => {
+        <div style={{ marginTop: "60px" }}>
+            <button className={`${activeFilmDC} `} style={{ padding: "10px", marginRight: "10px", borderRadius: "5px", backgroundColor: "#FF0000", color: "#fff", fontWeight: "700" }} onClick={() => {
                 const action = {
                     type: SET_FILM_SHOWING
                 }
                 dispath(action)
             }}>PHIM ĐANG CHIẾU</button>
-            <button className={`${activeFilmSC}`} style={{ padding: "10px", borderRadius: "5px", backgroundColor: "white", color: "red", fontWeight: "700" }} onClick={() => {
+            <button className={`${activeFilmSC}`} style={{ padding: "10px", borderRadius: "5px", backgroundColor: "#fff", color: "#FF0000", fontWeight: "700" }} onClick={() => {
                 const action = {
                     type: SET_FILM_COMING_SOON
                 }
                 dispath(action)
             }}>PHIM SẮP CHIẾU</button>
-            <Slider {...settings}>
+            <Slider className="slider" {...settings}>
                 {renderFilm()}
             </Slider>
         </div>

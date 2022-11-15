@@ -5,28 +5,34 @@ import CarouselHome from '../../../Layout/Carousel/CarouselHome';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilmListAction } from '../../../redux/Users/action/GetFilmListAction';
 import FilmList from '../../../Layout/FilmList/FilmList';
+import {getCinemaSystemListAction} from "../../../redux/Users/action/QuanLyRapAction"
 
 
 
-const { Meta } = Card;
+
 
 export default function Home(props) {
 
     const { arrFilm } = useSelector((state) => state.QuanLyPhimReducer);
+    const { arrSystemsCinema } = useSelector((state) => state.QuanLyRapReducer)
     const dispatch = useDispatch();
 
     useEffect(() => {
-        let action = getFilmListAction();
-        dispatch(action)
+        const action = getFilmListAction();
+        dispatch(action);
+
+        dispatch(getCinemaSystemListAction())
     }, [])
 
+    
+
     return (
-        <div style={{ backgroundColor: "#111111" }}>
+        <div >
 
             <CarouselHome />
             <div className='container'>
-                <FilmList arrFilm={arrFilm}/>
-                <HomeMenu />
+                <FilmList arrFilm={arrFilm} />
+                <HomeMenu arrSystemsCinema={arrSystemsCinema}/>
             </div>
         </div>
     )

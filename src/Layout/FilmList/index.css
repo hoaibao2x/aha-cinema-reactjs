@@ -6,7 +6,9 @@
 .slick-prev:before,
 .slick-next:before {
     font-size: 3rem !important;
+    color: black !important;
 }
+
 .btnDatve {
     content: "";
     position: absolute;
@@ -45,3 +47,6 @@
     background-color: white;
     color: red;
 }
+
+
+    
