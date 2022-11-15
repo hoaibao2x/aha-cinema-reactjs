@@ -5,7 +5,7 @@ import './index.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { GP_ID } from '../../../util/varsSetting'
-import registerImg from './assets/imgs/register.jpg'
+import registerImg from '../../../assets/Users/imgs/register.jpg'
 import { userRegisAction } from '../../../redux/Users/action/userAction'
 import { useDispatch } from 'react-redux'
 
