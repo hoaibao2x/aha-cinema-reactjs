@@ -15,7 +15,9 @@ import Cumrap from './pages/Users/CumRap/Cumrap';
 import TinTuc from './pages/Users/TinTuc/TinTuc';
 import UngDung from './pages/Users/UngDung/UngDung';
 import EditFilm from './pages/Admins/QL.Films/EditFilm';
-import AddUser from './pages/Admins/QL.User/AddUser';
+// import AddUser from './pages/Admins/QL.User/AddUser';
+import AddNewUser from './pages/Admins/QL.User/AddUser2';
+
 
 
 export const history = createBrowserHistory();
@@ -43,8 +45,9 @@ function App() {
         <HomeTemplate exact path={"/ungdung"} component={UngDung}/>
         <Route exact path={"dangky"} component={DangKy}/>
         <HomeTemplate exact path={"/"} component={Home}/>
+
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
-        <AdminTemplate exact path='/admin/users/adduser' component={AddUser} />
+        <AdminTemplate exact path='/admin/users/adduser' component={AddNewUser} />
       </Switch>
     </Router>
   );
