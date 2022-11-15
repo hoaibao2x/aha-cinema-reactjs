@@ -101,7 +101,7 @@ const EditNewUser = () => {
             }}
             scrollToFirstError
         >
-            <h3>Thêm Người Dùng Mới</h3>
+            <h3>Sữa Người Dùng</h3>
             <Form.Item
                 name="taiKhoan"
                 label="Tài Khoản">
@@ -174,7 +174,7 @@ const EditNewUser = () => {
                 <button
                     type='submit'
                     className='btn btn-success'>
-                    Hoàng Thành
+                    Cập Nhật
                 </button>
             </Form.Item>
         </Form>

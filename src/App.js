@@ -18,7 +18,8 @@ import EditFilm from './pages/Admins/QL.Films/EditFilm';
 import RegisterComponent from './pages/Users/Register/RegisterComponent';
 
 import AddNewUser from './pages/Admins/QL.User/AddUser2';
-import EditUser from './pages/Admins/QL.User/EditUser';
+import EditUser from "./pages/Admins/QL.User/EditUser";
+
 
 
 
@@ -52,7 +53,7 @@ function App() {
 
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
         <AdminTemplate exact path='/admin/users/adduser' component={AddNewUser} />
-        {/* <AdminTemplate exact path='/admin/users/edituser/:id' component={EditUser} /> */}
+        <AdminTemplate exact path='/admin/users/edituser' component={EditUser} />
       </Switch>
     </Router>
   );

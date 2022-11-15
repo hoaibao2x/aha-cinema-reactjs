@@ -83,10 +83,10 @@ export default function UserComponent() {
       title :"Chỉnh sữa",
       dataIndex : "chinhSua",
       render : ()=>{
-        return <Fragment>
-          <NavLink key={1} className="" to="/home"><EditOutlined/> </NavLink>
+        return <>
+          <NavLink key={1} className="" to="/admin/users/edituser"><EditOutlined/> </NavLink>
           <NavLink key={2} className="" to="/home"><DeleteOutlined/></NavLink>
-        </Fragment>
+        </>
 
       }
 
