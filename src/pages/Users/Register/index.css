@@ -1,0 +1,9 @@
+.register__content .content__form {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+
+.content__form .form-action {
+    margin-top: 8%;
+}
