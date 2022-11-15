@@ -15,6 +15,7 @@ import Cumrap from './pages/Users/CumRap/Cumrap';
 import TinTuc from './pages/Users/TinTuc/TinTuc';
 import UngDung from './pages/Users/UngDung/UngDung';
 import EditFilm from './pages/Admins/QL.Films/EditFilm';
+import RegisterComponent from './pages/Users/Register/RegisterComponent';
 
 import AddNewUser from './pages/Admins/QL.User/AddUser2';
 import EditUser from './pages/Admins/QL.User/EditUser';
@@ -32,6 +33,7 @@ function App() {
       <Switch>
         {/* User Route */}
         <Route exact path='/login' component={LoginComponent} />
+        <Route exact path='/register' component={RegisterComponent} />
 
 
         {/* Admin Route */}

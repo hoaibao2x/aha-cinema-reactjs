@@ -2,7 +2,7 @@ export const TOKEN_MOVIE = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJ
 
 export const DOMAIN = "https://movienew.cybersoft.edu.vn/api";
 
-export const GP_ID = "GP15";
+export const GP_ID = "GP06";
 
 export const TOKEN = 'access_token';
 

@@ -29,7 +29,9 @@ export default function Header() {
             <button onClick={() => { history.push('/login') }} style={{ padding: "10px 15px", fontSize: "16px", fontWeight: '600' }} className='btn btn-success'><i className="fa-regular fa-user"></i> Đăng nhập</button>
           </div>
           <div>
-            <button style={{ padding: "10px 15px", fontSize: "16px", fontWeight: '600' }} className='btn btn-danger'>Đăng ký</button>
+            <button onClick={() => { 
+              history.push('/register')
+             }} style={{ padding: "10px 15px", fontSize: "16px", fontWeight: '600' }} className='btn btn-danger'>Đăng ký</button>
           </div>
         </div>
       </nav>
