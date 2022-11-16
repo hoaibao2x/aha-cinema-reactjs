@@ -106,3 +106,16 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
      }
     
   }
+
+  export const layDanhSachLoaiNguoiDungAction = () => { 
+    return async (dispatch) => { 
+        try {
+            let result = await layDanhSachLoaiNguoiDung()
+            console.log('result', result.data.content);
+            dispatch(layDanhSachLoaiNguoiDungAction())
+            
+        } catch (error) {
+            console.log(error.response?.data)
+        }
+     }
+   }
