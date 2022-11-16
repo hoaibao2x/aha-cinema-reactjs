@@ -5,7 +5,7 @@ export const getCinemaSystemListAction = () => {
     return async (dispatch) => {
         try {
             const result = await getCinemaSystemList();
-            console.log("result", result.data.content);
+
             if (result.status === 200) {
                 dispatch({
                     type: SET_SYSTEMS_CINEMA,

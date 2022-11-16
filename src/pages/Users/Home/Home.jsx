@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect } from 'react'
 import HomeMenu from './HomeMenu/HomeMenu'
-import { Card, Col, Row } from 'antd';
+import { BackTop, Card, Col, Row } from 'antd';
 import CarouselHome from '../../../Layout/Carousel/CarouselHome';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilmListAction } from '../../../redux/Users/action/GetFilmListAction';
 import FilmList from '../../../Layout/FilmList/FilmList';
 import {getCinemaSystemListAction} from "../../../redux/Users/action/QuanLyRapAction"
+import Footer from '../../../Layout/Footer/Footer';
+import BackToTop from '../../../components/BackTop/BackToTop';
 
 
 
@@ -31,9 +33,11 @@ export default function Home(props) {
 
             <CarouselHome />
             <div className='container'>
-                <FilmList arrFilm={arrFilm} />
+                <FilmList  arrFilm={arrFilm} />
                 <HomeMenu arrSystemsCinema={arrSystemsCinema}/>
             </div>
+            <Footer/>
+           <BackToTop/>
         </div>
     )
 }

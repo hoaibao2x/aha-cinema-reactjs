@@ -40,13 +40,14 @@
 }
 
 .classActiveFilm {
-    background-color: red;
-    color: white;
+    background-color:red!important;
+    color: white!important;
 }
 .noneActiveFilm {
-    background-color: white;
-    color: red;
+    background-color: white!important;
+    color: red!important;
 }
+
 
 
     

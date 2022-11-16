@@ -56,7 +56,7 @@ const FilmList = (props) => {
         })
     }
 
-    let activeFilmDC = dangChieu === true ? 'classActiveFilm' : 'noneActiveFilm';
+    let activeFilmDC = dangChieu === false ? 'classActiveFilm' : 'noneActiveFilm';
     let activeFilmSC = sapChieu === true ? 'classActiveFilm' : 'noneActiveFilm';
 
     const settings = {
@@ -71,21 +71,26 @@ const FilmList = (props) => {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
-
     return (
         <div style={{ marginTop: "60px" }}>
-            <button className={`${activeFilmDC} `} style={{ padding: "10px", marginRight: "10px", borderRadius: "5px", backgroundColor: "#FF0000", color: "#fff", fontWeight: "700" }} onClick={() => {
-                const action = {
-                    type: SET_FILM_SHOWING
-                }
-                dispath(action)
-            }}>PHIM ĐANG CHIẾU</button>
-            <button className={`${activeFilmSC}`} style={{ padding: "10px", borderRadius: "5px", backgroundColor: "#fff", color: "#FF0000", fontWeight: "700" }} onClick={() => {
-                const action = {
-                    type: SET_FILM_COMING_SOON
-                }
-                dispath(action)
-            }}>PHIM SẮP CHIẾU</button>
+            <div style={{ height: "30px" }} id="lichchieu"></div>
+            <div className="mt-5">
+                <button className={`${activeFilmDC} `} style={{ padding: "10px", marginRight: "10px", borderRadius: "5px", backgroundColor: "#FF0000", color: "#fff", fontWeight: "700" }} onClick={() => {
+                    const action = {
+                        type: SET_FILM_SHOWING
+                    }
+                    dispath(action)
+                }}>
+
+                    PHIM ĐANG CHIẾU
+                </button>
+                <button className={`${activeFilmSC}`} style={{ padding: "10px", borderRadius: "5px", backgroundColor: "#fff", color: "#FF0000", fontWeight: "700" }} onClick={() => {
+                    const action = {
+                        type: SET_FILM_COMING_SOON
+                    }
+                    dispath(action)
+                }}>PHIM SẮP CHIẾU</button>
+            </div>
             <Slider className="slider" {...settings}>
                 {renderFilm()}
             </Slider>

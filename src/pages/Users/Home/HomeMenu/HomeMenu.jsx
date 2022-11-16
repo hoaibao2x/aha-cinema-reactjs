@@ -25,15 +25,17 @@ export default function HomeMenu(props) {
 
   const renderSystemsCinema = () => {
     return props.arrSystemsCinema.map((item, index) => {
-    <hr/>
+    
       return <TabPane tab={
-        <div>
+        <Fragment>
           <img src={item.logo} alt="" style={{ width: '50px' }} />
           <hr />
-        </div>} key={index}>
+        </Fragment>
+
+      } key={index} >
 
         <Tabs tabPosition={tabPosition}>
-          {item.lstCumRap?.slice(0,5).map((cinema, index) => {
+          {item.lstCumRap?.slice(0, 5).map((cinema, index) => {
             return <TabPane tab={
               <Fragment>
                 <div style={{ width: "320px", display: "flex" }}>
@@ -48,7 +50,7 @@ export default function HomeMenu(props) {
                 <hr />
               </Fragment>
             } key={index}>
-              {cinema.danhSachPhim?.slice(0,4).map((film, index) => {
+              {cinema.danhSachPhim?.slice(0, 4).map((film, index) => {
                 return <Fragment key={index}>
                   <div style={{ display: "flex" }}>
                     <img style={{ width: 75, height: 75 }} src={film.hinhAnh} alt={film.tenPhim} onError={(e) => {
@@ -59,7 +61,7 @@ export default function HomeMenu(props) {
                       <p style={{ color: "#000", fontWeight: "600" }}>{cinema.diaChi}</p>
 
                       <div className='ml-3'>
-                        {film.lstLichChieuTheoPhim?.slice(0,5).map((timeShow, index) => {
+                        {film.lstLichChieuTheoPhim?.slice(0, 5).map((timeShow, index) => {
                           return <NavLink style={{ fontSize: "18px", color: "" }} className="mr-2 text-success" to="/" key={index}>
                             {moment(timeShow.ngayChieuGioChieu).format('hh:mm A')}
                           </NavLink>
@@ -85,9 +87,13 @@ export default function HomeMenu(props) {
 
   return (
     <div style={{ marginTop: "70px" }} className='container'>
-      <Tabs tabPosition={tabPosition}>
-        {renderSystemsCinema()}
-      </Tabs>
+      <div style={{ height: "30px" }} id="cumrap"></div>
+      <div className='mt-5'>
+        <Tabs tabPosition={tabPosition}>
+          {renderSystemsCinema()}
+        </Tabs>
+      </div>
+
     </div>
   )
 };
