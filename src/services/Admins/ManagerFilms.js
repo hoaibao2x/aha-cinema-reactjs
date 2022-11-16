@@ -53,7 +53,7 @@ export const getFilmList = async () => {
         return result;
     } catch (error) {
         console.log(error)
-    }
+    }   
 }
 
 export const getFilmInfo = (maPhim) => {

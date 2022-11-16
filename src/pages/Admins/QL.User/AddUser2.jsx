@@ -2,7 +2,10 @@ import { useFormik } from 'formik';
 import { GP_ID } from '../../../util/varsSetting';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
+import { layThongTinUserAction, themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
+
+
+
 import React, { useState } from 'react';
 
 import {
@@ -73,6 +76,8 @@ const AddNewUser = () => {
             }
             console.log(userInfo2.get("hoTen")); 
             dispatch(themNguoiDungAction(userInfo2));
+            // let action = themNguoiDungAction(values)
+            // dispatch(action);
 
           },
     })

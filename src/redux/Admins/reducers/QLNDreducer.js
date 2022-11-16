@@ -1,5 +1,6 @@
 const initialState = {
-    arrUserDefault: []
+    arrUserDefault: [],
+    thongTinUser: {}
 }
 
 export const QLNDreducer = (state = initialState, action) => {
@@ -7,10 +8,14 @@ export const QLNDreducer = (state = initialState, action) => {
 
         case "GET_USER_LIST":
             // console.log(action.mangUser)
-            state.arrUserDefault = action.mangUser
+            state.arrUserDefault = action.arrUserDefault
+            return { ...state }
+        case "SET_THONG_TIN_PHIM":
+                state.thongTinUser = action.thongTinUser
             return { ...state }
 
         default:
             return state
     }
 }
+

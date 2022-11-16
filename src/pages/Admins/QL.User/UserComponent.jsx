@@ -5,9 +5,11 @@ import { NavLink } from 'react-router-dom'
 import { AudioOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
 import { Button } from 'antd/lib/radio';
-import { getUserListAction } from '../../../redux/Admins/action/getListUserAction';
+import { getUserListAction, } from '../../../redux/Admins/action/getListUserAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../../../App';
+import { CapNhatThongTinNguoiDungAction, xoaUserAction } from '../../../redux/Admins/action/QLNDAcition';
+import { getFilmList } from '../../../services/Admins/ManagerFilms';
 // import ApiRFC from '../../../componentHook/DSuser';    
 
 
@@ -81,11 +83,15 @@ export default function UserComponent() {
     },
     {
       title :"Chỉnh sữa",
-      dataIndex : "chinhSua",
-      render : ()=>{
+      dataIndex : "taiKhoan",
+      render : (text,users)=>{
         return <>
-          <NavLink key={1} className="" to="/admin/users/edituser"><EditOutlined/> </NavLink>
-          <NavLink key={2} className="" to="/home"><DeleteOutlined/></NavLink>
+          <NavLink key={1} className="" to={`/admin/users/edituser/${users.taiKhoan}`}><EditOutlined/> </NavLink>
+          <span key={2} className="" onClick={()=>{
+            if(window.confirm("bạn có chắt muốn xoá dữ liệu này" + users.taiKhoan)){
+              dispatch(xoaUserAction(users.taiKhoan));
+            }
+          }}><DeleteOutlined/></span>
         </>
 
       }
@@ -98,16 +104,21 @@ export default function UserComponent() {
 
   const data = arrUserDefault;
 
-  const suffix = (
-    <AudioOutlined
-      style={{
-        fontSize: 16,
-        color: '#1890ff',
-      }}
-    />
-  );
+  // const suffix = (
+  //   <AudioOutlined
+  //     style={{
+  //       fontSize: 16,
+  //       color: '#1890ff',
+  //     }}
+  //   />
+  // );
   
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {
+    console.log(value)
+    dispatch(getUserListAction(value))
+    console.log(dispatch(getUserListAction(value)));
+
+  };
 
   const onChange = (pagination, filters, sorter, extra) => {
     console.log('params', pagination, filters, sorter, extra);
@@ -129,7 +140,7 @@ export default function UserComponent() {
        
         onSearch={onSearch}
       />
-      <Table columns={columns} dataSource={data} onChange={onChange} />;
+      <Table columns={columns} dataSource={data} onChange={onChange} rowKey= {"taiKhoan"} />;
     </div>
   )
 }

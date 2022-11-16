@@ -1,9 +1,9 @@
 import { useFormik } from 'formik';
 import { GP_ID } from '../../../util/varsSetting';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
-import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { layThongTinUserAction, themNguoiDungAction,CapNhatThongTinNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
+import React, { useEffect, useState } from 'react';
 
 import {
     AutoComplete,
@@ -39,20 +39,30 @@ const formItemLayout = {
     },
 };
 
-const EditNewUser = () => {
+const EditNewUser = (props) => {
     const dispatch = useDispatch();
 
+   useEffect(() => {
+    let {id} = props.match.params;
+    dispatch(layThongTinUserAction(id))
+    
+   }, [])
+   
+   const {thongTinUser} = useSelector(state => state.QLNDreducer)
+   console.log("thongTinUser", thongTinUser);
 
     const formik = useFormik({
+        enableReinitialize: true,
+
         // giá trị khởi toạ (data cần luuw trữ )
         initialValues: {
           taiKhoan: "",
-          matKhau: "",
-          email: "",
-          soDt: "",
+          matKhau: thongTinUser.matKhau,
+          email: thongTinUser.email,
+          soDt: thongTinUser.soDt,
           maNhom: GP_ID,
           maLoaiNguoiDung: "KhachHang",
-          hoTen: ""
+          hoTen: thongTinUser.hoTen,
         },
    
         validationSchema: Yup.object({
@@ -71,8 +81,8 @@ const EditNewUser = () => {
             for(let key in values){
                 userInfo2.append(key,values[key]);
             }
-            console.log(userInfo2.get("hoTen")); 
-            dispatch(themNguoiDungAction(userInfo2));
+            
+        dispatch(CapNhatThongTinNguoiDungAction(userInfo2));
 
           },
     })
