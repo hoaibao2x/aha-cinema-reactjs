@@ -16,6 +16,7 @@ import TinTuc from './pages/Users/TinTuc/TinTuc';
 import UngDung from './pages/Users/UngDung/UngDung';
 import EditFilm from './pages/Admins/QL.Films/EditFilm';
 import RegisterComponent from './pages/Users/Register/RegisterComponent';
+import AdminPage from './pages/Admins/AdminPage';
 
 
 
@@ -34,6 +35,7 @@ function App() {
 
 
         {/* Admin Route */}
+        <AdminTemplate exact path='/admin' component={AdminPage} />
         <AdminTemplate exact path='/admin/films' component={AdminFilm} />
         <AdminTemplate exact path='/admin/films/addnew' component={AddFilm} />
         <AdminTemplate exact path='/admin/films/edit/:id' component={EditFilm} />
