@@ -30,13 +30,11 @@ export default function Home(props) {
 
     return (
         <div >
-
             <CarouselHome />
             <div className='container'>
                 <FilmList  arrFilm={arrFilm} />
                 <HomeMenu arrSystemsCinema={arrSystemsCinema}/>
             </div>
-            <Footer/>
            <BackToTop/>
         </div>
     )

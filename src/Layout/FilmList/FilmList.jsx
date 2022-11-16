@@ -5,6 +5,7 @@ import "./index.css";
 import { Card, Col } from 'antd';
 import { useDispatch, useSelector } from "react-redux";
 import { SET_FILM_SHOWING, SET_FILM_COMING_SOON } from "../../redux/Users/type/QuanLyPhimType";
+import { NavLink } from "react-router-dom";
 
 const { Meta } = Card;
 
@@ -50,7 +51,9 @@ const FilmList = (props) => {
                         {film.hinhAnh} />}>
 
                     <Meta title={film.tenPhim} />
-                    <button className="btn btn-danger btnDatve">Đặt Vé</button>
+                    <NavLink to={`/detail/${film.maPhim}.`}>
+                        <button className="btn btn-danger btnDatve">Đặt Vé</button>
+                    </NavLink>
                 </Card>
             </Col>
         })
