@@ -10,7 +10,7 @@ import { getCarouselAction } from '../../redux/Users/action/CarouselAction';
 
 
 const contentStyle = {
-  height: '750px',
+  height: '770px',
   color: '#fff',
   lineHeight: '160px',
   textAlign: 'center',
@@ -39,7 +39,7 @@ export default function CarouselHome(props) {
     return bannerList.map((item, index) => {
       return <div key={index}>
         <div style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})` }}>
-          <img style={{ opacity: 0, marginTop: '70px' }} src={item.hinhAnh}               className='img-fluid' alt={item.hinhAnh} />
+          <img style={{ opacity: 0, marginTop: '70px' }} src={item.hinhAnh} className='img-fluid' alt={item.hinhAnh} />
         </div>
 
       </div>
@@ -52,11 +52,5 @@ export default function CarouselHome(props) {
     <Carousel effect='fade'>
       {renderBanner()}
     </Carousel>
-
-
-
-
-
-
   )
 }

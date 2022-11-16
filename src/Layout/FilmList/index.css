@@ -1,0 +1,53 @@
+.slick-dots-bottom {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 3rem !important;
+    color: black !important;
+}
+
+.btnDatve {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    height: 70px;
+    width: 224px;
+    background-color: red;
+    display: none;
+    left: -3px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.styleCard {
+    transition: all 0.3s;
+    border-radius: 5px;
+    border: 1px solid red;
+}
+.styleCard:hover {
+    transform: translateY(-10px);
+}
+
+.ant-card-meta-title {
+    font-weight: 600;
+    font-size: 20px !important;
+}
+.ant-card-body:hover .btnDatve {
+    display: block;
+}
+
+.classActiveFilm {
+    background-color:red!important;
+    color: white!important;
+}
+.noneActiveFilm {
+    background-color: white!important;
+    color: red!important;
+}
+
+
+
+    
