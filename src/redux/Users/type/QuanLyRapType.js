@@ -1,0 +1,1 @@
+export const SET_SYSTEMS_CINEMA = "SET_SYSTEMS_CINEMA";

@@ -1,4 +1,4 @@
-import { SET_CAROUSEL } from "../type/CarouselType"
+import { SET_CAROUSEL } from "../type/QuanLyPhimType"
 
 const initialState = {
   bannerList:[

@@ -13,7 +13,7 @@ export const getFilmListAction = () => {
             }
         });
         promise.then((result) => {
-            console.log(result)
+            // console.log(result)
             dispatch({
                 type: "GET_FILMLIST",
                 filmList:result.data.content

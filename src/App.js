@@ -18,12 +18,15 @@ import EditFilm from './pages/Admins/QL.Films/EditFilm';
 import RegisterComponent from './pages/Users/Register/RegisterComponent';
 import AdminPage from './pages/Admins/AdminPage';
 
+
+
 export const history = createBrowserHistory();
+
 
 function App() {
   return (
-   
-    
+
+
     <Router history={history}>
       <Switch>
         {/* User Route */}
@@ -37,17 +40,20 @@ function App() {
         <AdminTemplate exact path='/admin/films/addnew' component={AddFilm} />
         <AdminTemplate exact path='/admin/films/edit/:id' component={EditFilm} />
 
-        {/* Default Route */} 
-        <HomeTemplate exact path={"/home"} component={Home}/>
-        <HomeTemplate exact path={"/lichchieu"} component={LichChieu}/>
-        <HomeTemplate exact path={"/cumrap"} component={Cumrap}/>
-        <HomeTemplate exact path={"/tintuc"} component={TinTuc}/>
-        <HomeTemplate exact path={"/ungdung"} component={UngDung}/>
-        <Route exact path={"dangky"} component={DangKy}/>
-        <HomeTemplate exact path={"/"} component={Home}/>
+        {/* Default Route */}
+        <HomeTemplate exact path={"/home"} component={Home} />
+        <HomeTemplate exact path={"/lichchieu"} component={LichChieu} />
+        <HomeTemplate exact path={"/cumrap"} component={Cumrap} />
+        <HomeTemplate exact path={"/tintuc"} component={TinTuc} />
+        <HomeTemplate exact path={"/ungdung"} component={UngDung} />
+        <Route exact path={"dangky"} component={DangKy} />
+        <HomeTemplate exact path={"/"} component={Home} />
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
+
       </Switch>
+     
     </Router>
+
   );
 }
 
