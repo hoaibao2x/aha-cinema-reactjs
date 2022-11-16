@@ -16,6 +16,9 @@ import TinTuc from './pages/Users/TinTuc/TinTuc';
 import UngDung from './pages/Users/UngDung/UngDung';
 import EditFilm from './pages/Admins/QL.Films/EditFilm';
 import RegisterComponent from './pages/Users/Register/RegisterComponent';
+import AdminPage from './pages/Admins/AdminPage';
+
+
 
 import AddNewUser from './pages/Admins/QL.User/AddUser2';
 import EditUser from "./pages/Admins/QL.User/EditUser";
@@ -26,10 +29,11 @@ import EditUser from "./pages/Admins/QL.User/EditUser";
 
 export const history = createBrowserHistory();
 
+
 function App() {
   return (
-   
-    
+
+
     <Router history={history}>
       <Switch>
         {/* User Route */}
@@ -38,6 +42,7 @@ function App() {
 
 
         {/* Admin Route */}
+        <AdminTemplate exact path='/admin' component={AdminPage} />
         <AdminTemplate exact path='/admin/films' component={AdminFilm} />
         <AdminTemplate exact path='/admin/films/addnew' component={AddFilm} />
         <AdminTemplate exact path='/admin/films/edit/:id' component={EditFilm} />
@@ -55,7 +60,9 @@ function App() {
         <AdminTemplate exact path='/admin/users/adduser' component={AddNewUser} />
         <AdminTemplate exact path='/admin/users/edituser/:id' component={EditUser} />
       </Switch>
+     
     </Router>
+
   );
 }
 

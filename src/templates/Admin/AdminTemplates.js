@@ -1,6 +1,9 @@
 import { NavLink, Route } from "react-router-dom";
 import React, { useState } from "react";
 import { Fragment } from "react";
+import { history } from '../../App'
+import { Redirect } from 'react-router-dom';
+
 
 import {
     DesktopOutlined,
@@ -24,7 +27,7 @@ export const AdminTemplate = (props) => {
         };
     }
     const items = [
-        getItem(<NavLink to='/admin/films'>Admin Site</NavLink>, "1", <DesktopOutlined />),
+        getItem(<NavLink to='/admin'>Admin Site</NavLink>, "1", <DesktopOutlined />),
         getItem("Ql. Người dùng", "sub1", <UserOutlined />, [
             getItem(<NavLink to='/admin/users'>DS. Người dùng</NavLink>, "3"),
             getItem(<NavLink to='/admin/users/adduser'>Thêm Người dùng</NavLink>, "4"),
@@ -34,6 +37,24 @@ export const AdminTemplate = (props) => {
             getItem(<NavLink to='/admin/films/addnew'>Thêm phim</NavLink>, "8"),
         ]),
     ];
+
+    const accountInLocal = localStorage.userLogin;
+    const parseAccount = JSON.parse(accountInLocal);
+
+    if (!localStorage.getItem('access_token')) {
+        alert('Bạn phải đăng nhập !');
+        return <Redirect to='/login' />
+    } else if(parseAccount.maLoaiNguoiDung !== 'QuanTri') {
+        alert('Bạn không thể truy cập trang web này !');
+        return <Redirect to='/' />
+    }
+
+    const clearlocalSto = () => {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('userLogin');
+        localStorage.removeItem('hasSeenAddToChromeNudge');
+        history.push('/')
+    }
 
     return (
         <Route
@@ -79,6 +100,21 @@ export const AdminTemplate = (props) => {
                                             minHeight: 360,
                                         }}
                                     >
+                                        <div className="dropleft text-right">
+                                            <button className="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                                Xin chào {parseAccount.hoTen} <i className="fa-solid fa-circle-user"></i>
+                                            </button>
+                                            <div className="dropdown-menu">
+                                                <a className="dropdown-item" href="#"><i className="fa-solid fa-pen-to-square"></i> Thông tin tài khoản</a>
+                                                <button onClick={() => {
+                                                    history.push('/')
+                                                }} className="dropdown-item" href="#"><i className="fa-solid fa-arrow-up-right-from-square"></i> Thoát trang admin</button>
+                                                <button onClick={() => {
+                                                    clearlocalSto()
+                                                }} className="dropdown-item"><i className="fa-solid fa-right-from-bracket"></i> Đăng xuất</button>
+                                            </div>
+                                        </div>
+
                                         <props.component {...propsRoute} />
                                     </div>
                                 </Content>
