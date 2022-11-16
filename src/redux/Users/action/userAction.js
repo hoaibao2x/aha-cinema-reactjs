@@ -23,7 +23,7 @@ export const userLoginAction = (loginForm) => {
             if (loaiNguoiDung === 'KhachHang') {
                 history.push('/');
             } else {
-                history.push('/admin/films');
+                history.push('/admin');
             }
         } catch (errors) {
             console.log(errors)
@@ -36,7 +36,7 @@ export const userRegisAction = (regisForm) => {
         try {
             let result = await registerService(regisForm);
             alert('Đăng ký thành công !');
-            history.push('/login')
+            history.push('/login');
         } catch (errors) {
             console.log(errors)
         }
