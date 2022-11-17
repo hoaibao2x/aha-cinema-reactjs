@@ -96,8 +96,8 @@ export default function Detail(props) {
                             </div>
                           </div>
                           <div className='row mt-2 text-danger'>
-                            {cumRap.lichChieuPhim?.slice(0,4).map((lichChieu, index) => {
-                              return <NavLink to="/login" className="col-3" key={index}>
+                            {cumRap.lichChieuPhim?.slice(0, 6).map((lichChieu, index) => {
+                              return <NavLink to="/login" className="col-4" key={index}>
                                 {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
                               </NavLink>
                             })}
@@ -113,10 +113,10 @@ export default function Detail(props) {
               </div>
             </Tabs.TabPane>
             <Tabs.TabPane tab="Thông tin" key="2">
-              Content of Tab Pane 2
+              Thông tin
             </Tabs.TabPane>
             <Tabs.TabPane tab="Đánh giá" key="3">
-              Content of Tab Pane 3
+              Đánh giá
             </Tabs.TabPane>
           </Tabs>
         </div>
