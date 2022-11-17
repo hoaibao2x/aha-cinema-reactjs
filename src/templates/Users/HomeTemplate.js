@@ -1,5 +1,6 @@
 import { Fragment } from "react"
 import { Route } from "react-router-dom"
+import Footer from "../../Layout/Footer/Footer"
 import Header from "../../Layout/HeaderHome/Home"
 
 export const HomeTemplate = (props) => {
@@ -7,7 +8,7 @@ export const HomeTemplate = (props) => {
         return <Fragment>
            <Header/>
             <props.component {...propsRouter} />
-           {/* <Footer/> */}
+         <Footer/>
         </Fragment>
     }} />
 }

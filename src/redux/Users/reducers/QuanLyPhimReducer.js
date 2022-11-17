@@ -1,4 +1,5 @@
-import { GET_FILMLIST, SET_FILM_COMING_SOON, SET_FILM_SHOWING } from "../type/QuanLyPhimType"
+import { GET_FILMLIST, SET_FILM_COMING_SOON, SET_FILM_SHOWING } from "../type/QuanLyPhimType";
+import { SET_DETAIL_FILM } from "../type/QuanLyRapType";
 
 const initialState = {
     arrFilm: [
@@ -6,7 +7,8 @@ const initialState = {
     ],
     dangChieu: true,
     sapChieu: true,
-    arrFilmDefault: []
+    arrFilmDefault: [],
+    filmDetail: {}
 }
 
 export const QuanLyPhimReducer = (state = initialState, action) => {
@@ -26,6 +28,11 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         case SET_FILM_COMING_SOON: {
             state.sapChieu = !state.sapChieu;
             state.arrFilm = state.arrFilmDefault.filter(film => film.sapChieu === state.sapChieu)
+            return { ...state }
+        }
+
+        case SET_DETAIL_FILM: {
+            state.filmDetail = action.filmDetail
             return { ...state }
         }
 
