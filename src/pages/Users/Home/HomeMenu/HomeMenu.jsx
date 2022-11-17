@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Tabs } from 'antd';
-import FilmList from '../../../../Layout/FilmList/FilmList';
+
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 
