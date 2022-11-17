@@ -17,6 +17,7 @@ import UngDung from './pages/Users/UngDung/UngDung';
 import EditFilm from './pages/Admins/QL.Films/EditFilm';
 import RegisterComponent from './pages/Users/Register/RegisterComponent';
 import AdminPage from './pages/Admins/AdminPage';
+import Detail from './pages/Users/Detail/Detail';
 
 
 
@@ -42,6 +43,7 @@ function App() {
 
         {/* Default Route */}
         <HomeTemplate exact path={"/home"} component={Home} />
+        <HomeTemplate exact path={'/detail/:id'} component={Detail} />
         <HomeTemplate exact path={"/lichchieu"} component={LichChieu} />
         <HomeTemplate exact path={"/cumrap"} component={Cumrap} />
         <HomeTemplate exact path={"/tintuc"} component={TinTuc} />
