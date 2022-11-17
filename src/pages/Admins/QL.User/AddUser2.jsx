@@ -68,7 +68,7 @@ const AddNewUser = () => {
             // maLoaiNguoiDung: Yup.string().required("hãy chọn loại người dùng")
         }),
 
-        onSubmit: (values) => {
+        onSubmit: (values)   => {
             console.log(values);
             dispatch(themNguoiDungAction(values));
             // console.log(dispatch(themNguoiDungAction(values)))
@@ -156,7 +156,7 @@ const AddNewUser = () => {
                 <div className="form-group">
                 
                     <select name='maLoaiNguoiDung' onChange={formik.handleChange} value={formik.values.maLoaiNguoiDung} onBlur={formik.handleBlur} className="form-control" >
-                        <option  value="">Hãy Chọn Loại Người Dùng</option>
+                        <option>Hãy Chọn Loại Người Dùng</option>
                         <option value='KhachHang'>Khách Hàng</option>
                         <option value='QuanTri'>Quảng Trị</option>
                         

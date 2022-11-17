@@ -15,8 +15,8 @@ export const layDanhSachLoaiNguoiDung =  ( ) => {
    
 }
 
-export const themNguoiDung = () => {
-    return http.post(`/QuanLyNguoiDung/ThemNguoiDung`);
+export const themNguoiDung = (add) => {
+    return http.post(`/QuanLyNguoiDung/ThemNguoiDung`,add);
 }
 
 

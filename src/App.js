@@ -21,9 +21,12 @@ import Detail from './pages/Users/Detail/Detail';
 
 
 
-import AddNewUser from './pages/Admins/QL.User/AddUser2';
+
 import EditUser from "./pages/Admins/QL.User/EditUser";
 import AddNewUser3 from './pages/Admins/QL.User/AddUser3';
+import AddNewUser from './pages/Admins/QL.User/AddUser2';
+
+
 
 
 
@@ -60,7 +63,7 @@ function App() {
         <HomeTemplate exact path={"/ungdung"} component={UngDung} />
         <Route exact path={"dangky"} component={DangKy} />
         <HomeTemplate exact path={"/"} component={Home} />
-        <AdminTemplate exact path='/admin/users' component={UserComponent} />
+        {/* <AdminTemplate exact path='/admin/users' component={UserComponent} /> */}
 
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
         <AdminTemplate exact path='/admin/users/adduser' component={AddNewUser} />

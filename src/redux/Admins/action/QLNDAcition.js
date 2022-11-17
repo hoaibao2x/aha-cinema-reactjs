@@ -9,10 +9,10 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
 
 
 
- export const themNguoiDungAction = () => {
+ export const themNguoiDungAction = (add) => {
     return async (dispatch) => {
         try {
-            let result = await themNguoiDung();
+            let result = await themNguoiDung(add);
             alert('Thêm người dùng thành công !');
             console.log('result', result.data.content);
         } catch (errors) {
@@ -28,7 +28,7 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
             alert('lấy thông tin người dùng thành công !');
             console.log('result', result.data.content);
             // dispatch({
-            //     type : "SET_THONG_TIN_USER",
+            //     type : "GET_THONG_TIN_USER",
             //     thongTinUser : result.data.content  
             // })
           
