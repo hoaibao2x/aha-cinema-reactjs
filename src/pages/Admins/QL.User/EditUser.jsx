@@ -45,7 +45,7 @@ const formItemLayout = {
 const EditUser = (props) => {
     const dispatch = useDispatch();
     const {thongTinUser} = useSelector(state => state.QLNDreducer);
-    console.log(thongTinUser)
+    // console.log(thongTinUser)
     
      useEffect(() => { 
         let {id} = props.match.params

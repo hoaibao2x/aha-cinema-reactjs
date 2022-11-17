@@ -1,9 +1,10 @@
 
 import axios from "axios";
 import { history } from "../../../App";
-import { CapNhatThongTinNguoiDung, layDanhSachLoaiNguoiDung, layThongTinUser, themNguoiDung ,xoaUser} from "../../../services/Admins/ManagerUser";
+import { CapNhatThongTinNguoiDung, layDanhSachLoaiNguoiDung, layThongTinUser, themNguoiDung ,TimKiemNguoiDung,xoaUser} from "../../../services/Admins/ManagerUser";
 import { TOKEN,TOKEN_MOVIE,DOMAIN,GP_ID,USERLOGIN } from "../../../util/varsSetting";
 import { QLNDreducer } from "../reducers/QLNDreducer";
+
 
 
 
@@ -79,4 +80,22 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
             console.log(error.response?.data)
         }
      }
+   }
+
+   export const TimKiemNguoiDungAction = (tuKhoa) => {
+    return async (dispatch) => {
+        try {
+            let result = await TimKiemNguoiDung(tuKhoa)
+            console.log('result', result.data.content);
+            dispatch({
+                type : "TIM_USER",
+                timUser:result.data.content
+            })
+         
+            
+        } catch (error) {
+            console.log(error.response?.data)
+        }
+    }
+    
    }

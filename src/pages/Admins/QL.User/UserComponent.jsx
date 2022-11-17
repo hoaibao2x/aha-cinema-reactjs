@@ -8,9 +8,10 @@ import { Button } from 'antd/lib/radio';
 import { getUserListAction, } from '../../../redux/Admins/action/getListUserAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../../../App';
-import { CapNhatThongTinNguoiDungAction, xoaUserAction } from '../../../redux/Admins/action/QLNDAcition';
+import { CapNhatThongTinNguoiDungAction, TimKiemNguoiDungAction, xoaUserAction } from '../../../redux/Admins/action/QLNDAcition';
 import { getFilmList } from '../../../services/Admins/ManagerFilms';
 // import ApiRFC from '../../../componentHook/DSuser';    
+
 
 
 
@@ -115,8 +116,8 @@ export default function UserComponent() {
   
   const onSearch = (value) => {
     console.log(value)
-    dispatch(getUserListAction(value))
-    console.log(dispatch(getUserListAction(value)));
+    dispatch(TimKiemNguoiDungAction(value))
+   
 
   };
 

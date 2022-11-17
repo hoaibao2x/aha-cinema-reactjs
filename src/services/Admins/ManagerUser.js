@@ -33,3 +33,7 @@ export const xoaUser = (taiKhoan) => {
     return http.delete(`QuanLyNguoiDung/XoaNguoiDung?taiKhoan=${taiKhoan}`)
 
 }
+
+export const TimKiemNguoiDung = (tuKhoa) => { 
+    return http.get(`QuanLyNguoiDung/TimKiemNguoiDung?maNhom=${GP_ID}&tuKhoa=${tuKhoa}`)
+ }
