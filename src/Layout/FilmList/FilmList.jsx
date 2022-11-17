@@ -51,7 +51,7 @@ const FilmList = (props) => {
                         {film.hinhAnh} />}>
 
                     <Meta title={film.tenPhim} />
-                    <NavLink to={`/detail/${film.maPhim}.`}>
+                    <NavLink to={`/detail/${film.maPhim}`}>
                         <button className="btn btn-danger btnDatve">Đặt Vé</button>
                     </NavLink>
                 </Card>

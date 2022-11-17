@@ -33,27 +33,4 @@ ul {
   list-style: none;
 }
 
-.box1 {
-  margin: 0 auto;
-  width: 16rem;
-  height: 20rem;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 10px;
-  backdrop-filter: blur(2px);
-}
-.box {
-  background-image: url(../src/assets/Users/imgs/bg-movie.jpg);
-  background-position: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
-}
-.box2 {
-  margin: 0 auto;
-  width: 16rem;
-  height: 20rem;
-  background: rgba(16, 18, 27, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 10px;
-  backdrop-filter: blur(2px);
-}
+
