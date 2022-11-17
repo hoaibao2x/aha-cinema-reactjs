@@ -96,8 +96,8 @@ export default function Detail(props) {
                             </div>
                           </div>
                           <div className='row mt-2 text-danger'>
-                            {cumRap.lichChieuPhim?.map((lichChieu, index) => {
-                              return <NavLink to="/" className="col-3" key={index}>
+                            {cumRap.lichChieuPhim?.slice(0,4).map((lichChieu, index) => {
+                              return <NavLink to="/login" className="col-3" key={index}>
                                 {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
                               </NavLink>
                             })}
