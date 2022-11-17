@@ -18,6 +18,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { themPhimUploadHinhAction } from '../../../redux/Admins/action/themPhimUploadHinhAction';
 import { GP_ID } from '../../../util/varsSetting';
+import { history } from '../../../App';
 const AddFilm = () => {
 
     const [imgSrc, setImgSrc] = useState();

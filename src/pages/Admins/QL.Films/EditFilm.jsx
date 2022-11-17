@@ -16,16 +16,16 @@ import * as Yup from 'yup';
 import moment from 'moment';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { themPhimUploadHinhAction } from '../../../redux/Admins/action/themPhimUploadHinhAction';
 import { GP_ID } from '../../../util/varsSetting';
 import { useEffect } from 'react';
 import { getFilmInfoAction } from '../../../redux/Admins/action/getFilmInfoAction';
+import { updateFilmInfoAction } from '../../../redux/Admins/action/updateFilmInfoAction';
 const EditFilm = (props) => {
 
     const [imgSrc, setImgSrc] = useState('');
     const dispatch = useDispatch();
     let { filmInfoReducer } = useSelector((state) => state.FilmsManagerReducer);
-    const [submitStatus, setSubmitStatus] = useState(false);
+    // const [submitStatus, setSubmitStatus] = useState(false);
 
     useEffect(() => {
         let { id } = props.match.params;
@@ -35,6 +35,7 @@ const EditFilm = (props) => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
+            maPhim: filmInfoReducer.maPhim,
             tenPhim: filmInfoReducer.tenPhim,
             trailer: filmInfoReducer.trailer,
             moTa: filmInfoReducer.moTa,
@@ -51,7 +52,7 @@ const EditFilm = (props) => {
             trailer: Yup.string().required('Trailer không được để trống !'),
             moTa: Yup.string().required('Mô tả không được để trống !'),
             ngayKhoiChieu: Yup.string().required('Thời gian không được để trống !'),
-            danhGia: Yup.number().required('Số sao không được để trống !').min(1, 'Đánh giá tối thiểu là 1 !').max(10, 'Đánh giá tối thiểu là 10 !')
+            danhGia: Yup.number().required('Số sao không được để trống !').min(1, 'Đánh giá tối thiểu là 1 !').max(10, 'Đánh giá tối đa là 10 !')
         }),
         onSubmit: (values) => {
             // setSubmitStatus(true)
@@ -64,30 +65,31 @@ const EditFilm = (props) => {
                 if (key !== 'hinhAnh') {
                     formData.append(key, values[key]);
                 } else {
-                    formData.append('File', values.hinhAnh, values.hinhAnh.name);
+                    if (values.hinhAnh !== null) {
+                        formData.append('File', values.hinhAnh, values.hinhAnh.name);
+                    }
                 }
             }
-
             // Gọi API gửi các giá trị formData về back-end
-
-            // console.log('formik', formData.get('tenPhim'));
+            dispatch(updateFilmInfoAction(formData))
         }
     })
 
     const handleChangeDatePicker = (value) => {
         let dateFormat = moment(value);
+        console.log('date changed', dateFormat)
         formik.setFieldValue('ngayKhoiChieu', dateFormat);
     }
 
-    const checkDateWhenTouched = (e) => {
-        let isCheck = false;
-        if (e.target.value === '') {
-            console.log('Null');
-            isCheck = true;
-            return isCheck
-        }
-        return isCheck
-    }
+    // const checkDateWhenTouched = (e) => {
+    //     let isCheck = false;
+    //     if (e.target.value === '') {
+    //         console.log('Null');
+    //         isCheck = true;
+    //         return isCheck
+    //     }
+    //     return isCheck
+    // }
 
     const handleChangeSwitch = (name) => {
         return (value) => {
@@ -95,17 +97,20 @@ const EditFilm = (props) => {
         }
     }
 
-    const handleChangeInputNumber = (name) => {
-        return (value) => {
-            formik.setFieldValue(name, value);
-        }
-    }
+    // const handleChangeInputNumber = (name) => {
+    //     return (value) => {
+    //         formik.setFieldValue(name, value);
+    //     }
+    // }
 
-    const handleChangeFile = (e) => {
+    const handleChangeFile = async (e) => {
         // Lấy file ra từ e
         let file = e.target.files[0];
 
         if (file.type === 'image/jpg' || file.type === 'image/png' || file.type === 'image/jpeg') {
+
+            // Đem dữ liệu file lưu vào formik
+            await formik.setFieldValue('hinhAnh', file);
 
             // Tạo đối tượng để đọc file
             let reader = new FileReader();
@@ -113,15 +118,12 @@ const EditFilm = (props) => {
             reader.onload = (e) => {
                 setImgSrc(e.target.result); // Hình base 64 
             }
-
-            // Đem dữ liệu file lưu vào formik
-            formik.setFieldValue('hinhAnh', file);
         }
     }
 
-    const isClearDateInput = (e) => {
-        console.log(e.name)
-    }
+    // const isClearDateInput = (e) => {
+    //     console.log(e.name)
+    // }
 
     const [componentSize, setComponentSize] = useState('default');
     const onFormLayoutChange = ({ size }) => {
@@ -275,8 +277,8 @@ const EditFilm = (props) => {
                 <Form.Item label="Tác vụ">
                     <button
                         type='submit'
-                        className='btn btn-success'>
-                        Thêm phim
+                        className='btn btn-info'>
+                        Cập nhật
                     </button>
                 </Form.Item>
             </Form>
