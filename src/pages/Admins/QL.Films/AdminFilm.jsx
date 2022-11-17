@@ -20,9 +20,6 @@ function AdminFilm() {
         getAPI()
     }, []);
 
-
-    console.log('arr before', arrFilmDefault)
-
     let getAPI = () => {
         let action = getFilmsListAction();
         dispatch(action);
