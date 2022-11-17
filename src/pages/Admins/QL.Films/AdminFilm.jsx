@@ -7,22 +7,24 @@ import { getFilmsListAction } from '../../../redux/Admins/action/getFilmsListAct
 import { object } from 'yup';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../App';
+import { removeFilmAction } from '../../../redux/Admins/action/removeFilmAction';
 
 const { Search } = Input;
 
 function AdminFilm() {
 
     let dispatch = useDispatch();
+    let { arrFilmDefault } = useSelector(state => state.FilmsManagerReducer);
 
     useEffect(() => {
         getAPI()
     }, []);
 
-    let { arrFilmDefault } = useSelector(state => state.FilmsManagerReducer);
+
+    console.log('arr before', arrFilmDefault)
 
     let getAPI = () => {
         let action = getFilmsListAction();
-
         dispatch(action);
     }
 
@@ -102,7 +104,12 @@ function AdminFilm() {
             render: (text, film) => {
                 return <>
                     <NavLink key={1} className='btn btn-info mr-2' to={`/admin/films/edit/${film.maPhim}`}><EditOutlined /></NavLink>
-                    <NavLink key={2} className='btn btn-danger' to='/'><DeleteOutlined /></NavLink>
+                    <button key={2} className='btn btn-danger' onClick={() => {
+                        if (window.confirm(`Bạn có muỗn xóa phim ${film.tenPhim}`)) {
+                            dispatch(removeFilmAction(film.maPhim))
+                            console.log('arr after', arrFilmDefault);
+                        }
+                    }}><DeleteOutlined /></button>
                 </>
             },
             sortDirections: ['descend', 'ascend'],
@@ -112,10 +119,12 @@ function AdminFilm() {
     const data = arrFilmDefault;
 
     const onChange = (pagination, filters, sorter, extra) => {
-        console.log('params', pagination, filters, sorter, extra);
+        // console.log('params', pagination, filters, sorter, extra);
     };
 
-    const onSearch = (value) => console.log(value);
+    const onSearch = (value) => {
+        dispatch(getFilmsListAction(value))
+    };
 
     return (
         <div className='container mx-auto'>
@@ -130,7 +139,7 @@ function AdminFilm() {
                 size="large"
                 onSearch={onSearch}
             />
-            <Table columns={columns} dataSource={data} onChange={onChange} />
+            <Table rowKey={'maPhim'} columns={columns} dataSource={data} onChange={onChange} />
         </div>
     )
 }
