@@ -45,18 +45,14 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
     
 
 
- export const themNguoiDungAction = () => {
+ export const themNguoiDungAction = (userInfo2) => {
     return async (dispatch) => {
         try {
-            // localStorage.setItem(TOKEN,result.data.content.accessToken);
-
-            // let userInfo2 = JSON.stringify(result.data.content);
-            // localStorage.setItem(USERLOGIN,userInfo2);
-            let result = await themNguoiDung();
+            let result = await themNguoiDung(userInfo2);
             alert('Thêm người dùng thành công !');
             console.log('result', result.data.content);
         } catch (errors) {
-            console.log(errors)
+            console.log(errors.response?.data);
         }
     }
  }
@@ -65,11 +61,15 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
         try {
            
             let result = await layThongTinUser(taiKhoan);
-            alert('Thêm người dùng thành công !');
+            alert('lấy thông tin người dùng thành công !');
             console.log('result', result.data.content);
+            dispatch({
+                type : "SET_THONG_TIN_USER",
+                thongTinUser : result.data.content
+            })
           
         } catch (errors) {
-            console.log(errors)
+            console.log(errors.response?.data);
         }
     }
 }
@@ -81,12 +81,9 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
             let result = await CapNhatThongTinNguoiDung(userInfo2);
             alert('cập nhật người dùng thành công !');
             console.log('result', result.data.content);
-            dispatch({
-                type : "SET_THONG_TIN_PHIM",
-                thongTinUser : result.data.content
-            })
+           
         } catch (errors) {
-            console.log(errors)
+            console.log(errors.response?.data);
         }
         
     }

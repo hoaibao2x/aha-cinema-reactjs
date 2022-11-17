@@ -5,10 +5,6 @@ import { useDispatch } from 'react-redux';
 import { layThongTinUserAction, themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
 import { UserComponent } from "../QL.User/UserComponent"
 import { QLNDreducer } from '../../../redux/Admins/reducers/QLNDreducer';
-
-
-
-
 import React, { useEffect, useState } from 'react';
 
 import {
@@ -79,65 +75,34 @@ const AddNewUser = () => {
             email: Yup.string().required("email không được để trống").email("email chưa đúng định dạng"),
             hoTen: Yup.string().required("họ tên không được đẻ trống").matches(/^[a-z A-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$/, "họ tên không đúng định dạng"),
             soDt: Yup.string().required("số điện thoại không được để trống").matches(/^(?=.*\d)^[0-9]+$/, "số điện thoại không đúng định dạng"),
-            maLoaiNguoiDung: Yup.string().required("hãy chọn loại người dùng")
+            // maLoaiNguoiDung: Yup.string().required("hãy chọn loại người dùng")
         }),
 
         onSubmit: (values) => {
 
-            console.log(values)
-            let userInfo2 = new FormData();
-            for (let key in values) {
-                userInfo2.append(key, values[key]);
-            }
-            console.log(userInfo2.get("hoTen"));
-            dispatch(themNguoiDungAction(userInfo2));
-            // let action = themNguoiDungAction(values)
-            // dispatch(action);
+            dispatch(themNguoiDungAction(values));
+
 
         },
     })
 
-    // test render loại
-    // let [maLoaiNguoiDung, setmaLoaiNguoiDung] = useState("");
-    // useEffect(() => {
-    //     if (maLoaiNguoiDung !== "") {
-    //         let loaiUser = arrmaLoaiNguoiDung.find((loai) => {
-    //             return loai.maLoaiNguoiDung === maLoaiNguoiDung;
-    //         })
-
-    //     }
-
-
-    // }, [maLoaiNguoiDung]);
-
-
-
 
     const [form] = Form.useForm();
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
-    };
 
-
+  
 
     return (
-        
+
         <Form
-        
-        
             onSubmitCapture={formik.handleSubmit}
             className='container'
             {...formItemLayout}
             form={form}
             name="register"
-            onFinish={onFinish}
-            initialValues={{
-                residence: ['zhejiang', 'hangzhou', 'xihu'],
-                prefix: '86',
-            }}
+          
             scrollToFirstError
         >
-        
+
             <h3>Thêm Người Dùng Mới</h3>
             <Form.Item
                 name="taiKhoan"
@@ -192,31 +157,30 @@ const AddNewUser = () => {
 
 
             <Form.Item
-                name="maLoaiNguoiDung"
+               
                 label="Loại Người Dùng"
 
             >
-                <Select placeholder="Chọn Loại Người Dùng" >
-                {/* value={maLoaiNguoiDung} onChange={(event) => {
-                    let maLoaiNguoiDung = event.target.value
-                    setmaLoaiNguoiDung(maLoaiNguoiDung)
-
-                }}> */}
-                    <Option> Chọn Loại Người Dùng</Option>
-                    <Option value={"KhachHang"}>1: Khách Hàng</Option>
-                    <Option value={"QuanTri"}>2: Quảng Trị</Option>
-
-                </Select>
-                {formik.errors.maLoaiNguoiDung ? (
-                    <div className='alert alert-danger'>{formik.errors.maLoaiNguoiDung}</div>
-                ) : null}
-
+            
+                <div className="form-group">
+                
+                    <select name='maLoaiNguoiDung' onChange={formik.handleChange} value={formik.values.maLoaiNguoiDung} onBlur={formik.handleBlur} className="form-control" >
+                        <option  value="">Hãy Chọn Loại Người Dùng</option>
+                        <option value='KhachHang'>Khách Hàng</option>
+                        <option value='QuanTri'>Quảng Trị</option>
+                        
+                    </select>
+                
+                    
+                </div>
+               
+               
             </Form.Item>
             <Form.Item label="Tác vụ">
                 <button
                     type='submit'
                     className='btn btn-success'>
-                    Hoàng Thành
+                    Hoàn thành
                 </button>
             </Form.Item>
         </Form>

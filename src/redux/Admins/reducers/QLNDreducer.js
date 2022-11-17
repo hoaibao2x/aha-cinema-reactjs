@@ -10,7 +10,8 @@ export const QLNDreducer = (state = initialState, action) => {
             // console.log(action.mangUser)
             state.arrUserDefault = action.arrUserDefault
             return { ...state }
-        case "SET_THONG_TIN_PHIM":
+        case "SET_THONG_TIN_USER":
+            console.log(action.thongTinUser)
                 state.thongTinUser = action.thongTinUser
             return { ...state }
 

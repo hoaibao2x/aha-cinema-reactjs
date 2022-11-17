@@ -37,6 +37,7 @@ export const getUserListAction =  (taiKhoan="") => {
             dispatch({
                 type: 'GET_USER_LIST',
                 arrUserDefault: result.data.content
+                
 
             })
             
