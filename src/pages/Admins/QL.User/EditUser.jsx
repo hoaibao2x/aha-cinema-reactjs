@@ -43,9 +43,10 @@ const formItemLayout = {
 };
 
 const EditUser = (props) => {
+    const dispatch = useDispatch();
     const {thongTinUser} = useSelector(state => state.QLNDreducer);
     console.log(thongTinUser)
-    const dispatch = useDispatch();
+    
      useEffect(() => { 
         let {id} = props.match.params
         dispatch(layThongTinUserAction(id))
@@ -56,7 +57,7 @@ const EditUser = (props) => {
         enableReinitialize:true,
         // giá trị khởi toạ (data cần luuw trữ )
         initialValues: {
-            taiKhoan:"",
+            taiKhoan:thongTinUser?.taiKhoan,
             matKhau: thongTinUser?.matKhau,
             email:thongTinUser?.taiKhoan ,
             soDt: thongTinUser?.soDt,
