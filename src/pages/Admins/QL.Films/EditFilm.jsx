@@ -77,6 +77,7 @@ const EditFilm = (props) => {
 
     const handleChangeDatePicker = (value) => {
         let dateFormat = moment(value);
+        console.log('date changed', dateFormat)
         formik.setFieldValue('ngayKhoiChieu', dateFormat);
     }
 
