@@ -20,19 +20,9 @@ import {
     Select,
 } from 'antd';
 
-// test mảng loại 
-// const arrmaLoaiNguoiDung = [
-//     {
-//         maLoaiNguoiDung: "KhachHang",
-//         tenLoai: "Khách hàng"
-//     },
-//     {
-//         maLoaiNguoiDung: "QuanTri",
-//         tenLoai: "Quản trị"
-//     }
-// ];
 
-const { Option } = Select;
+
+
 
 const formItemLayout = {
     labelCol: {
@@ -79,8 +69,9 @@ const AddNewUser = () => {
         }),
 
         onSubmit: (values) => {
-
+            console.log(values);
             dispatch(themNguoiDungAction(values));
+            // console.log(dispatch(themNguoiDungAction(values)))
 
 
         },

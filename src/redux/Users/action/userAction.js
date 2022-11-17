@@ -26,6 +26,7 @@ export const userLoginAction = (loginForm) => {
                 history.push('/admin');
             }
         } catch (errors) {
+            alert(errors.response.data.content);
             console.log(errors)
         }
     }

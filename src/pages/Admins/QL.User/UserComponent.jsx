@@ -140,7 +140,7 @@ export default function UserComponent() {
        
         onSearch={onSearch}
       />
-      <Table columns={columns} dataSource={data} onChange={onChange} rowKey= {"taiKhoan"} />;
+      <Table rowKey={'taiKhoan'} columns={columns} dataSource={data} onChange={onChange} />;
     </div>
   )
 }

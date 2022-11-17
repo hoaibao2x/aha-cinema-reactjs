@@ -24,8 +24,8 @@ export const layThongTinUser = (taiKhoan) => {
     return http.get(`/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taiKhoan}`)
 }
 
-export const CapNhatThongTinNguoiDung = (userInfo2) => {
-    return http.put(`/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, userInfo2)
+export const CapNhatThongTinNguoiDung = () => {
+    return http.put(`/QuanLyNguoiDung/CapNhatThongTinNguoiDung`)
 
 }
 
