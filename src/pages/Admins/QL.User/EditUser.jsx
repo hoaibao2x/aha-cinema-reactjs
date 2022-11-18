@@ -2,10 +2,11 @@ import { useFormik } from 'formik';
 import { GP_ID } from '../../../util/varsSetting';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { layThongTinUserAction, themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
+import { layDanhSachLoaiNguoiDungAction, layThongTinUserAction, themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
 import { UserComponent } from "../QL.User/UserComponent"
 import { QLNDreducer } from '../../../redux/Admins/reducers/QLNDreducer';
 import React, { useEffect, useState } from 'react';
+
 
 import {
     AutoComplete,
@@ -52,6 +53,12 @@ const EditUser = (props) => {
         dispatch(layThongTinUserAction(id))
       },[])
 
+      // loại ng dùng
+    // let [maLoai,setmaLoai] = useState("")
+    // useEffect(() => {  
+    //     let action  = layDanhSachLoaiNguoiDungAction()
+    //     dispatch(action)
+    //   },[])
 
     const formik = useFormik({
         enableReinitialize:true,

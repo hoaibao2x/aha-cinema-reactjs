@@ -8,9 +8,11 @@ import { Button } from 'antd/lib/radio';
 import { getUserListAction, } from '../../../redux/Admins/action/getListUserAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../../../App';
-import { CapNhatThongTinNguoiDungAction, TimKiemNguoiDungAction, xoaUserAction } from '../../../redux/Admins/action/QLNDAcition';
+import { CapNhatThongTinNguoiDungAction, layDanhSachLoaiNguoiDungAction, TimKiemNguoiDungAction, xoaUserAction } from '../../../redux/Admins/action/QLNDAcition';
 import { getFilmList } from '../../../services/Admins/ManagerFilms';
+import { useState } from 'react';
 // import ApiRFC from '../../../componentHook/DSuser';    
+
 
 
 
@@ -33,6 +35,7 @@ export default function UserComponent() {
   },[])
 
 
+ 
   const columns = [
     // {
     //   "taiKhoan": "adam_test",

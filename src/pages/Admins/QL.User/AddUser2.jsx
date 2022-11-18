@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import { GP_ID } from '../../../util/varsSetting';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { layThongTinUserAction, themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
+import { layDanhSachLoaiNguoiDungAction, layThongTinUserAction, themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
 import { UserComponent } from "../QL.User/UserComponent"
 import { QLNDreducer } from '../../../redux/Admins/reducers/QLNDreducer';
 import React, { useEffect, useState } from 'react';
@@ -77,6 +77,14 @@ const AddNewUser = () => {
         },
     })
 
+     // loại người dùng 
+  let [maLoai,setmaLoai] = useState("")
+  useEffect(() => {  
+      let action  = layDanhSachLoaiNguoiDungAction()
+      dispatch(action)
+    },[])
+
+
 
     const [form] = Form.useForm();
 
@@ -147,7 +155,7 @@ const AddNewUser = () => {
             </Form.Item>
 
 
-            <Form.Item
+            {/* <Form.Item
                
                 label="Loại Người Dùng"
 
@@ -155,7 +163,10 @@ const AddNewUser = () => {
             
                 <div className="form-group">
                 
-                    <select name='maLoaiNguoiDung' onChange={formik.handleChange} value={formik.values.maLoaiNguoiDung} onBlur={formik.handleBlur} className="form-control" >
+                    <select name='maLoaiNguoiDung' onChange={formik.handleChange}
+                     value={formik.values.maLoaiNguoiDung}
+                      onBlur={formik.handleBlur}
+                       className="form-control" >
                         <option>Hãy Chọn Loại Người Dùng</option>
                         <option value='KhachHang'>Khách Hàng</option>
                         <option value='QuanTri'>Quảng Trị</option>
@@ -166,7 +177,32 @@ const AddNewUser = () => {
                 </div>
                
                
-            </Form.Item>
+            </Form.Item> */}
+
+            <Form.Item
+               
+               label="Loại Người Dùng"
+
+           >
+           
+               <div className="form-group">
+               
+                   <select name='maLoaiNguoiDung' onChange={formik.handleChange}
+                  value={formik.values.maLoaiNguoiDung}
+                     onBlur={formik.handleBlur}
+                      className="form-control" >
+                       <option>Hãy Chọn Loại Người Dùng</option>
+                       <option value={'KhachHang'}>Khách Hàng</option>
+                       <option value={'QuanTri'}>Quảng Trị</option>
+                       
+                   </select>
+               
+                   
+               </div>
+              
+              
+           </Form.Item>
+
             <Form.Item label="Tác vụ">
                 <button
                     type='submit'

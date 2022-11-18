@@ -12,7 +12,7 @@ export const getUserList = (tuKhoa = "") => {
 }
 
 export const layDanhSachLoaiNguoiDung =  ( ) => {
-    return http.get(`/QuanLyNguoiDung/LayDanhSachNguoiDung?maNhom=${GP_ID}`)
+    return http.get(`QuanLyNguoiDung/LayDanhSachLoaiNguoiDung?maNhom=${GP_ID}`)
 
    
 }
