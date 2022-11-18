@@ -22,6 +22,7 @@ export const themNguoiDung = (add) => {
 
 export const layThongTinUser = (taiKhoan) => {
     return http.get(`/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taiKhoan}`)
+   
 }
 
 export const CapNhatThongTinNguoiDung = () => {
