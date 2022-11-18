@@ -18,8 +18,14 @@ import EditFilm from './pages/Admins/QL.Films/EditFilm';
 import RegisterComponent from './pages/Users/Register/RegisterComponent';
 import AdminPage from './pages/Admins/AdminPage';
 import Detail from './pages/Users/Detail/Detail';
+import Checkout from './pages/Users/Checkout/Checkout';
+import CheckoutTemlate from './templates/Users/CheckoutTemlate'
+// import { Suspense, lazy } from 'react';
 
 
+
+
+// const CheckoutTemlateLazy = lazy(() => import('./templates/Users/CheckoutTemlate'));
 
 export const history = createBrowserHistory();
 
@@ -33,7 +39,11 @@ function App() {
         {/* User Route */}
         <Route exact path='/login' component={LoginComponent} />
         <Route exact path='/register' component={RegisterComponent} />
-
+        <CheckoutTemlate exact path='/checkout/:id' component={Checkout} />
+        {/* <Suspense fallback={<h1>Loading...</h1>}>
+          <CheckoutTemlateLazy exact path='/checkout/:id' component={Checkout} />
+        </Suspense> */}
+       
 
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={AdminPage} />
@@ -51,9 +61,10 @@ function App() {
         <Route exact path={"dangky"} component={DangKy} />
         <HomeTemplate exact path={"/"} component={Home} />
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
+      
 
       </Switch>
-     
+
     </Router>
 
   );

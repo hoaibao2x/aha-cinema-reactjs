@@ -13,8 +13,8 @@ export default function Header() {
 
   let userInfo = {}
   if (localStorage.getItem('userLogin') !== null) {
-   let getLocalVal = JSON.parse(localStorage.getItem('userLogin'));
-   userInfo = {...getLocalVal}
+    let getLocalVal = JSON.parse(localStorage.getItem('userLogin'));
+    userInfo = { ...getLocalVal }
   }
 
   const clearlocalSto = () => {
@@ -56,8 +56,8 @@ export default function Header() {
                   <button onClick={() => {
                     history.push('/admin')
                   }} className="dropdown-item"><i className="fa-solid fa-arrow-up-right-from-square"></i> Đến trang admin</button>
-                ): null}
-                
+                ) : null}
+
                 <button onClick={() => {
                   clearlocalSto()
                 }} className="dropdown-item"><i className="fa-solid fa-right-from-bracket"></i> Đăng xuất</button>

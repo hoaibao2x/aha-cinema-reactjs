@@ -1,0 +1,49 @@
+.styleDatve {
+    display: flex;
+    flex-direction: column;
+    justify-items: end;
+    align-items: center;
+    margin-bottom: 0;
+    height: auto;
+    padding-top: 150px;
+}
+
+.clickDatve {
+    width: 100%;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 5px 7px 18px 0px rgb(0 0 0 / 80%);
+}
+
+.container-fluid {
+    width: 100% !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    min-height: 100vh !important;
+    padding-top: 20px;
+}
+.trapezoid {
+    border-bottom: 50px solid gray;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 80%;
+    opacity: 0.3;
+    filter: drop-shadow(0px 128px 63px rgba(8,8,8,0.38));
+    -webkit-filter: drop-shadow(0px 128px 63px rgba(8,8,8,0.38));
+    -moz-filter: drop-shadow(0px 128px 63px rgba(8,8,8,0.38));
+}
+
+
+.manHinh {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

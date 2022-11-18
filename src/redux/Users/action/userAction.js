@@ -21,7 +21,9 @@ export const userLoginAction = (loginForm) => {
             alert('Đăng nhập thành công !');
             let loaiNguoiDung = result.data.content.maLoaiNguoiDung;
             if (loaiNguoiDung === 'KhachHang') {
-                history.push('/');
+                // history.push('/');
+                // chuyển hướng đăng nhập về trang trước đó 
+                history.goBack()
             } else {
                 history.push('/admin');
             }

@@ -1,6 +1,6 @@
 import { USERLOGIN } from '../../../util/varsSetting'
 
-let uLogin = null;
+let uLogin = {};
 
 if (localStorage.getItem(USERLOGIN)) {
     uLogin = JSON.parse(localStorage.getItem(USERLOGIN))
