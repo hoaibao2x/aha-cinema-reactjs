@@ -87,11 +87,11 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
         try {
             let result = await TimKiemNguoiDung(tuKhoa)
             console.log('result', result.data.content);
-            dispatch({
+            let  action =({
                 type : "TIM_USER",
                 timUser:result.data.content
             })
-         
+         dispatch(action)
             
         } catch (error) {
             console.log(error.response?.data)

@@ -2,10 +2,12 @@ import axios from 'axios';
 import { http } from '../../util/setting';
 import { DOMAIN, GP_ID, TOKEN_MOVIE } from '../../util/varsSetting';
 
-export const getUserList = (taiKhoan = "") => {
-    if (taiKhoan.trim() !== "") {
-        return http.get(`/QuanLyNguoiDung/LayDanhSachNguoiDung?maNhom=${GP_ID}&taiKhoan=${taiKhoan}`)
+export const getUserList = (tuKhoa = "") => {
+    if(tuKhoa.trim()!==""){
+        return http.get(`QuanLyNguoiDung/TimKiemNguoiDung?maNhom=${GP_ID}&tuKhoa=${tuKhoa}`)
     }
+  
+    
     return http.get(`/QuanLyNguoiDung/LayDanhSachNguoiDung?maNhom=${GP_ID}`)
 }
 

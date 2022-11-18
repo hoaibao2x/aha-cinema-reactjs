@@ -115,8 +115,8 @@ export default function UserComponent() {
   // );
   
   const onSearch = (value) => {
-    console.log(value)
-    dispatch(TimKiemNguoiDungAction(value))
+    // console.log(value)
+    dispatch(getUserListAction(value))
    
 
   };
