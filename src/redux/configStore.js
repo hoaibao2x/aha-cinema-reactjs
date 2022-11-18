@@ -6,6 +6,8 @@ import { UserReducers } from './Users/reducers/UserReducers';
 import { CarouselReducer } from './Users/reducers/CarouselReducer';
 import { QuanLyPhimReducer } from './Users/reducers/QuanLyPhimReducer';
 import { QuanLyRapReducer } from "./Users/reducers/QuanLyRapReducer";
+import { QuanLyDatVeReducer } from './Users/reducers/QuanLyDatVeReducer';
+
 
 const rootReducer = combineReducers({
     FilmsManagerReducer,
@@ -13,7 +15,8 @@ const rootReducer = combineReducers({
     QuanLyPhimReducer,
     CarouselReducer,
     QLNDreducer,
-    QuanLyRapReducer
+    QuanLyRapReducer,
+    QuanLyDatVeReducer
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));

@@ -5,7 +5,6 @@
     align-items: center;
     margin-bottom: 0;
     height: auto;
-    padding-top: 150px;
 }
 
 .clickDatve {
@@ -35,15 +34,39 @@
     height: 0;
     width: 80%;
     opacity: 0.3;
-    filter: drop-shadow(0px 128px 63px rgba(8,8,8,0.38));
-    -webkit-filter: drop-shadow(0px 128px 63px rgba(8,8,8,0.38));
-    -moz-filter: drop-shadow(0px 128px 63px rgba(8,8,8,0.38));
+    filter: drop-shadow(0px 128px 63px rgba(8, 8, 8, 0.38));
+    -webkit-filter: drop-shadow(0px 128px 63px rgba(8, 8, 8, 0.38));
+    -moz-filter: drop-shadow(0px 128px 63px rgba(8, 8, 8, 0.38));
 }
-
 
 .manHinh {
     margin-top: 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Ghế thường */
+.ghe {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 15px;
+    background-color: rgb(123, 122, 122);
+    color: #fff;
+}
+
+.gheDaDat {
+    background-color: rgb(173, 26, 26);
+    cursor: no-drop;
+}
+
+.gheDangDat {
+    background-color: rgb(18, 176, 18) !important;
+    cursor: pointer;
+}
+.gheVip {
+    background-color: rgba(228, 74, 8);
 }

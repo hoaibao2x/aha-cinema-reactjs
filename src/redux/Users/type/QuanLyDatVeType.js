@@ -1,0 +1,2 @@
+export const SET_DETAIL_TICKET = 'SET_DETAIL_TICKET';
+export const BOOK_TICKET = 'BOOK_TICKET';
