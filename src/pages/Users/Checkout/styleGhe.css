@@ -65,14 +65,13 @@
     cursor: no-drop;
 }
 
-.gheDangDat {
-    background-color: rgb(18, 176, 18) !important;
-    cursor: pointer;
-}
 .gheVip {
     background-color: rgba(228, 74, 8);
 }
-
+.gheKhachDat {
+    cursor: no-drop;
+    background-color: yellowgreen !important;
+}
 
 .table {
     display: flex;
@@ -94,9 +93,254 @@
     filter: drop-shadow(0px 128px 63px rgba(8, 8, 8, 0.38));
     background-color: rgba(243, 235, 235, 0.539);
 }
-.card{
+.card {
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
+}
+
+.text-success {
+    font-size: 1.5rem;
+}
+.text-danger {
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .ghe {
+        width: 32px;
+        height: 32px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        background-color: rgb(123, 122, 122);
+        color: #fff;
+    }
+
+    .gheDaDuocDat {
+        background-color: #0084ff !important;
+    }
+
+    .gheDaDat {
+        background-color: rgb(173, 26, 26);
+        cursor: no-drop;
+    }
+
+    .gheDangDat {
+        background-color: rgb(18, 176, 18) !important;
+        cursor: pointer;
+    }
+    .gheVip {
+        background-color: rgba(228, 74, 8);
+    }
+    .text-danger {
+        color: #dc3545 !important;
+        font-size: 1.2rem;
+    }
+    .text-success {
+        font-size: 1.2rem;
+    }
+    .styleDatve {
+        height: auto;
+    }
+    .col-9 {
+        height: 180px;
+        padding: 0 !important;
+    }
+}
+@media screen and (max-width: 991.98px) {
+    .ghe {
+        width: 25px;
+        height: 25px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 3px;
+        background-color: rgb(123, 122, 122);
+        color: #fff;
+        font-size: 10px;
+    }
+    .gheDaDuocDat {
+        background-color: #0084ff !important;
+    }
+    .gheDaDat {
+        background-color: rgb(173, 26, 26);
+        cursor: no-drop;
+    }
+    .gheDangDat {
+        background-color: rgb(18, 176, 18) !important;
+        cursor: pointer;
+    }
+    .gheVip {
+        background-color: rgba(228, 74, 8);
+    }
+    .text-danger {
+        color: #dc3545 !important;
+        font-size: 0.9rem;
+    }
+    .text-success {
+        font-size: 0.9rem;
+    }
+    .h3 {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .clickDatve {
+        font-size: 1rem;
+    }
+    .col-9 {
+        height: 110px;
+        padding: 0 !important;
+    }
+    p {
+        font-size: 0.7rem;
+        margin: 0 !important;
+    }
+    h5 {
+        font: 1rem;
+    }
+    .col-3 img {
+        width: 70px !important;
+        height: 70px !important;
+    }
+    .col-3 {
+        padding: 0;
+    }
+    h2 {
+        font-size: 30px !important;
+    }
+    .table thead th {
+        border-bottom: none;
+        font-size: 10px;
+        padding: 13px;
+    }
+    .table th {
+        padding: -0.25rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        border-bottom: none;
+        font-size: 10px;
+    }
+    .my-5 {
+        margin: 0;
+        padding: 0;
+        font-size: 10px;
+    }
+    .table {
+        width: 80%;
+        margin-bottom: none;
+        color: #212529;
+    }
+    h3 {
+        font-size: 15px;
+    }
+    .text-danger {
+        font-size: 10px;
+    }
+    .text-success {
+        font-size: 10px;
+    }
+    .table tr {
+        width: 200px;
+    }
+    .clickDatve {
+        font-size: 10px;
+    }
+}
+@media screen and (max-width:767.98px){
+    .ghe {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 0;
+        background-color: rgb(123, 122, 122);
+        color: #fff;
+        font-size: 6px;
+    }
+    .gheDaDuocDat {
+        background-color: #0084ff !important;
+    }
+
+    .gheDaDat {
+        background-color: rgb(173, 26, 26);
+        cursor: no-drop;
+    }
+
+    .gheDangDat {
+        background-color: rgb(18, 176, 18) !important;
+        cursor: pointer;
+    }
+    .gheVip {
+        background-color: rgba(228, 74, 8);
+    }
+}
+
+
+@media screen and (max-width: 575.98px) {
+    .ghe {
+        width: 37px;
+        height: 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 8px;
+        background-color: rgb(123, 122, 122);
+        color: #fff;
+        font-size: 5px;
+    }
+    .trapezoid {
+        width: 90%;
+    }
+    .table thead {
+        width: 100px;
+    }
+    .clickDatve {
+        font-size: 12px;
+        padding: 10px;
+    }
+    .col-3 img {
+        height: 70px !important;
+        width: 70px !important;
+    }
+    .col-3{
+        padding: 5px;
+    }
+    .col-9 {
+        height: 150px;
+        padding: 0 !important;
+    }
+    .gheDaDuocDat {
+        background-color: #0084ff !important;
+    }
+
+    .gheDaDat {
+        background-color: rgb(173, 26, 26);
+        cursor: no-drop;
+    }
+
+    .gheDangDat {
+        background-color: rgb(18, 176, 18) !important;
+        cursor: pointer;
+    }
+    .gheVip {
+        background-color: rgba(228, 74, 8);
+    }
+}
+@media screen and(min-width: 667px) {
+    .ghe {
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        background-color: rgb(123, 122, 122);
+        color: #fff;
+        font-size: 5px;
+    }
 }
