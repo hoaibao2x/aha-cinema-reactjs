@@ -11,6 +11,8 @@ import {
     PieChartOutlined,
     TeamOutlined,
     UserOutlined,
+    DatabaseOutlined,
+    CalendarOutlined
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu } from "antd";
 
@@ -28,14 +30,15 @@ export const AdminTemplate = (props) => {
     }
     const items = [
         getItem(<NavLink to='/admin'>Admin Site</NavLink>, "1", <DesktopOutlined />),
-        getItem("Ql. Người dùng", "sub1", <UserOutlined />, [
+        getItem("QL. Người dùng", "sub1", <UserOutlined />, [
             getItem(<NavLink to='/admin/users'>DS. Người dùng</NavLink>, "3"),
             getItem("Add User", "4"),
         ]),
-        getItem("Ql. Phim", "sub2", <TeamOutlined />, [
+        getItem("QL. Phim", "sub2", <DatabaseOutlined />, [
             getItem(<NavLink to='/admin/films'>DS. Phim</NavLink>, "6"),
             getItem(<NavLink to='/admin/films/addnew'>Thêm phim</NavLink>, "8"),
         ]),
+        getItem(<NavLink to='/admin/films/showtime/:id'>Showtime</NavLink>, "9", <CalendarOutlined />)
     ];
 
     const accountInLocal = localStorage.userLogin;
@@ -44,7 +47,7 @@ export const AdminTemplate = (props) => {
     if (!localStorage.getItem('access_token')) {
         alert('Bạn phải đăng nhập !');
         return <Redirect to='/login' />
-    } else if(parseAccount.maLoaiNguoiDung !== 'QuanTri') {
+    } else if (parseAccount.maLoaiNguoiDung !== 'QuanTri') {
         alert('Bạn không thể truy cập trang web này !');
         return <Redirect to='/' />
     }
