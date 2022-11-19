@@ -19,11 +19,6 @@ import {
     Row,
     Select,
 } from 'antd';
-
-
-
-
-
 const formItemLayout = {
     labelCol: {
         xs: {
@@ -42,13 +37,9 @@ const formItemLayout = {
         },
     },
 };
-
 const AddNewUser = () => {
     const dispatch = useDispatch();
-
-
     const formik = useFormik({
-        // giá trị khởi toạ (data cần luuw trữ )
         initialValues: {
             taiKhoan: "",
             matKhau: "",
@@ -58,50 +49,37 @@ const AddNewUser = () => {
             maLoaiNguoiDung: "",
             hoTen: ""
         },
-
         validationSchema: Yup.object({
-            taiKhoan: Yup.string().required("tài khoảng khoảng được bỏ trống"),
-            matKhau: Yup.string().required("mật khẩu không được để trống"),
-            email: Yup.string().required("email không được để trống").email("email chưa đúng định dạng"),
-            hoTen: Yup.string().required("họ tên không được đẻ trống").matches(/^[a-z A-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$/, "họ tên không đúng định dạng"),
+            taiKhoan: Yup.string().required('Tài khoản không được để trống !').matches(/^(?=.*\d)(?=.*[A-Z a-z])(?!.*[ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý])(?!.*\s).{0,}$/, 'Tên tài khoản bao gồm chữ và ký tự số, không bao gồm tiếng việt có dấu và khoảng trắng !'),
+            matKhau: Yup.string().required('Mật khẩu không được để trống !').matches(/^(?=.*\d)(?=.*[A-Z a-z])(?!.*[ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý])(?!.*\s).{0,}$/, 'Mật khẩu bao gồm chữ và ký tự số, không bao gồm tiếng việt có dấu và khoảng trắng !'),
+            email: Yup.string().required('Email không được để trống !').matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email không đúng định dạng !'),
             soDt: Yup.string().required("số điện thoại không được để trống").matches(/^(?=.*\d)^[0-9]+$/, "số điện thoại không đúng định dạng"),
-            // maLoaiNguoiDung: Yup.string().required("hãy chọn loại người dùng")
+            hoTen: Yup.string().required('Họ tên không được để trống !').matches(/^[a-z A-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$/, 'Họ tên không đúng định dạng !')
         }),
 
         onSubmit: (values)   => {
             console.log(values);
             dispatch(themNguoiDungAction(values));
-            // console.log(dispatch(themNguoiDungAction(values)))
-
-
         },
+      
     })
 
-     // loại người dùng 
-  let [maLoai,setmaLoai] = useState("")
-  useEffect(() => {  
-      let action  = layDanhSachLoaiNguoiDungAction()
-      dispatch(action)
-    },[])
-
-
-
+    const handleChangeLoaiNguoiDung = (value) => { 
+        // console.log(value)
+    //   let maLoaiNguoiDung
+        dispatch(layDanhSachLoaiNguoiDungAction(value))
+        
+     }
     const [form] = Form.useForm();
-
-  
-
     return (
-
         <Form
             onSubmitCapture={formik.handleSubmit}
             className='container'
             {...formItemLayout}
             form={form}
             name="register"
-          
             scrollToFirstError
         >
-
             <h3>Thêm Người Dùng Mới</h3>
             <Form.Item
                 name="taiKhoan"
@@ -138,8 +116,6 @@ const AddNewUser = () => {
                         width: '100%',
                     }}
                 />
-
-
                 {formik.errors.soDt ? (
                     <div className='alert alert-danger'>{formik.errors.soDt}</div>
                 ) : null}
@@ -153,56 +129,22 @@ const AddNewUser = () => {
                     <div className='alert alert-danger'>{formik.errors.matKhau}</div>
                 ) : null}
             </Form.Item>
-
-
-            {/* <Form.Item
-               
-                label="Loại Người Dùng"
-
-            >
-            
-                <div className="form-group">
-                
-                    <select name='maLoaiNguoiDung' onChange={formik.handleChange}
-                     value={formik.values.maLoaiNguoiDung}
-                      onBlur={formik.handleBlur}
-                       className="form-control" >
-                        <option>Hãy Chọn Loại Người Dùng</option>
-                        <option value='KhachHang'>Khách Hàng</option>
-                        <option value='QuanTri'>Quảng Trị</option>
-                        
-                    </select>
-                
-                    
-                </div>
-               
-               
-            </Form.Item> */}
-
-            <Form.Item
-               
+            <Form.Item 
                label="Loại Người Dùng"
-
            >
-           
                <div className="form-group">
                
                    <select name='maLoaiNguoiDung' onChange={formik.handleChange}
+                   
                   value={formik.values.maLoaiNguoiDung}
                      onBlur={formik.handleBlur}
                       className="form-control" >
-                       <option>Hãy Chọn Loại Người Dùng</option>
-                       <option value={'KhachHang'}>Khách Hàng</option>
-                       <option value={'QuanTri'}>Quảng Trị</option>
-                       
-                   </select>
-               
-                   
-               </div>
-              
-              
-           </Form.Item>
-
+                       <option>Hãy Chọn Loại Người Dùng</option>                   
+                       <option value='KhachHang'>Khách Hàng</option>
+                       <option value='QuanTri'>Quản Trị</option>                    
+                   </select>                               
+               </div>       
+           </Form.Item> 
             <Form.Item label="Tác vụ">
                 <button
                     type='submit'

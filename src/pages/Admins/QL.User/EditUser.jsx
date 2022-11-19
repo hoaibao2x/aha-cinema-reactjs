@@ -2,11 +2,10 @@ import { useFormik } from 'formik';
 import { GP_ID } from '../../../util/varsSetting';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { layDanhSachLoaiNguoiDungAction, layThongTinUserAction, themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
+import { CapNhatThongTinNguoiDungAction, layDanhSachLoaiNguoiDungAction, layThongTinUserAction, themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
 import { UserComponent } from "../QL.User/UserComponent"
 import { QLNDreducer } from '../../../redux/Admins/reducers/QLNDreducer';
 import React, { useEffect, useState } from 'react';
-
 
 import {
     AutoComplete,
@@ -22,7 +21,8 @@ import {
 } from 'antd';
 
 
-const { Option } = Select;
+
+
 
 const formItemLayout = {
     labelCol: {
@@ -45,31 +45,26 @@ const formItemLayout = {
 
 const EditUser = (props) => {
     const dispatch = useDispatch();
-    const {thongTinUser} = useSelector(state => state.QLNDreducer);
-    // console.log(thongTinUser)
-    
-     useEffect(() => { 
-        let {id} = props.match.params
+    useEffect(() => {
+        let {id} = props.match.params;
         dispatch(layThongTinUserAction(id))
-      },[])
 
-      // loại ng dùng
-    // let [maLoai,setmaLoai] = useState("")
-    // useEffect(() => {  
-    //     let action  = layDanhSachLoaiNguoiDungAction()
-    //     dispatch(action)
-    //   },[])
+    },[])
+
+    const {thongTinUser} = useSelector(state => state.QLNDreducer)
+    console.log(thongTinUser)
+
 
     const formik = useFormik({
         enableReinitialize:true,
         // giá trị khởi toạ (data cần luuw trữ )
         initialValues: {
-            taiKhoan:thongTinUser?.taiKhoan,
+            taiKhoan: "",
             matKhau: thongTinUser?.matKhau,
-            email:thongTinUser?.taiKhoan ,
+            email: thongTinUser?.email,
             soDt: thongTinUser?.soDt,
             maNhom: GP_ID,
-            maLoaiNguoiDung:thongTinUser?.maLoaiNguoiDung ,
+            maLoaiNguoiDung: thongTinUser?.maLoaiNguoiDung,
             hoTen: thongTinUser?.hoTen
         },
 
@@ -82,32 +77,38 @@ const EditUser = (props) => {
             // maLoaiNguoiDung: Yup.string().required("hãy chọn loại người dùng")
         }),
 
-        onSubmit: (values) => {
+        // onSubmit: (values)   => {
+        //     console.log(values);
+        //     dispatch(themNguoiDungAction(values));
+        //     // console.log(dispatch(themNguoiDungAction(values)))
+        // },
+        onSubmit : (add) => {
+            dispatch(CapNhatThongTinNguoiDungAction(add))
+        }
+    })  
 
-            dispatch(themNguoiDungAction(values));
+//      // loại người dùng 
+//   let [maLoai,setmaLoai] = useState("")
+//   useEffect(() => {  
+//       let action  = layDanhSachLoaiNguoiDungAction()
+//       dispatch(action)
+//     },[])
 
 
-        },
-    })
+    
 
 
     const [form] = Form.useForm();
-
-  
-
     return (
-
         <Form
             onSubmitCapture={formik.handleSubmit}
             className='container'
             {...formItemLayout}
             form={form}
-            name="register"
-          
+            name="register"    
             scrollToFirstError
         >
-
-            <h3>Sữa Thông Tin Người Dùng</h3>
+            <h3>Thêm Người Dùng Mới</h3>
             <Form.Item
                 name="taiKhoan"
                 label="Tài Khoản">
@@ -143,8 +144,6 @@ const EditUser = (props) => {
                         width: '100%',
                     }}
                 />
-
-
                 {formik.errors.soDt ? (
                     <div className='alert alert-danger'>{formik.errors.soDt}</div>
                 ) : null}
@@ -158,28 +157,21 @@ const EditUser = (props) => {
                     <div className='alert alert-danger'>{formik.errors.matKhau}</div>
                 ) : null}
             </Form.Item>
-
-
             <Form.Item
                
-                label="Loại Người Dùng"
-
-            >
-            
-                <div className="form-group">
-                
-                    <select name='maLoaiNguoiDung' onChange={formik.handleChange} value={formik.values.maLoaiNguoiDung} onBlur={formik.handleBlur} className="form-control" >
-                        <option  value="">Hãy Chọn Loại Người Dùng</option>
-                        <option value='KhachHang'>Khách Hàng</option>
-                        <option value='QuanTri'>Quảng Trị</option>
-                        
-                    </select>
-                
-                    
-                </div>
-               
-               
-            </Form.Item>
+               label="Loại Người Dùng"
+           >
+               <div className="form-group">
+                   <select name='maLoaiNguoiDung' onChange={formik.handleChange}
+                  value={formik.values.maLoaiNguoiDung}
+                     onBlur={formik.handleBlur}
+                      className="form-control" >
+                       <option>Hãy Chọn Loại Người Dùng</option>
+                       <option value={'KhachHang'}>Khách Hàng</option>
+                       <option value={'QuanTri'}>Quảng Trị</option>     
+                   </select> 
+               </div>
+           </Form.Item>
             <Form.Item label="Tác vụ">
                 <button
                     type='submit'

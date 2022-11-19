@@ -11,6 +11,9 @@ import { removeFilmAction } from '../../../redux/Admins/action/removeFilmAction'
 
 const { Search } = Input;
 
+
+
+
 function AdminFilm() {
 
     let dispatch = useDispatch();

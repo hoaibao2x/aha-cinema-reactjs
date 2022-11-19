@@ -4,6 +4,8 @@ import { history } from "../../../App";
 import { CapNhatThongTinNguoiDung, layDanhSachLoaiNguoiDung, layThongTinUser, themNguoiDung ,TimKiemNguoiDung,xoaUser} from "../../../services/Admins/ManagerUser";
 import { TOKEN,TOKEN_MOVIE,DOMAIN,GP_ID,USERLOGIN } from "../../../util/varsSetting";
 import { QLNDreducer } from "../reducers/QLNDreducer";
+import { getUserListAction } from "./getListUserAction";
+
 
 
 
@@ -15,7 +17,9 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
         try {
             let result = await themNguoiDung(add);
             alert('Thêm người dùng thành công !');
-            console.log('result', result.data.content);
+            // console.log('result', result.data.content);
+           
+            history.push("/admin/users")
         } catch (errors) {
             console.log(errors.response?.data);
         }
@@ -28,10 +32,10 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
             let result = await layThongTinUser(taiKhoan);
             alert('lấy thông tin người dùng thành công !');
             console.log('result', result.data.content);
-            // dispatch({
-            //     type : "GET_THONG_TIN_USER",
-            //     thongTinUser : result.data.content  
-            // })
+            dispatch({
+                type : "GET_THONG_TIN_USER",
+                thongTinUser : result.data.content  
+            })
           
         } catch (errors) {
             console.log(errors);
@@ -39,11 +43,11 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
     }
 }
 
- export const CapNhatThongTinNguoiDungAction = () => { 
+ export const CapNhatThongTinNguoiDungAction = (add) => { 
     return async (dispatch) => {
         try {
            
-            let result = await CapNhatThongTinNguoiDung();
+            let result = await CapNhatThongTinNguoiDung(add);
             alert('cập nhật người dùng thành công !');
             console.log('result', result.data.content);
            
@@ -60,8 +64,9 @@ import { QLNDreducer } from "../reducers/QLNDreducer";
            
             let result = await xoaUser(taiKhoan);
             alert('xoá người dùng thành công !');
-            console.log('result', result.data.content);
-            dispatch(layThongTinUserAction())
+            // console.log('result', result.data.content);
+            dispatch(getUserListAction())
+            history.push("/admin/users")
         } catch (errors) {
             console.log(errors.response?.data)
         }

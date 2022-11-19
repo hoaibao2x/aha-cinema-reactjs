@@ -24,11 +24,12 @@ export const themNguoiDung = (add) => {
 
 export const layThongTinUser = (taiKhoan) => {
     return http.get(`/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taiKhoan}`)
+    
    
 }
 
-export const CapNhatThongTinNguoiDung = () => {
-    return http.put(`/QuanLyNguoiDung/CapNhatThongTinNguoiDung`)
+export const CapNhatThongTinNguoiDung = (add) => {
+    return http.put(`/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,add)
 
 }
 
