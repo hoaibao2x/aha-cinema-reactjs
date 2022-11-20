@@ -2,16 +2,11 @@ import { useFormik } from 'formik';
 import { GP_ID } from '../../../util/varsSetting';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { layDanhSachLoaiNguoiDungAction, layThongTinUserAction, themNguoiDungAction, CapNhatThongTinNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
+import { layDanhSachLoaiNguoiDungAction, themNguoiDungAction, CapNhatThongTinNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
 import { UserComponent } from "../QL.User/UserComponent"
-import { QLNDreducer } from '../../../redux/Admins/reducers/QLNDreducer';
+
 import React, { useEffect, useState } from 'react';
 import { layDanhSachLoaiNguoiDung } from '../../../services/Admins/ManagerUser';
-
-
-
-
-
 
 
 import {
@@ -27,6 +22,7 @@ import {
     Select,
 } from 'antd';
 import { Option } from 'antd/lib/mentions';
+import { layThongTinUserAction } from '../../../redux/Admins/action/QLNDAcition';
 
 const formItemLayout = {
     labelCol: {
@@ -49,44 +45,40 @@ const formItemLayout = {
 const EditUser = (props) => {
     const dispatch = useDispatch();
     const { thongTinUser } = useSelector(state => state.QLNDreducer)
-    // console.log(thongTinUser)
     useEffect(() => {
         let { id } = props.match.params;
         dispatch(layThongTinUserAction(id))
     }, [])
-
-
-
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            taiKhoan: "",
-            matKhau: thongTinUser?.matKhau,
-            email: thongTinUser?.email,
-            soDt: thongTinUser?.soDt,
+            taiKhoan: thongTinUser.matKhau,
+            matKhau: thongTinUser.matKhau,
+            email: thongTinUser.email,
+            soDT: thongTinUser.soDT,
             maNhom: GP_ID,
-            maLoaiNguoiDung: thongTinUser?.maLoaiNguoiDung,
-            hoTen: thongTinUser?.hoTen,
+            maLoaiNguoiDung: thongTinUser.maLoaiNguoiDung,
+            hoTen: thongTinUser.hoTen,
         },
         validationSchema: Yup.object({
             taiKhoan: Yup.string().required('Tài khoản không được để trống !').matches(/^(?=.*\d)(?=.*[A-Z a-z])(?!.*[ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý])(?!.*\s).{0,}$/, 'Tên tài khoản bao gồm chữ và ký tự số, không bao gồm tiếng việt có dấu và khoảng trắng !'),
             matKhau: Yup.string().required('Mật khẩu không được để trống !').matches(/^(?=.*\d)(?=.*[A-Z a-z])(?!.*[ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý])(?!.*\s).{0,}$/, 'Mật khẩu bao gồm chữ và ký tự số, không bao gồm tiếng việt có dấu và khoảng trắng !'),
             email: Yup.string().required('Email không được để trống !').matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email không đúng định dạng !'),
-            soDt: Yup.string().required("số điện thoại không được để trống").matches(/^(?=.*\d)^[0-9]+$/, "số điện thoại không đúng định dạng"),
+            soDT: Yup.string().required("số điện thoại không được để trống").matches(/^(?=.*\d)^[0-9]+$/, "số điện thoại không đúng định dạng"),
             hoTen: Yup.string().required('Họ tên không được để trống !').matches(/^[a-z A-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$/, 'Họ tên không đúng định dạng !')
         }),
         onSubmit: (values) => {
             console.log(values);
             // dispatch(themNguoiDungAction(values));
-            dispatch(CapNhatThongTinNguoiDungAction())
+            dispatch(CapNhatThongTinNguoiDungAction(values))
         },
     })
     const [state1, setState1] = useState({
         LoaiNguoiDung: [],
-        
+
     });
-        
-    
+
+
     useEffect(() => {
         theaterInfoResult3()
     }, [])
@@ -102,16 +94,13 @@ const EditUser = (props) => {
     }
     const lableLoai = () => {
         return state1.LoaiNguoiDung?.map((ND, index) => {
-            
+
             return { label: ND.tenLoai, value: ND.maLoaiNguoiDung }
         })
     }
     const handleChangeLoaiNguoiDung = (value, option) => {
         formik.setFieldValue("maLoaiNguoiDung", value)
     }
-
-
-
     const [form] = Form.useForm();
     return (
         <Form
@@ -129,6 +118,14 @@ const EditUser = (props) => {
                 <Input name='taiKhoan' onChange={formik.handleChange} value={formik.values.taiKhoan} onBlur={formik.handleBlur} />
                 {formik.touched.taiKhoan && formik.errors.taiKhoan ? (
                     <div className='alert alert-danger'>{formik.errors.taiKhoan}</div>
+                ) : null}
+            </Form.Item>
+            <Form.Item
+
+                label="Password">
+                <Input name='matKhau' onChange={formik.handleChange} value={formik.values.matKhau} onBlur={formik.handleBlur} />
+                {formik.errors.matKhau ? (
+                    <div className='alert alert-danger'>{formik.errors.matKhau}</div>
                 ) : null}
             </Form.Item>
             <Form.Item label="Họ Tên" >
@@ -153,30 +150,32 @@ const EditUser = (props) => {
                 label="Số Điện Thoại"
             >
                 <Input
-                    name='soDt' onChange={formik.handleChange} value={formik.values.soDt}
-                    style={{
-                        width: '100%',
-                    }}
+                    name="soDT" onChange={formik.handleChange} value={formik.values.soDT} onBlur={formik.handleBlur}
+
                 />
-                {formik.errors.soDt ? (
-                    <div className='alert alert-danger'>{formik.errors.soDt}</div>
+                {formik.errors.soDT ? (
+                    <div className='alert alert-danger'>{formik.errors.soDT}</div>
                 ) : null}
             </Form.Item>
-
-            <Form.Item
-
-                label="Password">
-                <Input name='matKhau' onChange={formik.handleChange} value={formik.values.matKhau} onBlur={formik.handleBlur} />
-                {formik.errors.matKhau ? (
-                    <div className='alert alert-danger'>{formik.errors.matKhau}</div>
-                ) : null}
-            </Form.Item>
-
-            <Form.Item label="Loại Người Dùng">
-                <Select options={lableLoai()} onChange={handleChangeLoaiNguoiDung} value={formik.values.hoTen} onBlur={formik.handleBlur}
-                    placeholder="chọn loạ người dùng" />
-            </Form.Item>
-
+            {/* <Form.Item label="Loại Người Dùng">
+                <Select options={lableLoai()} onChange={handleChangeLoaiNguoiDung} value={formik.values.maLoaiNguoiDung} onBlur={formik.handleBlur}
+                    placeholder="chọn loại người dùng" />
+            </Form.Item> */}
+            <Form.Item  
+               label="Loại Người Dùng"
+           >
+               <div className="form-group">
+               
+                   <select name='maLoaiNguoiDung' onChange={formik.handleChange}
+                  value={formik.values.maLoaiNguoiDung}
+                     onBlur={formik.handleBlur}
+                      className="form-control" >
+                       <option>Hãy Chọn Loại Người Dùng</option>
+                       <option value={'KhachHang'}>Khách Hàng</option>
+                       <option value={'QuanTri'}>Quảng Trị</option>      
+                   </select>   
+               </div>
+           </Form.Item>
             <Form.Item label="Tác vụ">
                 <button
                     type='submit'

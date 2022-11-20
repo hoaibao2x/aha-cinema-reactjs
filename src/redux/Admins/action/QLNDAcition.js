@@ -1,4 +1,5 @@
 
+import { Alert } from "antd";
 import axios from "axios";
 import { history } from "../../../App";
 import { CapNhatThongTinNguoiDung, layDanhSachLoaiNguoiDung, layThongTinUser, themNguoiDung ,TimKiemNguoiDung,xoaUser} from "../../../services/Admins/ManagerUser";
@@ -6,53 +7,45 @@ import { TOKEN,TOKEN_MOVIE,DOMAIN,GP_ID,USERLOGIN } from "../../../util/varsSett
 import { QLNDreducer } from "../reducers/QLNDreducer";
 import { getUserListAction } from "./getListUserAction";
 
-
-
-
-
-
-
  export const themNguoiDungAction = (add) => {
     return async (dispatch) => {
         try {
             let result = await themNguoiDung(add);
             alert('Thêm người dùng thành công !');
-            // console.log('result', result.data.content);
-           
             history.push("/admin/users")
         } catch (errors) {
-            console.log(errors.response?.data);
+            console.log(errors.response?.data.content);
+            alert("kiểm tra lại dữ liệu")
         }
     }
  }
  export const layThongTinUserAction = (taiKhoan) => { 
     return async (dispatch) => {
-        try {
-           
-            let result = await layThongTinUser(taiKhoan);
+        try {          
+            let result = await layThongTinUser(taiKhoan);         
             alert('lấy thông tin người dùng thành công !');
             console.log('result', result.data.content);
             dispatch({
                 type : "GET_THONG_TIN_USER",
                 thongTinUser : result.data.content  
-            })
-          
+            })  
         } catch (errors) {
             console.log(errors);
         }
     }
 }
-
- export const CapNhatThongTinNguoiDungAction = () => { 
+ export const CapNhatThongTinNguoiDungAction = (add) => { 
     return async (dispatch) => {
         try {
            
-            let result = await CapNhatThongTinNguoiDung();
+            let result = await CapNhatThongTinNguoiDung(add);
             alert('cập nhật người dùng thành công !');
+            history.push("/admin/users")
             console.log('result', result.data.content);
            
         } catch (errors) {
             console.log(errors.response?.data);
+            alert("kiểm tra lại thông tin"  )
         }
         
     }

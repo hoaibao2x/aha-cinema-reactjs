@@ -17,7 +17,7 @@ export const QLNDreducer = (state = initialState, action) => {
             return { ...state }
         case "GET_THONG_TIN_USER":
             console.log(action.thongTinUser)
-            state.thongTinUser = action.thongTinUser
+            state.thongTinUser = action.thongTinUser    
             return { ...state }
         case "LOAI":
             console.log(action.maLoaiNguoiDung1);

@@ -24,6 +24,7 @@ import {
 } from 'antd';
 import { Option } from 'antd/lib/mentions';
 import { layDanhSachLoaiNguoiDung } from '../../../services/Admins/ManagerUser';
+import { number } from 'yup/lib/locale';
 const formItemLayout = {
     labelCol: {
         xs: {
@@ -49,7 +50,7 @@ const AddNewUser = () => {
             taiKhoan: "",
             matKhau: "",
             email: "",
-            soDt: "",
+            soDT: "",
             maNhom: GP_ID,
             maLoaiNguoiDung: "",
             hoTen: ""
@@ -58,7 +59,7 @@ const AddNewUser = () => {
             taiKhoan: Yup.string().required('Tài khoản không được để trống !').matches(/^(?=.*\d)(?=.*[A-Z a-z])(?!.*[ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý])(?!.*\s).{0,}$/, 'Tên tài khoản bao gồm chữ và ký tự số, không bao gồm tiếng việt có dấu và khoảng trắng !'),
             matKhau: Yup.string().required('Mật khẩu không được để trống !').matches(/^(?=.*\d)(?=.*[A-Z a-z])(?!.*[ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý])(?!.*\s).{0,}$/, 'Mật khẩu bao gồm chữ và ký tự số, không bao gồm tiếng việt có dấu và khoảng trắng !'),
             email: Yup.string().required('Email không được để trống !').matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email không đúng định dạng !'),
-            soDt: Yup.string().required("số điện thoại không được để trống").matches(/^(?=.*\d)^[0-9]+$/, "số điện thoại không đúng định dạng"),
+            soDT: Yup.string().required("số điện thoại không được để trống").matches(/^(?=.*\d)^[0-9]+$/, "số điện thoại không đúng định dạng"),
             hoTen: Yup.string().required('Họ tên không được để trống !').matches(/^[a-z A-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$/, 'Họ tên không đúng định dạng !')
         }),
 
@@ -141,13 +142,13 @@ const AddNewUser = () => {
                 label="Số Điện Thoại"
             >
                 <Input
-                    name='soDt' onChange={formik.handleChange} value={formik.values.soDt}
+                    name='soDT' onChange={formik.handleChange} value={formik.values.soDT}
                     style={{
                         width: '100%',
                     }}
                 />
-                {formik.errors.soDt ? (
-                    <div className='alert alert-danger'>{formik.errors.soDt}</div>
+                {formik.errors.soDT ? (
+                    <div className='alert alert-danger'>{formik.errors.soDT}</div>
                 ) : null}
             </Form.Item>
 
