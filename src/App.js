@@ -35,7 +35,7 @@ function App() {
         {/* User Route */}
         <Route exact path='/login' component={LoginComponent} />
         <Route exact path='/register' component={RegisterComponent} />
-        <HomeTemplate exact path="/profile/:id" component={Profile} />
+        <HomeTemplate exact path="/profile" component={Profile} />
 
 
         {/* Admin Route */}

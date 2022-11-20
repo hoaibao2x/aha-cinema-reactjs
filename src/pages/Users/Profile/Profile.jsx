@@ -1,16 +1,49 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { history } from '../../../App';
 import { userInfoAction } from '../../../redux/Users/action/userAction';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { USERLOGIN } from '../../../util/varsSetting';
 import './index.css'
 
 function Profile(props) {
 
     let dispatch = useDispatch();
 
+    let { uBookTickets } = useSelector((state) => state.UserReducers);
+    console.log(uBookTickets)
+
+    let myInfo = {};
+     myInfo = {...uBookTickets}
+
+    const areYouLogin = () => {
+        if (localStorage.getItem(USERLOGIN)) {
+            dispatch(userInfoAction());
+        } else {
+            alert('Bạn phải đăng nhập !');
+            return history.push('/login')
+        }
+    }
+
     useEffect(() => {
-        dispatch(userInfoAction())
+        areYouLogin()
     }, [])
+
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            // email: uBookTickets.email,
+            // taiKhoan: uBookTickets.taiKhoan,
+            // hoTen: myInfo.hoTen,
+            // matKhau: myInfo.matKhau,
+            // soDT: myInfo.soDT
+        },
+        onSubmit: (values) => {
+            console.log(values);
+        }
+    })
 
     return (
         <div className='container mx-auto'>
@@ -25,18 +58,18 @@ function Profile(props) {
             </ul>
             <div className="tab-content" id="myTabContent">
                 <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form id='myForm'>
+                    <form onSubmitCapture={formik.handleSubmit} id='myForm'>
                         <div className="row justify-content-between">
                             <div className="col-md-4">
                                 <div className="form-group">
                                     <label className='font-weight-bold' htmlFor="email">Email:</label>
-                                    <input name="email" id='email' type="text" className='form-control' />
+                                    <input onChange={formik.handleChange} value={formik.values.email} name="email" id='email' type="text" className='form-control' />
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="form-group">
                                     <label className='font-weight-bold' htmlFor="taiKhoan">Tài khoản:</label>
-                                    <input name="taiKhoan" id='taiKhoan' type="text" className='form-control' />
+                                    <input value={formik.values.taiKhoan} name="taiKhoan" id='taiKhoan' type="text" className='form-control' />
                                 </div>
                             </div>
                         </div>
@@ -44,13 +77,13 @@ function Profile(props) {
                             <div className="col-md-4">
                                 <div className="form-group">
                                     <label className='font-weight-bold' htmlFor="hoTen">Họ tên:</label>
-                                    <input name="hoTen" id='hoTen' type="text" className='form-control' />
+                                    <input onChange={formik.handleChange} value={formik.values.hoTen} name="hoTen" id='hoTen' type="text" className='form-control' />
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="form-group">
                                     <label className='font-weight-bold' htmlFor="matKhau">Mật khẩu:</label>
-                                    <input name="matKhau" id='matKhau' type="password" className='form-control' />
+                                    <input value={formik.values.matKhau} name="matKhau" id='matKhau' type="password" className='form-control' />
                                 </div>
                             </div>
                         </div>
@@ -58,7 +91,7 @@ function Profile(props) {
                             <div className="col-md-4">
                                 <div className="form-group">
                                     <label className='font-weight-bold' htmlFor="soDT">Số điện thoại:</label>
-                                    <input name="soDT" id='soDT' type="text" className='form-control' />
+                                    <input value={formik.values.soDT} name="soDT" id='soDT' type="text" className='form-control' />
                                 </div>
                             </div>
                             <div className="col-md-4">

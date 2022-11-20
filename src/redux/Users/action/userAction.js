@@ -48,16 +48,17 @@ export const userInfoAction = () => {
     return async (dispatch) => {
         try {
             let result = await userInfoService();
-            console.log(result.data.content);
 
-            // let uBookTickets = JSON.stringify(result.data.content.thongTinDatVe);
-            // localStorage.setItem(UBOOKTICKETS, uBookTickets);
+            let myInfo = result.data.content;
 
-            // let action = {
-            //     type: 'UBOOKTICKETS',
-            //     uBookTickets: uBookTickets
-            // }
-            // dispatch(action)
+            let uBookTickets = JSON.stringify(result.data.content);
+            localStorage.setItem(UBOOKTICKETS, uBookTickets);
+
+            let action = {
+                type: 'UBOOKTICKETS',
+                uBookTickets: myInfo
+            }
+            dispatch(action)
 
         } catch (errors) {
             console.log(errors);

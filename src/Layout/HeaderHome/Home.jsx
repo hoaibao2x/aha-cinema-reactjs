@@ -8,13 +8,13 @@ import { Anchor } from 'antd';
 
 const { Link } = Anchor;
 
+export let userInfo = {};
 
 export default function Header() {
 
-  let userInfo = {}
   if (localStorage.getItem('userLogin') !== null) {
-   let getLocalVal = JSON.parse(localStorage.getItem('userLogin'));
-   userInfo = {...getLocalVal}
+    let getLocalVal = JSON.parse(localStorage.getItem('userLogin'));
+    userInfo = { ...getLocalVal }
   }
 
   const clearlocalSto = () => {
@@ -53,14 +53,14 @@ export default function Header() {
               </button>
               <div className="dropdown-menu">
                 <button onClick={() => {
-                  history.push(`/profile/${userInfo.taiKhoan}`)
+                  history.push(`/profile`)
                 }} className="dropdown-item"><i className="fa-solid fa-pen-to-square"></i> Thông tin tài khoản</button>
                 {userInfo.maLoaiNguoiDung === 'QuanTri' ? (
                   <button onClick={() => {
                     history.push('/admin')
                   }} className="dropdown-item"><i className="fa-solid fa-arrow-up-right-from-square"></i> Đến trang admin</button>
-                ): null}
-                
+                ) : null}
+
                 <button onClick={() => {
                   clearlocalSto()
                 }} className="dropdown-item"><i className="fa-solid fa-right-from-bracket"></i> Đăng xuất</button>
