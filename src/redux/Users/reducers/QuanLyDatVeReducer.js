@@ -5,7 +5,6 @@ import { ThongTinLichChieu } from "../../../_core/models/ThongTinPhongve";
 const initialState = {
     detailTicket: new ThongTinLichChieu(),
     danhSachGheDangDat: [],
-    danhSachGheKhachDat:[],
     tabActice: "1"
 }
 

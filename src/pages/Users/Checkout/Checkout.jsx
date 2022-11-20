@@ -2,21 +2,20 @@ import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './styleGhe.css';
 import { bookingTicketAction, getDetailTicketAction } from "../../../redux/Users/action/QuanLyDatVeAction";
-import { CloseOutlined, UserAddOutlined, CheckOutlined, SmileOutlined } from '@ant-design/icons';
+import { CloseOutlined, UserAddOutlined, CheckOutlined } from '@ant-design/icons';
 import { BOOK_TICKET, CHANG_ACTIVE_TABS } from '../../../redux/Users/type/QuanLyDatVeType';
 import _ from 'lodash';
 import { ThongTinDatVe } from '../../../_core/models/ThongTinDatVe';
 import { Tabs } from 'antd';
 import { getInfoUserAction } from '../../../redux/Users/action/userAction';
 import moment from 'moment';
-import { NavLink } from 'react-router-dom';
+import { history } from '../../../App';
 
 
 function Checkout(props) {
 
   const { uLogin } = useSelector(state => state.UserReducers);
-  const { detailTicket, danhSachGheDangDat, danhSachGheKhachDat } = useSelector(state => state.QuanLyDatVeReducer);
-  // console.log({ danhSachGheDangDat })
+  const { detailTicket, danhSachGheDangDat } = useSelector(state => state.QuanLyDatVeReducer);
   const { thongTinPhim, danhSachGhe } = detailTicket
 
   const dispatch = useDispatch();
@@ -156,8 +155,16 @@ function callback(key) {
 export default function CheckoutTab(props) {
   const { tabActice } = useSelector(state => state.QuanLyDatVeReducer);
   const dispatch = useDispatch();
+  const {uLogin} = useSelector(state => state.UserReducers)
+
+  const operations = <Fragment>
+    {!_.isEmpty(uLogin) ? <button className='btn btn-success' onClick={() =>{
+      history.push('/')
+    }}>Xin chào {uLogin.taiKhoan}</button> : ''}
+  </Fragment>
+
   return <div className='p-4'>
-    <Tabs defaultActiveKey="1" activeKey={tabActice} onChange={(key) => {
+    <Tabs tabBarExtraContent={operations} defaultActiveKey="1" activeKey={tabActice} onChange={(key) => {
       dispatch({
         type: CHANG_ACTIVE_TABS,
         number: key
@@ -187,7 +194,7 @@ function HistoryBooking(props) {
   const renderTicketItem = () => {
     return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {
       const seats = _.first(ticket.danhSachGhe);
-      return <div className="col-12 col-6 col-4" style={{ marginBottom: '20px' }} key={index}>
+      return <div className="col-12 col-sm-6 col-lg-4" style={{ marginBottom: '20px' }} key={index}>
         <div className="card" >
           <div className="row">
             <div className="col-3">
@@ -209,11 +216,6 @@ function HistoryBooking(props) {
   }
 
   return <div className='container-fluid p-5'>
-    <NavLink to="/">
-      <div className='text-right'>
-        <button className='btn btn-danger'>Quay về trang chủ</button>
-      </div>
-    </NavLink>
     <h2 style={{ fontSize: '48px', fontWeight: 'bold' }} className='text-center text-primary'>Lịch sử đặt vé khách hàng</h2>
     <div className='row'>
       {renderTicketItem()}

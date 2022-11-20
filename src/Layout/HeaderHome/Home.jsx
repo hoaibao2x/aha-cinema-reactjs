@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <header >
-      <nav className="styleNav navbar navbar-expand-sm navbar-dark">
+      <nav className="styleNav navbar navbar-expand-lg navbar-dark">
         <NavLink className="navbar-brand" to='/'><img src="https://movflxx.netlify.app/img/logo/logo.png" alt="..."
         /></NavLink>
         <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data- target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
