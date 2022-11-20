@@ -8,3 +8,5 @@ export const GP_ID = "GP06";
 export const TOKEN = 'access_token';
 
 export const USERLOGIN = 'userLogin';
+
+export const UBOOKTICKETS = 'userBookTickets';

@@ -1,6 +1,6 @@
-import { loginService, registerService } from '../../../services/Users/UserServices'
+import { loginService, registerService, userInfoService } from '../../../services/Users/UserServices'
 import { history } from '../../../App';
-import { TOKEN, USERLOGIN } from '../../../util/varsSetting'
+import { TOKEN, USERLOGIN, UBOOKTICKETS } from '../../../util/varsSetting'
 
 
 export const userLoginAction = (loginForm) => {
@@ -40,6 +40,27 @@ export const userRegisAction = (regisForm) => {
             history.push('/login');
         } catch (errors) {
             console.log(errors)
+        }
+    }
+}
+
+export const userInfoAction = () => {
+    return async (dispatch) => {
+        try {
+            let result = await userInfoService();
+            console.log(result.data.content);
+
+            // let uBookTickets = JSON.stringify(result.data.content.thongTinDatVe);
+            // localStorage.setItem(UBOOKTICKETS, uBookTickets);
+
+            // let action = {
+            //     type: 'UBOOKTICKETS',
+            //     uBookTickets: uBookTickets
+            // }
+            // dispatch(action)
+
+        } catch (errors) {
+            console.log(errors);
         }
     }
 }

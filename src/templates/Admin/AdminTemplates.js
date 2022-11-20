@@ -56,6 +56,7 @@ export const AdminTemplate = (props) => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('userLogin');
         localStorage.removeItem('hasSeenAddToChromeNudge');
+        localStorage.removeItem('userBookTickets');
         history.push('/')
     }
 

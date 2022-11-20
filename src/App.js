@@ -19,6 +19,7 @@ import RegisterComponent from './pages/Users/Register/RegisterComponent';
 import AdminPage from './pages/Admins/AdminPage';
 import Detail from './pages/Users/Detail/Detail';
 import ShowTime from './pages/Admins/ShowTime';
+import Profile from './pages/Users/Profile/Profile';
 
 
 
@@ -34,6 +35,7 @@ function App() {
         {/* User Route */}
         <Route exact path='/login' component={LoginComponent} />
         <Route exact path='/register' component={RegisterComponent} />
+        <HomeTemplate exact path="/profile/:id" component={Profile} />
 
 
         {/* Admin Route */}

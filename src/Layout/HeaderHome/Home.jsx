@@ -21,6 +21,7 @@ export default function Header() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('userLogin');
     localStorage.removeItem('hasSeenAddToChromeNudge');
+    localStorage.removeItem('userBookTickets');
     history.push('/');
     window.location.reload();
   }
@@ -51,7 +52,9 @@ export default function Header() {
                 Xin chào {userInfo.hoTen} <i className="fa-solid fa-circle-user"></i>
               </button>
               <div className="dropdown-menu">
-                <a className="dropdown-item" href="#"><i className="fa-solid fa-pen-to-square"></i> Thông tin tài khoản</a>
+                <button onClick={() => {
+                  history.push(`/profile/${userInfo.taiKhoan}`)
+                }} className="dropdown-item"><i className="fa-solid fa-pen-to-square"></i> Thông tin tài khoản</button>
                 {userInfo.maLoaiNguoiDung === 'QuanTri' ? (
                   <button onClick={() => {
                     history.push('/admin')
