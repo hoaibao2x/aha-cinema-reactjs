@@ -50,7 +50,7 @@ function Checkout(props) {
             gheDuocChon: ghe
           })
         }} disabled={ghe.daDat} className={`ghe ${classGheVip} ${classGheDaDat} ${classGheDangDat} ${classGheDaDuocDat}`} key={index}>
-          {ghe.daDat ? classGheDaDuocDat !== '' ? <UserAddOutlined /> : <CloseOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /> : ghe.stt}
+          {ghe.daDat ? classGheDaDuocDat !== '' ? <UserAddOutlined /> : <CloseOutlined style={{ fontWeight: 'bold' }} /> : ghe.stt}
         </button>
         {(index + 1) % 16 === 0 ? <br /> : ''}
       </Fragment>
@@ -74,21 +74,21 @@ function Checkout(props) {
             <div className='table'>
               <table>
                 <thead >
-                  <tr>
-                    <th>Ghế chưa đặt</th>
-                    <th>Ghế đang đặt</th>
-                    <th>Ghế đã đặt</th>
-                    <th>Ghế Vip</th>
-                    <th>Ghế mình đặt</th>
+                  <tr className='tr'>
+                    <th className='th'>Ghế chưa đặt</th>
+                    <th className='th'>Ghế đang đặt</th>
+                    <th className='th'>Ghế đã đặt</th>
+                    <th className='th'>Ghế Vip</th>
+                    <th className='th'>Ghế mình đặt</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td> <button className='ghe text-center'><CheckOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /></button></td>
-                    <td> <button className='ghe gheDangDat text-center'><CheckOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /></button></td>
-                    <td> <button className='ghe gheDaDat text-center'><CheckOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /></button></td>
-                    <td> <button className='ghe gheVip text-center'><CheckOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /></button></td>
-                    <td> <button className='ghe gheDaDuocDat text-center'><CheckOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /></button></td>
+                    <td> <button className='ghe text-center'><CheckOutlined style={{ fontWeight: 'bold'}} /></button></td>
+                    <td> <button className='ghe gheDangDat text-center'><CheckOutlined style={{ fontWeight: 'bold' }} /></button></td>
+                    <td> <button className='ghe gheDaDat text-center'><CheckOutlined style={{ fontWeight: 'bold' }} /></button></td>
+                    <td> <button className='ghe gheVip text-center'><CheckOutlined style={{ fontWeight: 'bold' }} /></button></td>
+                    <td> <button className='ghe gheDaDuocDat text-center'><CheckOutlined style={{ fontWeight: 'bold' }} /></button></td>
                   </tr>
                 </tbody>
               </table>
@@ -160,7 +160,7 @@ export default function CheckoutTab(props) {
   const operations = <Fragment>
     {!_.isEmpty(uLogin) ? <button className='btn btn-success' onClick={() =>{
       history.push('/')
-    }}>Xin chào {uLogin.taiKhoan}</button> : ''}
+    }}>Xin chào {uLogin.taiKhoan.substr(0.,1)}</button> : ''}
   </Fragment>
 
   return <div className='p-4'>
@@ -194,7 +194,7 @@ function HistoryBooking(props) {
   const renderTicketItem = () => {
     return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {
       const seats = _.first(ticket.danhSachGhe);
-      return <div className="col-12 col-sm-6 col-lg-4" style={{ marginBottom: '20px' }} key={index}>
+      return <div className="col-12 col-sm-12 col-sm-6 col-md-6 col-xl-4" style={{ marginBottom: '20px' }} key={index}>
         <div className="card" >
           <div className="row">
             <div className="col-3">

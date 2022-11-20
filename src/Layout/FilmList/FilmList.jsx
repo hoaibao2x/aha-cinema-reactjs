@@ -39,7 +39,7 @@ const FilmList = (props) => {
 
     const renderFilm = () => {
         return props.arrFilm.slice(0, 18).map((film, index) => {
-            return <Col className='styleCol px-4 py-3' key={index}>
+            return <Col className='styleCol px-4 py-3'  key={index}>
                 <Card className='styleCard'
                     hoverable
                     style={{

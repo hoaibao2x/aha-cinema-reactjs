@@ -8,7 +8,7 @@ export const getDetailTicketAction = (maLichChieu) => {
     return async (dispatch) => {
         try {
             const result = await getDetailTicket(maLichChieu);
-            console.log('result', result)
+            // console.log('result', result)
             if (result.status === 200) {
                 dispatch({
                     type: SET_DETAIL_TICKET,
