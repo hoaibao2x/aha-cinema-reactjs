@@ -16,7 +16,7 @@ export const themNguoiDungAction = (add) => {
             history.push("/admin/users")
         } catch (errors) {
             console.log(errors.response?.data.content);
-            alert("Thêm thất bại! Thông tin đã tồn tại")
+            alert("Thêm thất bại! Email hoặc Tài Khoản đã tồn tại")
         
            
         }
