@@ -1,4 +1,4 @@
-import { loginService, registerService } from '../../../services/Users/UserServices'
+import { loginService, registerService, updateUserInfo } from '../../../services/Users/UserServices'
 import { history } from '../../../App';
 import { TOKEN, USERLOGIN } from '../../../util/varsSetting';
 import { getInfoUser } from '../../../services/Users/UserServices';
@@ -69,3 +69,13 @@ export const getInfoUserAction = () => {
     }
 }
 
+export const updateInfoAction = (formData) => {
+    return async (dispatch) => {
+        try {
+            let result = await updateUserInfo(formData);
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}

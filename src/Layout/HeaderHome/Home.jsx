@@ -54,7 +54,9 @@ export default function Header() {
                 Xin chào {userInfo.hoTen.substr(0,1)} <i className="fa-solid fa-circle-user"></i>
               </button>
               <div className="dropdown-menu">
-                <a className="dropdown-item" href="#"><i className="fa-solid fa-pen-to-square"></i> Thông tin tài khoản</a>
+                <button onClick={() => { 
+                  history.push('/profile')
+                 }} className="dropdown-item"><i className="fa-solid fa-pen-to-square"></i> Thông tin tài khoản</button>
                 {userInfo.maLoaiNguoiDung === 'QuanTri' ? (
                   <button onClick={() => {
                     history.push('/admin')
