@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react'
 import { Table } from 'antd';
 import { NavLink } from 'react-router-dom'
-
+import './index.css'
 import { AudioOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
 import { Button } from 'antd/lib/radio';
@@ -37,21 +37,23 @@ export default function UserComponent() {
     //   "matKhau": "1",
     //   "maLoaiNguoiDung": "QuanTri"
     // },
+ 
 
     {
       title: 'Tài Khoản',
       dataIndex: 'taiKhoan',
 
-      sorter: (a, b) => b.taiKhoan.length - a.taiKhoan.length,
-      sortDirections: ['descend', 'ascend'],
+      sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
+      sortDirections: ['descend','ascend'],
+      // sortOrder :'descend'
 
     },
     {
       title: 'Họ Tên',
       dataIndex: 'hoTen',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => b.hoTen.length - a.hoTen.length,
-      sortDirections: ['descend', 'ascend'],
+     
+      
     },
     {
       title: 'Email',
@@ -136,7 +138,7 @@ export default function UserComponent() {
   };
 
   return (
-    <div className='container'>
+    <div className='container formUser'>
 
       <h3>Quản Lý Người Dùng</h3>
       <Button className='btn' onClick={() => {
