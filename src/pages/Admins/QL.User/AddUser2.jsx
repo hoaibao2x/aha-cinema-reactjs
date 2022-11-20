@@ -1,11 +1,13 @@
 import { useFormik } from 'formik';
 import { GP_ID } from '../../../util/varsSetting';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { layDanhSachLoaiNguoiDungAction, layThongTinUserAction, themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
 import { UserComponent } from "../QL.User/UserComponent"
 import { QLNDreducer } from '../../../redux/Admins/reducers/QLNDreducer';
 import React, { useEffect, useState } from 'react';
+
+
 
 import {
     AutoComplete,
@@ -19,6 +21,7 @@ import {
     Row,
     Select,
 } from 'antd';
+import { Option } from 'antd/lib/mentions';
 const formItemLayout = {
     labelCol: {
         xs: {
@@ -39,6 +42,15 @@ const formItemLayout = {
 };
 const AddNewUser = () => {
     const dispatch = useDispatch();
+    let { maLoaiNguoiDung } = useSelector(state => state.QLNDreducer)
+
+ 
+  
+  
+    useEffect(() => {
+      let action = layDanhSachLoaiNguoiDungAction()
+      dispatch(action)
+    }, []);
     const formik = useFormik({
         initialValues: {
             taiKhoan: "",
@@ -64,12 +76,10 @@ const AddNewUser = () => {
       
     })
 
-    const handleChangeLoaiNguoiDung = (value) => { 
-        // console.log(value)
-    //   let maLoaiNguoiDung
-        dispatch(layDanhSachLoaiNguoiDungAction(value))
-        
-     }
+    const handleChangeLoaiNguoiDung = (value) => {
+        formik.setFieldValue("maLoaiNguoiDung", value)
+
+    }
     const [form] = Form.useForm();
     return (
         <Form
@@ -129,7 +139,7 @@ const AddNewUser = () => {
                     <div className='alert alert-danger'>{formik.errors.matKhau}</div>
                 ) : null}
             </Form.Item>
-            <Form.Item 
+            {/* <Form.Item 
                label="Loại Người Dùng"
            >
                <div className="form-group">
@@ -144,7 +154,16 @@ const AddNewUser = () => {
                        <option value='QuanTri'>Quản Trị</option>                    
                    </select>                               
                </div>       
-           </Form.Item> 
+           </Form.Item>  */}
+          
+                    <Form.Item
+                      label="Loại Người Dùng"
+                    >
+                        <Select name='maLoaiNguoiDung' placeholder="Chọn Loại Người Dùng" onChange={handleChangeLoaiNguoiDung}>
+                            <Option value="KhachHang">KhachHang1</Option>
+                            <Option value="QuanTri">QuanTri2</Option>
+                        </Select>
+                    </Form.Item>
             <Form.Item label="Tác vụ">
                 <button
                     type='submit'

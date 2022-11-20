@@ -11,7 +11,7 @@ export const getUserList = (tuKhoa = "") => {
     return http.get(`/QuanLyNguoiDung/LayDanhSachNguoiDung?maNhom=${GP_ID}`)
 }
 
-export const layDanhSachLoaiNguoiDung =  ( ) => {
+export const layDanhSachLoaiNguoiDung =  (value="") => {
     return http.get(`QuanLyNguoiDung/LayDanhSachLoaiNguoiDung?maNhom=${GP_ID}`)
 
    

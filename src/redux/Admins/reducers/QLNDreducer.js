@@ -1,7 +1,9 @@
 const initialState = {
     arrUserDefault: [],
     thongTinUser: {},
-    timUser: {}
+    timUser: {},
+    
+    maLoaiNguoiDung1:{}
 
 
 }
@@ -17,9 +19,9 @@ export const QLNDreducer = (state = initialState, action) => {
             console.log(action.thongTinUser)
             state.thongTinUser = action.thongTinUser
             return { ...state }
-        case "TIM_USER":
-            console.log(action.timUser);
-            state.timUser = action.timUser
+        case "LOAI":
+            console.log(action.maLoaiNguoiDung1);
+            state.maLoaiNguoiDung1 = action.maLoaiNguoiDung1
             return { ...state }
 
         default:

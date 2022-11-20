@@ -22,6 +22,9 @@ import EditUser from "./pages/Admins/QL.User/EditUser";
 import AddNewUser from './pages/Admins/QL.User/AddUser2';
 
 
+import AddNewUser3 from './pages/Admins/QL.User/adduser3'
+
+
 
 
 
@@ -63,6 +66,9 @@ function App() {
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
         <AdminTemplate exact path='/admin/users/adduser' component={AddNewUser} />
         <AdminTemplate exact path='/admin/users/edituser/:id' component={EditUser} />
+
+        
+        <AdminTemplate exact path='/admin/users/adduser3' component={AddNewUser3} />
       </Switch>
      
     </Router>

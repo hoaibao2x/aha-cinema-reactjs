@@ -78,9 +78,12 @@ import { getUserListAction } from "./getListUserAction";
     return async (dispatch) => { 
         try {
             let result = await layDanhSachLoaiNguoiDung()
-            // console.log('result', result.data.content);
-            // dispatch(layDanhSachLoaiNguoiDungAction())
-            
+            console.log('result', result.data.content);
+            let  action =({
+                type : "LOAI",
+                maLoaiNguoiDung1:result.data.content
+            })
+            dispatch(action)
         } catch (error) {
             console.log(error.response?.data)
         }

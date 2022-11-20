@@ -13,23 +13,6 @@ import { getFilmList } from '../../../services/Admins/ManagerFilms';
 import { useState } from 'react';
 // import ApiRFC from '../../../componentHook/DSuser';    
 
-
-
-
-
-// const content = [
-//   {
-//     maLoaiNguoiDung: "KhachHang",
-//     tenLoai: "Khách hàng"
-//   },
-//   {
-//     maLoaiNguoiDung: "QuanTri",
-//     tenLoai: "Quản trị"
-//   }
-// ]
-
-
-
 const { Search } = Input;
 
 export default function UserComponent() {
@@ -43,14 +26,6 @@ export default function UserComponent() {
     let action = getUserListAction()
     dispatch(action)
   }, [])
-
-
-  // //  loại người dùng 
-  // let [maLoai, setmaLoai] = useState("")
-  // useEffect(() => {
-  //   let action = layDanhSachLoaiNguoiDungAction()
-  //   dispatch(action)
-  // }, [])
 
 
   const columns = [
@@ -148,15 +123,6 @@ export default function UserComponent() {
   ];
 
   const data = arrUserDefault;
-
-  // const suffix = (
-  //   <AudioOutlined
-  //     style={{
-  //       fontSize: 16,
-  //       color: '#1890ff',
-  //     }}
-  //   />
-  // );
 
   const onSearch = (value) => {
     // console.log(value)
