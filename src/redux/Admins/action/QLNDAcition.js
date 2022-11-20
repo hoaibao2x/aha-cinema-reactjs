@@ -43,11 +43,11 @@ import { getUserListAction } from "./getListUserAction";
     }
 }
 
- export const CapNhatThongTinNguoiDungAction = (add) => { 
+ export const CapNhatThongTinNguoiDungAction = () => { 
     return async (dispatch) => {
         try {
            
-            let result = await CapNhatThongTinNguoiDung(add);
+            let result = await CapNhatThongTinNguoiDung();
             alert('cập nhật người dùng thành công !');
             console.log('result', result.data.content);
            
@@ -74,21 +74,21 @@ import { getUserListAction } from "./getListUserAction";
     
   }
 
-  export const layDanhSachLoaiNguoiDungAction = () => { 
-    return async (dispatch) => { 
-        try {
-            let result = await layDanhSachLoaiNguoiDung()
-            console.log('result', result.data.content);
-            let  action =({
-                type : "LOAI",
-                maLoaiNguoiDung1:result.data.content
-            })
-            dispatch(action)
-        } catch (error) {
-            console.log(error.response?.data)
-        }
-     }
-   }
+//   export const layDanhSachLoaiNguoiDungAction = () => { 
+//     return async (dispatch) => { 
+//         try {
+//             let result = await layDanhSachLoaiNguoiDung()
+//             console.log('result', result.data.content);
+//             let  action =({
+//                 type : "LOAI",
+//                 maLoaiNguoiDung1:result.data.content
+//             })
+//             dispatch(action)
+//         } catch (error) {
+//             console.log(error.response?.data)
+//         }
+//      }
+//    }
 
    export const TimKiemNguoiDungAction = (tuKhoa) => {
     return async (dispatch) => {

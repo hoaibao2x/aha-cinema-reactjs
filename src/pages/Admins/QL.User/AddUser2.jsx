@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react';
 
 
 
+
 import {
     AutoComplete,
     Button,
@@ -22,6 +23,7 @@ import {
     Select,
 } from 'antd';
 import { Option } from 'antd/lib/mentions';
+import { layDanhSachLoaiNguoiDung } from '../../../services/Admins/ManagerUser';
 const formItemLayout = {
     labelCol: {
         xs: {
@@ -42,15 +44,6 @@ const formItemLayout = {
 };
 const AddNewUser = () => {
     const dispatch = useDispatch();
-    let { maLoaiNguoiDung } = useSelector(state => state.QLNDreducer)
-
- 
-  
-  
-    useEffect(() => {
-      let action = layDanhSachLoaiNguoiDungAction()
-      dispatch(action)
-    }, []);
     const formik = useFormik({
         initialValues: {
             taiKhoan: "",
@@ -75,8 +68,35 @@ const AddNewUser = () => {
         },
       
     })
+    const [state1,setState1] = useState({
+        LoaiNguoiDung: [],
+    })
+  
+    useEffect(() => {
+        theaterInfoResult3()
+    
+      },[])
+      const theaterInfoResult3 = async () => {
+        try {
+            let result = await layDanhSachLoaiNguoiDung()
+            setState1({
+                LoaiNguoiDung:result.data.content
+            })
+            
+          } catch (error) {
+            
+          }
+    }
+  
+    
+    const lableLoai = () => {
+        return state1.LoaiNguoiDung?.map((ND, index) => {
+            return { label: ND.tenLoai, value: ND.maLoaiNguoiDung }
+        })
+    }
 
-    const handleChangeLoaiNguoiDung = (value) => {
+
+    const handleChangeLoaiNguoiDung = (value,option) => {
         formik.setFieldValue("maLoaiNguoiDung", value)
 
     }
@@ -92,14 +112,14 @@ const AddNewUser = () => {
         >
             <h3>Thêm Người Dùng Mới</h3>
             <Form.Item
-                name="taiKhoan"
+             
                 label="Tài Khoản">
                 <Input name='taiKhoan' onChange={formik.handleChange} value={formik.values.taiKhoan} onBlur={formik.handleBlur} />
                 {formik.touched.taiKhoan && formik.errors.taiKhoan ? (
                     <div className='alert alert-danger'>{formik.errors.taiKhoan}</div>
                 ) : null}
             </Form.Item>
-            <Form.Item name="hoTen" label="Họ Tên" >
+            <Form.Item label="Họ Tên" >
                 <Input name="hoTen" onChange={formik.handleChange} value={formik.values.hoTen} onBlur={formik.handleBlur} />
                 {formik.errors.hoTen ? (
                     <div className='alert alert-danger'>{formik.errors.hoTen}</div>
@@ -107,7 +127,7 @@ const AddNewUser = () => {
 
             </Form.Item>
             <Form.Item
-                name="email"
+                
                 label="E-mail"
 
             >
@@ -117,7 +137,7 @@ const AddNewUser = () => {
                 ) : null}
             </Form.Item>
             <Form.Item
-                name="soDt"
+               
                 label="Số Điện Thoại"
             >
                 <Input
@@ -132,38 +152,18 @@ const AddNewUser = () => {
             </Form.Item>
 
             <Form.Item
-                name="matKhau"
+                
                 label="Password">
                 <Input name='matKhau' onChange={formik.handleChange} value={formik.values.matKhau} onBlur={formik.handleBlur} />
                 {formik.errors.matKhau ? (
                     <div className='alert alert-danger'>{formik.errors.matKhau}</div>
                 ) : null}
             </Form.Item>
-            {/* <Form.Item 
-               label="Loại Người Dùng"
-           >
-               <div className="form-group">
-               
-                   <select name='maLoaiNguoiDung' onChange={formik.handleChange}
-                   
-                  value={formik.values.maLoaiNguoiDung}
-                     onBlur={formik.handleBlur}
-                      className="form-control" >
-                       <option>Hãy Chọn Loại Người Dùng</option>                   
-                       <option value='KhachHang'>Khách Hàng</option>
-                       <option value='QuanTri'>Quản Trị</option>                    
-                   </select>                               
-               </div>       
-           </Form.Item>  */}
           
-                    <Form.Item
-                      label="Loại Người Dùng"
-                    >
-                        <Select name='maLoaiNguoiDung' placeholder="Chọn Loại Người Dùng" onChange={handleChangeLoaiNguoiDung}>
-                            <Option value="KhachHang">KhachHang1</Option>
-                            <Option value="QuanTri">QuanTri2</Option>
-                        </Select>
-                    </Form.Item>
+                    <Form.Item  label="Loại Người Dùng">
+            <Select options={lableLoai()} onChange={handleChangeLoaiNguoiDung} placeholder="chọn loại người dùng" />
+            </Form.Item>
+           
             <Form.Item label="Tác vụ">
                 <button
                     type='submit'

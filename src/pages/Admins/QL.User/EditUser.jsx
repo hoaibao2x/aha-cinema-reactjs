@@ -2,10 +2,16 @@ import { useFormik } from 'formik';
 import { GP_ID } from '../../../util/varsSetting';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { CapNhatThongTinNguoiDungAction, layDanhSachLoaiNguoiDungAction, layThongTinUserAction, themNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
+import { layDanhSachLoaiNguoiDungAction, layThongTinUserAction, themNguoiDungAction, CapNhatThongTinNguoiDungAction } from '../../../redux/Admins/action/QLNDAcition';
 import { UserComponent } from "../QL.User/UserComponent"
 import { QLNDreducer } from '../../../redux/Admins/reducers/QLNDreducer';
 import React, { useEffect, useState } from 'react';
+import { layDanhSachLoaiNguoiDung } from '../../../services/Admins/ManagerUser';
+
+
+
+
+
 
 
 import {
@@ -21,10 +27,6 @@ import {
     Select,
 } from 'antd';
 import { Option } from 'antd/lib/mentions';
-
-
-
-
 
 const formItemLayout = {
     labelCol: {
@@ -44,22 +46,19 @@ const formItemLayout = {
         },
     },
 };
-
 const EditUser = (props) => {
     const dispatch = useDispatch();
+    const { thongTinUser } = useSelector(state => state.QLNDreducer)
+    // console.log(thongTinUser)
     useEffect(() => {
-        let {id} = props.match.params;
+        let { id } = props.match.params;
         dispatch(layThongTinUserAction(id))
+    }, [])
 
-    },[])
-
-    const {thongTinUser} = useSelector(state => state.QLNDreducer)
-    console.log(thongTinUser)
 
 
     const formik = useFormik({
-        enableReinitialize:true,
-        // giá trị khởi toạ (data cần luuw trữ )
+        enableReinitialize: true,
         initialValues: {
             taiKhoan: "",
             matKhau: thongTinUser?.matKhau,
@@ -67,34 +66,50 @@ const EditUser = (props) => {
             soDt: thongTinUser?.soDt,
             maNhom: GP_ID,
             maLoaiNguoiDung: thongTinUser?.maLoaiNguoiDung,
-            hoTen: thongTinUser?.hoTen
+            hoTen: thongTinUser?.hoTen,
         },
-
         validationSchema: Yup.object({
-            taiKhoan: Yup.string().required("tài khoảng khoảng được bỏ trống"),
-            matKhau: Yup.string().required("mật khẩu không được để trống"),
-            email: Yup.string().required("email không được để trống").email("email chưa đúng định dạng"),
-            hoTen: Yup.string().required("họ tên không được đẻ trống").matches(/^[a-z A-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$/, "họ tên không đúng định dạng"),
+            taiKhoan: Yup.string().required('Tài khoản không được để trống !').matches(/^(?=.*\d)(?=.*[A-Z a-z])(?!.*[ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý])(?!.*\s).{0,}$/, 'Tên tài khoản bao gồm chữ và ký tự số, không bao gồm tiếng việt có dấu và khoảng trắng !'),
+            matKhau: Yup.string().required('Mật khẩu không được để trống !').matches(/^(?=.*\d)(?=.*[A-Z a-z])(?!.*[ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý])(?!.*\s).{0,}$/, 'Mật khẩu bao gồm chữ và ký tự số, không bao gồm tiếng việt có dấu và khoảng trắng !'),
+            email: Yup.string().required('Email không được để trống !').matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email không đúng định dạng !'),
             soDt: Yup.string().required("số điện thoại không được để trống").matches(/^(?=.*\d)^[0-9]+$/, "số điện thoại không đúng định dạng"),
-            // maLoaiNguoiDung: Yup.string().required("hãy chọn loại người dùng")
+            hoTen: Yup.string().required('Họ tên không được để trống !').matches(/^[a-z A-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$/, 'Họ tên không đúng định dạng !')
         }),
-        onSubmit : (add) => {
-            dispatch(CapNhatThongTinNguoiDungAction(add))
-        }
-    })  
-
-   const  handleChangeLoaiNguoiDung = (e) => {
-    console.log(e.target)
-        let {value , maLoaiNguoiDung} = e.target
-        console.log("handleChangeLoaiNguoiDung", e);
-        let action = layDanhSachLoaiNguoiDungAction(e)
-        dispatch(action)
-
-
-        formik.setFieldValue("maLoaiNguoiDung", e)
-
-    }
+        onSubmit: (values) => {
+            console.log(values);
+            // dispatch(themNguoiDungAction(values));
+            dispatch(CapNhatThongTinNguoiDungAction())
+        },
+    })
+    const [state1, setState1] = useState({
+        LoaiNguoiDung: [],
+        
+    });
+        
     
+    useEffect(() => {
+        theaterInfoResult3()
+    }, [])
+    const theaterInfoResult3 = async () => {
+        try {
+            let result = await layDanhSachLoaiNguoiDung()
+            setState1({
+                LoaiNguoiDung: result.data.content
+            })
+        } catch (error) {
+
+        }
+    }
+    const lableLoai = () => {
+        return state1.LoaiNguoiDung?.map((ND, index) => {
+            
+            return { label: ND.tenLoai, value: ND.maLoaiNguoiDung }
+        })
+    }
+    const handleChangeLoaiNguoiDung = (value, option) => {
+        formik.setFieldValue("maLoaiNguoiDung", value)
+    }
+
 
 
     const [form] = Form.useForm();
@@ -104,19 +119,19 @@ const EditUser = (props) => {
             className='container'
             {...formItemLayout}
             form={form}
-            name="register"    
+            name="register"
             scrollToFirstError
         >
-            <h3>Thêm Người Dùng Mới</h3>
+            <h3>sửa thông tin người Dùng Mới</h3>
             <Form.Item
-                name="taiKhoan"
+
                 label="Tài Khoản">
                 <Input name='taiKhoan' onChange={formik.handleChange} value={formik.values.taiKhoan} onBlur={formik.handleBlur} />
                 {formik.touched.taiKhoan && formik.errors.taiKhoan ? (
                     <div className='alert alert-danger'>{formik.errors.taiKhoan}</div>
                 ) : null}
             </Form.Item>
-            <Form.Item name="hoTen" label="Họ Tên" >
+            <Form.Item label="Họ Tên" >
                 <Input name="hoTen" onChange={formik.handleChange} value={formik.values.hoTen} onBlur={formik.handleBlur} />
                 {formik.errors.hoTen ? (
                     <div className='alert alert-danger'>{formik.errors.hoTen}</div>
@@ -124,7 +139,7 @@ const EditUser = (props) => {
 
             </Form.Item>
             <Form.Item
-                name="email"
+
                 label="E-mail"
 
             >
@@ -134,7 +149,7 @@ const EditUser = (props) => {
                 ) : null}
             </Form.Item>
             <Form.Item
-                name="soDt"
+
                 label="Số Điện Thoại"
             >
                 <Input
@@ -149,44 +164,19 @@ const EditUser = (props) => {
             </Form.Item>
 
             <Form.Item
-                name="matKhau"
+
                 label="Password">
                 <Input name='matKhau' onChange={formik.handleChange} value={formik.values.matKhau} onBlur={formik.handleBlur} />
                 {formik.errors.matKhau ? (
                     <div className='alert alert-danger'>{formik.errors.matKhau}</div>
                 ) : null}
             </Form.Item>
-            {/* <Form.Item
-               
-               label="Loại Người Dùng"
-           >
-               <div className="form-group">
-                   <select name='maLoaiNguoiDung' onChange={formik.handleChange}
-                  value={formik.values.maLoaiNguoiDung}
-                     onBlur={formik.handleBlur}
-                      className="form-control" >
-                       <option>Hãy Chọn Loại Người Dùng</option>
-                       <option value={'KhachHang'}>Khách Hàng</option>
-                       <option value={'QuanTri'}>Quảng Trị</option>     
-                   </select> 
-               </div>
-           </Form.Item> */}
-         
-                    <Form.Item
-                       label="Loại Người Dùng2"
 
+            <Form.Item label="Loại Người Dùng">
+                <Select options={lableLoai()} onChange={handleChangeLoaiNguoiDung} value={formik.values.hoTen} onBlur={formik.handleBlur}
+                    placeholder="chọn loạ người dùng" />
+            </Form.Item>
 
-                    >
-                        <Select name="maLoaiNguoiDung" placeholder="Chọn Loại Người Dùng" onChange={(e)=>{
-                            handleChangeLoaiNguoiDung(e)
-                        }}>
-                        <Option></Option>
-                            <Option value="KhachHang">KhachHang1</Option>
-                            <Option value="QuanTri">QuanTri2</Option>
-                        </Select>
-                    </Form.Item>
-
-           
             <Form.Item label="Tác vụ">
                 <button
                     type='submit'

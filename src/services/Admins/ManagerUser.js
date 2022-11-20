@@ -11,7 +11,7 @@ export const getUserList = (tuKhoa = "") => {
     return http.get(`/QuanLyNguoiDung/LayDanhSachNguoiDung?maNhom=${GP_ID}`)
 }
 
-export const layDanhSachLoaiNguoiDung =  (value="") => {
+export const layDanhSachLoaiNguoiDung =  () => {
     return http.get(`QuanLyNguoiDung/LayDanhSachLoaiNguoiDung?maNhom=${GP_ID}`)
 
    
@@ -25,11 +25,14 @@ export const themNguoiDung = (add) => {
 export const layThongTinUser = (taiKhoan) => {
     return http.get(`/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taiKhoan}`)
     
+
+
+    
    
 }
 
-export const CapNhatThongTinNguoiDung = (add) => {
-    return http.put(`/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,add)
+export const CapNhatThongTinNguoiDung = () => {
+    return http.put(`/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,)
 
 }
 
