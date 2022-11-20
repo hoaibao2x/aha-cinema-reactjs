@@ -39,7 +39,7 @@ export default function UserComponent() {
     // },
 
     {
-      title: 'Tài Khoảng',
+      title: 'Tài Khoản',
       dataIndex: 'taiKhoan',
 
       sorter: (a, b) => b.taiKhoan.length - a.taiKhoan.length,
@@ -54,7 +54,7 @@ export default function UserComponent() {
       sortDirections: ['descend', 'ascend'],
     },
     {
-      title: 'email',
+      title: 'Email',
       dataIndex: 'email',
 
 
@@ -72,7 +72,7 @@ export default function UserComponent() {
 
     },
     {
-      title: 'Mã Loại Người Dùng',
+      title: 'Loại Người Dùng',
       dataIndex: 'maLoaiNguoiDung',
       // render :() => {
       //   return <>
@@ -102,7 +102,7 @@ export default function UserComponent() {
 
     },
     {
-      title: "Chỉnh sữa",
+      title: "Chỉnh Sửa",
       dataIndex: "taiKhoan",
       render: (text, users) => {
         return <>
@@ -124,7 +124,7 @@ export default function UserComponent() {
 
   const data = arrUserDefault;
 
-  const onSearch = (value) => {
+  const onSearch = value => {
     // console.log(value)
     dispatch(getUserListAction(value))
 
@@ -145,7 +145,7 @@ export default function UserComponent() {
 
       <Search
         className='py-5'
-        placeholder="tìm kiếm người dùng"
+        placeholder="tìm kiếm theo tên người dùng"
         enterButton="Search"
         size="large"
 

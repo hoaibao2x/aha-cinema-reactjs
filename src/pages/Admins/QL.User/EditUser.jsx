@@ -52,7 +52,7 @@ const EditUser = (props) => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            taiKhoan: thongTinUser.matKhau,
+            taiKhoan: thongTinUser.taiKhoan,
             matKhau: thongTinUser.matKhau,
             email: thongTinUser.email,
             soDT: thongTinUser.soDT,
@@ -172,7 +172,7 @@ const EditUser = (props) => {
                       className="form-control" >
                        <option>Hãy Chọn Loại Người Dùng</option>
                        <option value={'KhachHang'}>Khách Hàng</option>
-                       <option value={'QuanTri'}>Quảng Trị</option>      
+                       <option value={'QuanTri'}>Quản Trị</option>      
                    </select>   
                </div>
            </Form.Item>
