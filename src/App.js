@@ -28,6 +28,7 @@ import AddNewUser3 from './pages/Admins/QL.User/adduser3'
 
 
 
+import ShowTime from './pages/Admins/ShowTime';
 
 
 
@@ -50,6 +51,7 @@ function App() {
         <AdminTemplate exact path='/admin/films' component={AdminFilm} />
         <AdminTemplate exact path='/admin/films/addnew' component={AddFilm} />
         <AdminTemplate exact path='/admin/films/edit/:id' component={EditFilm} />
+        <AdminTemplate exact path='/admin/films/showtime/:id/:tenPhim' component={ShowTime} />
 
        
         {/* Default Route */}
