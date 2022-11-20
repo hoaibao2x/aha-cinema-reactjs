@@ -18,6 +18,10 @@ import EditFilm from './pages/Admins/QL.Films/EditFilm';
 import RegisterComponent from './pages/Users/Register/RegisterComponent';
 import AdminPage from './pages/Admins/AdminPage';
 import Detail from './pages/Users/Detail/Detail';
+import Checkout from './pages/Users/Checkout/Checkout';
+import CheckoutTemlate from './templates/Users/CheckoutTemlate'
+import Loading from './components/Loading/Loading';
+// import { Suspense, lazy } from 'react';
 import ShowTime from './pages/Admins/ShowTime';
 
 
