@@ -55,7 +55,7 @@ const AddFilm = () => {
                 if (key !== 'hinhAnh') {
                     formData.append(key, values[key]);
                 } else {
-                    formData.append('File',values.hinhAnh, values.hinhAnh.name);
+                    formData.append('File', values.hinhAnh, values.hinhAnh.name);
                 }
             }
 

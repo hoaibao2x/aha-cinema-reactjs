@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table, Input, Space, Button } from 'antd'
-import { AudioOutlined, SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { AudioOutlined, SearchOutlined, EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getFilmsListAction } from '../../../redux/Admins/action/getFilmsListAction';
@@ -11,7 +11,7 @@ import { removeFilmAction } from '../../../redux/Admins/action/removeFilmAction'
 
 const { Search } = Input;
 
-function AdminFilm() {
+function AdminFilm(props) {
 
     let dispatch = useDispatch();
     let { arrFilmDefault } = useSelector(state => state.FilmsManagerReducer);
@@ -21,6 +21,7 @@ function AdminFilm() {
     }, []);
 
     let getAPI = () => {
+        let { id } = props.match.params;
         let action = getFilmsListAction();
         dispatch(action);
     }
@@ -101,12 +102,13 @@ function AdminFilm() {
             render: (text, film) => {
                 return <>
                     <NavLink key={1} className='btn btn-info mr-2' to={`/admin/films/edit/${film.maPhim}`}><EditOutlined /></NavLink>
-                    <button key={2} className='btn btn-danger' onClick={() => {
+                    <button key={2} className='btn btn-danger mr-2' onClick={() => {
                         if (window.confirm(`Bạn có muỗn xóa phim ${film.tenPhim}`)) {
                             dispatch(removeFilmAction(film.maPhim))
                             console.log('arr after', arrFilmDefault);
                         }
                     }}><DeleteOutlined /></button>
+                    <NavLink className='btn btn-warning' to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}><CalendarOutlined /></NavLink>
                 </>
             },
             sortDirections: ['descend', 'ascend'],
