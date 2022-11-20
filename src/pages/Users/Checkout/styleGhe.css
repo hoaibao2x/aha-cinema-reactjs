@@ -1,0 +1,317 @@
+.styleDatve {
+    display: flex;
+    flex-direction: column;
+    justify-items: end;
+    align-items: center;
+    margin-bottom: 0;
+    height: 100%;
+}
+
+.clickDatve {
+    width: 100%;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 5px 7px 18px 0px rgb(0 0 0 / 80%);
+}
+
+.container-fluid {
+    width: 100% !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    min-height: 100vh !important;
+}
+.trapezoid {
+    border-bottom: 50px solid gray;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 80%;
+    opacity: 0.3;
+    filter: drop-shadow(0px 128px 63px rgba(8, 8, 8, 0.38));
+    -webkit-filter: drop-shadow(0px 128px 63px rgba(8, 8, 8, 0.38));
+    -moz-filter: drop-shadow(0px 128px 63px rgba(8, 8, 8, 0.38));
+}
+
+.manHinh {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ghế thường */
+.ghe {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 15px;
+    background-color: rgb(123, 122, 122);
+    color: #fff;
+}
+
+.gheDaDuocDat {
+    background-color: #0084ff !important;
+}
+
+.gheDaDat {
+    background-color: rgb(173, 26, 26);
+    cursor: no-drop;
+}
+
+.gheVip {
+    background-color: rgba(228, 74, 8);
+}
+.gheDangDat {
+    background-color: yellowgreen !important;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+    border: none;
+    margin-top: 20px;
+}
+.tr{
+    width: 80%;
+}
+.th{
+    font-size: 18px;
+    padding: 10px;
+}
+.table td {
+    text-align: center;
+}
+
+.table thead {
+    filter: drop-shadow(0px 128px 63px rgba(8, 8, 8, 0.38));
+    background-color: rgba(243, 235, 235, 0.539);
+}
+.card {
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.text-success {
+    font-size: 1.5rem;
+}
+.text-danger {
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .ghe {
+        width: 32px;
+        height: 32px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        background-color: rgb(123, 122, 122);
+        color: #fff;
+    }
+
+    .gheDaDuocDat {
+        background-color: #0084ff !important;
+    }
+
+    .gheDaDat {
+        background-color: rgb(173, 26, 26);
+        cursor: no-drop;
+    }
+
+    .gheDangDat {
+        background-color: rgb(18, 176, 18) !important;
+        cursor: pointer;
+    }
+    .gheVip {
+        background-color: rgba(228, 74, 8);
+    }
+    .text-danger {
+        color: #dc3545 !important;
+        font-size: 1.2rem;
+    }
+    .text-success {
+        font-size: 1.2rem;
+    }
+    .styleDatve {
+        height: auto;
+    }
+    .col-9 {
+        height: 180px;
+        padding: 0 !important;
+    }
+}
+@media screen and (max-width: 991.98px) {
+    .ghe {
+        width: 25px;
+        height: 25px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 3px;
+        background-color: rgb(123, 122, 122);
+        color: #fff;
+        font-size: 10px;
+    }
+    .gheDaDuocDat {
+        background-color: #0084ff !important;
+    }
+    .gheDaDat {
+        background-color: rgb(173, 26, 26);
+        cursor: no-drop;
+    }
+    .gheDangDat {
+        background-color: rgb(18, 176, 18) !important;
+        cursor: pointer;
+    }
+    .gheVip {
+        background-color: rgba(228, 74, 8);
+    }
+    .col-9 {
+        height: 110px;
+        padding: 0 !important;
+    }
+    p {
+        font-size: 0.7rem;
+        margin: 0 !important;
+    }
+    h5 {
+        font: 1rem;
+    }
+    .col-3 img {
+        width: 70px !important;
+        height: 70px !important;
+    }
+    h2 {
+        font-size: 30px !important;
+    }
+    .my-5 {
+        margin: 0;
+        padding: 0;
+        font-size: 10px;
+    }
+    h3 {
+        font-size: 15px;
+    }
+    .text-danger {
+        font-size: 10px;
+    }
+    .text-success {
+        font-size: 10px;
+    }
+    .clickDatve {
+        font-size: 10px;
+    }
+    .th {
+        padding: -0.25rem!important;
+        text-align: right;
+        font-size: 10px;
+    }
+    .table td{
+       padding: 0.25rem!important;
+    }
+}
+@media screen and (max-width:767.98px){
+    .ghe {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 0;
+        background-color: rgb(123, 122, 122);
+        color: #fff;
+        font-size: 6px;
+    }
+    .gheDaDuocDat {
+        background-color: #0084ff !important;
+    }
+
+    .gheDaDat {
+        background-color: rgb(173, 26, 26);
+        cursor: no-drop;
+    }
+
+    .gheDangDat {
+        background-color: rgb(18, 176, 18) !important;
+        cursor: pointer;
+    }
+    .gheVip {
+        background-color: rgba(228, 74, 8);
+    }
+}
+
+
+@media screen and (max-width: 575.98px) {
+    .ghe {
+        width: 37px;
+        height: 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 8px;
+        background-color: rgb(123, 122, 122);
+        color: #fff;
+        font-size: 5px;
+    }
+    .trapezoid {
+        width: 90%;
+    }
+    .table thead {
+        width: 100px;
+    }
+    .clickDatve {
+        font-size: 12px;
+        padding: 10px;
+    }
+    .col-3 img {
+        height: 70px !important;
+        width: 70px !important;
+    }
+    .col-3{
+        padding: 5px;
+    }
+    .col-9 {
+        height: 150px;
+        padding: 0 !important;
+    }
+    .gheDaDuocDat {
+        background-color: #0084ff !important;
+    }
+
+    .gheDaDat {
+        background-color: rgb(173, 26, 26);
+        cursor: no-drop;
+    }
+
+    .gheDangDat {
+        background-color: rgb(18, 176, 18) !important;
+        cursor: pointer;
+    }
+    .gheVip {
+        background-color: rgba(228, 74, 8);
+    }
+}
+@media screen and(min-width: 667px) {
+    .ghe {
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        background-color: rgb(123, 122, 122);
+        color: #fff;
+        font-size: 5px;
+    }
+}

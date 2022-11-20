@@ -1,6 +1,9 @@
 import { loginService, registerService } from '../../../services/Users/UserServices'
 import { history } from '../../../App';
-import { TOKEN, USERLOGIN } from '../../../util/varsSetting'
+import { TOKEN, USERLOGIN } from '../../../util/varsSetting';
+import { getInfoUser } from '../../../services/Users/UserServices';
+import { SET_INFO_USER } from '../type/UersType';
+import { displayLoadingAction, hideLoadingAction } from './LoadingAction';
 
 
 export const userLoginAction = (loginForm) => {
@@ -21,7 +24,9 @@ export const userLoginAction = (loginForm) => {
             alert('Đăng nhập thành công !');
             let loaiNguoiDung = result.data.content.maLoaiNguoiDung;
             if (loaiNguoiDung === 'KhachHang') {
-                history.push('/');
+                // history.push('/');
+                // chuyển hướng đăng nhập về trang trước đó 
+                history.goBack()
             } else {
                 history.push('/admin');
             }
@@ -43,3 +48,24 @@ export const userRegisAction = (regisForm) => {
         }
     }
 }
+
+export const getInfoUserAction = () => {
+    return async (dispatch) => {
+        try {
+            dispatch(displayLoadingAction)
+            const result = await getInfoUser();
+            if (result.status === 200) {
+                dispatch({
+                    type: SET_INFO_USER,
+                    thongTinNguoiDung: result.data.content
+                })
+            }
+            dispatch(hideLoadingAction)
+        } catch (error) {
+            dispatch(hideLoadingAction)
+            console.log(error)
+            console.log('error', error.response?.data)
+        }
+    }
+}
+

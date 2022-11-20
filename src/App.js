@@ -26,6 +26,9 @@ import ShowTime from './pages/Admins/ShowTime';
 
 
 
+
+// const CheckoutTemlateLazy = lazy(() => import('./templates/Users/CheckoutTemlate'));
+
 export const history = createBrowserHistory();
 
 
@@ -34,10 +37,15 @@ function App() {
 
 
     <Router history={history}>
+      <Loading />
       <Switch>
         {/* User Route */}
         <Route exact path='/login' component={LoginComponent} />
         <Route exact path='/register' component={RegisterComponent} />
+        <CheckoutTemlate exact path='/checkout/:id' component={Checkout} />
+        {/* <Suspense fallback={<h1>Loading...</h1>}>
+          <CheckoutTemlateLazy exact path='/checkout/:id' component={Checkout} />
+        </Suspense> */}
 
 
         {/* Admin Route */}
@@ -58,8 +66,9 @@ function App() {
         <HomeTemplate exact path={"/"} component={Home} />
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
 
+
       </Switch>
-     
+
     </Router>
 
   );

@@ -1,0 +1,5 @@
+export const SET_DETAIL_TICKET = 'SET_DETAIL_TICKET';
+export const BOOK_TICKET = 'BOOK_TICKET';
+export const BOOK_TICKETED = 'BOOK_TICKETED';
+export const CHANGE_TABS = 'CHANGE_TABS';
+export const CHANG_ACTIVE_TABS = 'CHANG_ACTIVE_TABS'

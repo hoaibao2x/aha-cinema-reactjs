@@ -18,7 +18,7 @@ const { TabPane } = Tabs;
 export default function Detail(props) {
 
   const { filmDetail } = useSelector(state => state.QuanLyPhimReducer);
-  console.log({ filmDetail })
+ 
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -97,7 +97,7 @@ export default function Detail(props) {
                           </div>
                           <div className='row mt-2 text-danger'>
                             {cumRap.lichChieuPhim?.slice(0,6).map((lichChieu, index) => {
-                              return <NavLink to="/login" className="col-4" key={index}>
+                              return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} className="col-4" key={index}>
                                 {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
                               </NavLink>
                             })}
