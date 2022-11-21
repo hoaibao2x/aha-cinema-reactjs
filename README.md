@@ -1,3 +1,34 @@
+# Tasks of member group 3
+<h3>📌 Tô Minh Ý:</h3>
+<h4>User UI</h4>
+<ul> 
+  <li>Home Page</li>
+  <li>Film Detail Page</li>
+  <li>Book Tickets Page</li>
+</ul>
+<hr>
+
+<h3>📌 Phạm Long:</h3>
+<h4>Admin UI</h4>
+<ul> 
+  <li>Users List Page</li>
+  <li>Add User Page</li>
+  <li>Edit User Page</li>
+</ul>
+<hr>
+
+<h3>📌 Lý Hoài Bảo:</h3>
+<h4>Admin UI</h4>
+<ul> 
+  <li>Users Login Page</li>
+  <li>Users Register Page</li>
+  <li>Users Profile Page</li>
+  <li>Films List Page</li>
+  <li>Add Film Page</li>
+  <li>Edit Film Page</li>
+</ul>
+<hr>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
