@@ -20,9 +20,9 @@
 <h3>📌 Lý Hoài Bảo:</h3>
 <h4>Admin UI</h4>
 <ul> 
-  <li>Users Login Page</li>
-  <li>Users Register Page</li>
-  <li>Users Profile Page</li>
+  <li>User Login Page</li>
+  <li>User Register Page</li>
+  <li>User Profile Page</li>
   <li>Films List Page</li>
   <li>Add Film Page</li>
   <li>Edit Film Page</li>
