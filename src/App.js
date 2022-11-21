@@ -23,6 +23,7 @@ import CheckoutTemlate from './templates/Users/CheckoutTemlate'
 import Loading from './components/Loading/Loading';
 // import { Suspense, lazy } from 'react';
 import ShowTime from './pages/Admins/ShowTime';
+import Profile from './pages/Users/Profile/Profile';
 
 
 
@@ -42,6 +43,7 @@ function App() {
         {/* User Route */}
         <Route exact path='/login' component={LoginComponent} />
         <Route exact path='/register' component={RegisterComponent} />
+        <HomeTemplate exact path='/profile' component={Profile} />
         <CheckoutTemlate exact path='/checkout/:id' component={Checkout} />
         {/* <Suspense fallback={<h1>Loading...</h1>}>
           <CheckoutTemlateLazy exact path='/checkout/:id' component={Checkout} />
@@ -53,7 +55,6 @@ function App() {
         <AdminTemplate exact path='/admin/films' component={AdminFilm} />
         <AdminTemplate exact path='/admin/films/addnew' component={AddFilm} />
         <AdminTemplate exact path='/admin/films/edit/:id' component={EditFilm} />
-        <AdminTemplate exact path='/admin/films/showtime/:id/:tenPhim' component={ShowTime} />
 
         {/* Default Route */}
         <HomeTemplate exact path={"/home"} component={Home} />

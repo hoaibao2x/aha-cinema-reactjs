@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "./index.css";
 
-import { Card, Col } from 'antd';
+import { Card, Col, Row } from 'antd';
 import { useDispatch, useSelector } from "react-redux";
 import { SET_FILM_SHOWING, SET_FILM_COMING_SOON } from "../../redux/Users/type/QuanLyPhimType";
 import { NavLink } from "react-router-dom";
@@ -39,12 +39,11 @@ const FilmList = (props) => {
 
     const renderFilm = () => {
         return props.arrFilm.slice(0, 18).map((film, index) => {
-            return <Col className='styleCol px-4 py-3'  key={index}>
+            return <Col className='styleCol px-4 py-3' key={index}>
                 <Card className='styleCard'
-                    hoverable
                     style={{
                         width: '100%',
-                        height: '350px'
+                        height: '350px',
                     }}
                     cover={<img style={{ height: '280px' }} className='img-fluid'
                         alt="example" src=
@@ -72,7 +71,23 @@ const FilmList = (props) => {
         rows: 2,
         slidesPerRow: 1,
         nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
+        prevArrow: <SamplePrevArrow />,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    rows: 1
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    rows: 1
+                }
+            }
+        ]
     };
     return (
         <div style={{ marginTop: "60px" }}>
@@ -95,7 +110,9 @@ const FilmList = (props) => {
                 }}>PHIM SẮP CHIẾU</button>
             </div>
             <Slider className="slider" {...settings}>
-                {renderFilm()}
+                {/* <Row> */}
+                    {renderFilm()}
+                {/* </Row> */}
             </Slider>
         </div>
     );

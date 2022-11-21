@@ -11,3 +11,7 @@ export const registerService = regisForm => {
 export const getInfoUser = () => {
     return http.post('/QuanLyNguoiDung/ThongTinTaiKhoan');
 }
+
+export const updateUserInfo = (formData) => {
+    return http.put('/QuanLyNguoiDung/CapNhatThongTinNguoiDung', formData);
+}
