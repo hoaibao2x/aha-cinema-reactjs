@@ -18,6 +18,18 @@ import EditFilm from './pages/Admins/QL.Films/EditFilm';
 import RegisterComponent from './pages/Users/Register/RegisterComponent';
 import AdminPage from './pages/Admins/AdminPage';
 import Detail from './pages/Users/Detail/Detail';
+import EditUser from "./pages/Admins/QL.User/EditUser";
+import AddNewUser from './pages/Admins/QL.User/AddUser2';
+
+
+
+
+
+
+
+
+
+
 import Checkout from './pages/Users/Checkout/Checkout';
 import CheckoutTemlate from './templates/Users/CheckoutTemlate'
 import Loading from './components/Loading/Loading';
@@ -56,6 +68,7 @@ function App() {
         <AdminTemplate exact path='/admin/films/addnew' component={AddFilm} />
         <AdminTemplate exact path='/admin/films/edit/:id' component={EditFilm} />
 
+
         {/* Default Route */}
         <HomeTemplate exact path={"/home"} component={Home} />
         <HomeTemplate exact path={'/detail/:id'} component={Detail} />
@@ -65,7 +78,15 @@ function App() {
         <HomeTemplate exact path={"/ungdung"} component={UngDung} />
         <Route exact path={"dangky"} component={DangKy} />
         <HomeTemplate exact path={"/"} component={Home} />
+
+
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
+        <AdminTemplate exact path='/admin/users/adduser' component={AddNewUser} />
+        <AdminTemplate exact path='/admin/users/edituser/:id' component={EditUser} />
+
+
+
+
 
 
       </Switch>

@@ -31,8 +31,8 @@ export const AdminTemplate = (props) => {
     const items = [
         getItem(<NavLink to='/admin'>Admin Site</NavLink>, "1", <DesktopOutlined />),
         getItem("QL. Người dùng", "sub1", <UserOutlined />, [
-            getItem(<NavLink to='/admin/users'>DS. Người dùng</NavLink>, "3"),
-            getItem("Add User", "4"),
+            getItem(<NavLink to='/admin/users'>DS. Người Dùng</NavLink>, "3"),
+            getItem(<NavLink to='/admin/users/adduser'>Thêm Người Dùng</NavLink>, "4"),
         ]),
         getItem("QL. Phim", "sub2", <DatabaseOutlined />, [
             getItem(<NavLink to='/admin/films'>DS. Phim</NavLink>, "6"),

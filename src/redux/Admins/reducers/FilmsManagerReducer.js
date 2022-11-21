@@ -17,4 +17,5 @@ export const FilmsManagerReducer = (state = initialState, action) => {
         default:
             return state
     }
+    
 }

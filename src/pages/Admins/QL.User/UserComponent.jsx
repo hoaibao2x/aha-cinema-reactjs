@@ -1,15 +1,17 @@
-import React, { Fragment, useEffect} from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Table } from 'antd';
 import { NavLink } from 'react-router-dom'
-
+import './index.css'
 import { AudioOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
 import { Button } from 'antd/lib/radio';
-import { getFilmsListAction } from '../../../redux/Admins/action/getListUserAction';
+import { getUserListAction, } from '../../../redux/Admins/action/getListUserAction';
 import { useDispatch, useSelector } from 'react-redux';
-
-
-
+import { history } from '../../../App';
+import { CapNhatThongTinNguoiDungAction, layDanhSachLoaiNguoiDungAction, TimKiemNguoiDungAction, xoaUserAction } from '../../../redux/Admins/action/QLNDAcition';
+import { getFilmList } from '../../../services/Admins/ManagerFilms';
+import { useState } from 'react';
+// import ApiRFC from '../../../componentHook/DSuser';    
 
 const { Search } = Input;
 
@@ -18,12 +20,12 @@ export default function UserComponent() {
 
   let dispatch = useDispatch();
   // console.log(arrUserDefault);
-  
 
-  useEffect(() => {  
-    let action  = getFilmsListAction()
+
+  useEffect(() => {
+    let action = getUserListAction()
     dispatch(action)
-  },[])
+  }, [])
 
 
   const columns = [
@@ -35,92 +37,120 @@ export default function UserComponent() {
     //   "matKhau": "1",
     //   "maLoaiNguoiDung": "QuanTri"
     // },
+ 
 
     {
-      title: 'Tài Khoảng',
+      title: 'Tài Khoản',
       dataIndex: 'taiKhoan',
-     
-      sorter: (a, b) => b.taiKhoan.length - a.taiKhoan.length,
+
+      sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
       sortDirections: ['descend','ascend'],
-     
+      // sortOrder :'descend'
+
     },
     {
       title: 'Họ Tên',
       dataIndex: 'hoTen',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => b.hoTen.length - a.hoTen.length,
-      sortDirections: ['descend','ascend'],
+     
+      
     },
     {
-      title: 'email',
+      title: 'Email',
       dataIndex: 'email',
-     
- 
+
+
     },
     {
       title: 'Số Điện Thoại',
       dataIndex: 'soDT',
-     
-     
+
+
     },
     {
       title: 'Mật Khẩu',
       dataIndex: 'matKhau',
-     
-      
+
+
     },
     {
-      title: 'Mã Loại Người Dùng',
+      title: 'Loại Người Dùng',
       dataIndex: 'maLoaiNguoiDung',
-     
-      
+      // render :() => {
+      //   return <>
+      //       <div className="form-group">
+               
+      //          <select name='maLoaiNguoiDung' 
+      //          onChange={(e)=>{
+      //           let idLoai = e.target.value
+      //           setmaLoai(idLoai)
+                
+      //          }}
+               
+           
+      //             className="form-control" >
+      //              <option>Hãy Chọn Loại Người Dùng</option>
+      //              <option value={'KhachHang'}>Khách Hàng</option>
+      //              <option value={'QuanTri'}>Quảng Trị</option>
+                   
+      //          </select>
+           
+               
+      //      </div>
+      //   </>
+        
+      // }
+
+
     },
     {
-      title :"Chỉnh sữa",
-      dataIndex : "chinhSua",
-      render : ()=>{
-        return <Fragment>
-          <NavLink className="" to="/home"><EditOutlined/> </NavLink>
-          <NavLink className="" to="/home"><DeleteOutlined/></NavLink>
-        </Fragment>
+      title: "Chỉnh Sửa",
+      dataIndex: "taiKhoan",
+      render: (text, users) => {
+        return <>
+          <NavLink key={1} className="" to={`/admin/users/edituser/${users.taiKhoan}`}><EditOutlined /> </NavLink>
+          <span key={2} className="" onClick={() => {
+            if (window.confirm("bạn có chắt muốn xoá dữ liệu này" + users.taiKhoan)) {
+              dispatch(xoaUserAction(users.taiKhoan));
+            }
+          }}><DeleteOutlined /></span>
+        </>
 
       }
 
 
     }
-    
-    
+
+
   ];
 
   const data = arrUserDefault;
 
-  const suffix = (
-    <AudioOutlined
-      style={{
-        fontSize: 16,
-        color: '#1890ff',
-      }}
-    />
-  );
-  
-  const onSearch = (value) => console.log(value);
+  const onSearch = value => {
+    // console.log(value)
+    dispatch(getUserListAction(value))
+
+
+  };
 
   const onChange = (pagination, filters, sorter, extra) => {
     console.log('params', pagination, filters, sorter, extra);
   };
 
   return (
-    <div className='container'>
-     
+    <div className='container formUser'>
+
       <h3>Quản Lý Người Dùng</h3>
-      <Button className='btn'>Thêm Người Dùng</Button>
-      
-      <Search 
-      className='py-5'
-        placeholder="tìm kiếm người dùng"
+      <Button className='btn' onClick={() => {
+        history.push("/admin/users/adduser")
+      }}>Thêm Người Dùng</Button>
+
+      <Search
+        className='py-5'
+        placeholder="tìm kiếm theo tên người dùng"
         enterButton="Search"
         size="large"
-       
+
         onSearch={onSearch}
       />
       <Table rowKey={'taiKhoan'} columns={columns} dataSource={data} onChange={onChange} />;

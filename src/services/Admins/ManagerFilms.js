@@ -55,3 +55,19 @@ export const getBanner = async () => {
         console.log(error)
     }
 }
+
+export const getFilmList = async () => {
+    try {
+        let result = await axios({
+            method: 'get',
+            url: `${DOMAIN}/QuanLyPhim/LayDanhSachPhim?maNhom=${GP_ID}`,
+            headers: {
+                "TokenCybersoft": TOKEN_MOVIE
+            }
+        });
+        return result;
+    } catch (error) {
+        console.log(error)
+    }   
+}
+
