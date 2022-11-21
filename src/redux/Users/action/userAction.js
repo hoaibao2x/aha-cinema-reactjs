@@ -61,7 +61,6 @@ export const getInfoUserAction = () => {
             dispatch(hideLoadingAction)
         } catch (error) {
             dispatch(hideLoadingAction)
-            console.log(error)
             console.log('error', error.response?.data)
         }
     }
@@ -71,12 +70,10 @@ export const updateInfoAction = (formData) => {
     return async (dispatch) => {
         try {
             let result = await updateUserInfo(formData);
-            alert("Cập nhật thành công !");
+            alert("Cập nhật thành công, vui lòng đăng nhập lại !");
+            history.push('/login')
 
-            let userInfo = JSON.stringify(result.data.content);
-            localStorage.setItem(USERLOGIN, userInfo);
-
-            window.location.reload()
+            localStorage.removeItem(USERLOGIN);
 
         } catch (error) {
             alert(error.response.data.content);

@@ -160,7 +160,7 @@ export default function CheckoutTab(props) {
   const operations = <Fragment>
     {!_.isEmpty(uLogin) ? <button className='btn btn-success' onClick={() => {
       history.push('/')
-    }}>Xin chào {uLogin.taiKhoan.substr(0, 1)}</button> : ''}
+    }}>Xin chào {uLogin.taiKhoan}</button> : ''}
   </Fragment>
 
   return <div className='p-4'>

@@ -1,5 +1,5 @@
 import { USERLOGIN } from '../../../util/varsSetting'
-import { SET_INFO_USER } from '../type/UersType';
+import { SET_INFO_USER, LOGIN } from '../type/UersType';
 
 let uLogin = {};
 
@@ -15,7 +15,7 @@ const initialState = {
 export const UserReducers = (state = initialState, action) => {
     switch (action.type) {
 
-        case 'LOGIN': {
+        case LOGIN: {
             state.uLogin = action.uLogin;
             return { ...state }
         }
@@ -23,8 +23,6 @@ export const UserReducers = (state = initialState, action) => {
             state.thongTinNguoiDung = action.thongTinNguoiDung
             return { ...state }
         }
-
-
         default:
             return state
     }

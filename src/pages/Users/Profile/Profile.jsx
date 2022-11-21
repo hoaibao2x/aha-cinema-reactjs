@@ -15,6 +15,8 @@ function Profile() {
 
     let { thongTinNguoiDung } = useSelector((state) => state.UserReducers);
 
+    console.log(thongTinNguoiDung);
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -54,7 +56,6 @@ function Profile() {
     const renderTicketsHis = () => {
         return thongTinNguoiDung.thongTinDatVe.map((ticket, index) => {
             return <div className="card mb-3" key={index}>
-                {/* {console.log("ticket", Object.values(ticket.danhSachGhe) )} */}
                 <div className="row no-gutters">
                     <div className="col-md-2">
                         <img className='img-fluid' width={150} src={ticket.hinhAnh} alt="..." />
@@ -62,7 +63,7 @@ function Profile() {
                     <div className="col-md-10">
                         <div className="card-body">
                             <h3>Tên phim: {ticket.tenPhim}</h3>
-                            <h4><i className="fa-solid fa-thumbtack"></i> Danh sách vé đã đặt:</h4>
+                            <span style={{color: "red"}}><i className="fa-solid fa-thumbtack"></i> Danh sách vé đã đặt:</span>
                             {Object.values(ticket.danhSachGhe).map((ghe, index) => {
                                 return <div className='card mb-3 border-0' key={index}>
                                     <h5 className='card-title'>{ghe.tenHeThongRap}</h5>

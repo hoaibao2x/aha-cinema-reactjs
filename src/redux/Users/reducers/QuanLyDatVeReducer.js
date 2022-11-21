@@ -1,7 +1,6 @@
 import { BOOK_TICKET, BOOK_TICKETED, CHANGE_TABS, CHANG_ACTIVE_TABS, SET_DETAIL_TICKET } from "../type/QuanLyDatVeType";
 import { ThongTinLichChieu } from "../../../_core/models/ThongTinPhongve";
 
-
 const initialState = {
     detailTicket: new ThongTinLichChieu(),
     danhSachGheDangDat: [],
@@ -45,7 +44,6 @@ export const QuanLyDatVeReducer = (state = initialState, action) => {
             state.tabActice = action.number
             return { ...state }
         }
-
 
         default:
             return state

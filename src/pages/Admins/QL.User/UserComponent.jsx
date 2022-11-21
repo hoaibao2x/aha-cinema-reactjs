@@ -110,7 +110,7 @@ export default function UserComponent() {
         return <>
           <NavLink key={1} className="" to={`/admin/users/edituser/${users.taiKhoan}`}><EditOutlined /> </NavLink>
           <span key={2} className="" onClick={() => {
-            if (window.confirm("bạn có chắt muốn xoá dữ liệu này" + users.taiKhoan)) {
+            if (window.confirm("Bạn có chắc muốn xoá người dùng " + users.taiKhoan)) {
               dispatch(xoaUserAction(users.taiKhoan));
             }
           }}><DeleteOutlined /></span>

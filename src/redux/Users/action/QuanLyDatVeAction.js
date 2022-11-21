@@ -8,7 +8,6 @@ export const getDetailTicketAction = (maLichChieu) => {
     return async (dispatch) => {
         try {
             const result = await getDetailTicket(maLichChieu);
-            // console.log('result', result)
             if (result.status === 200) {
                 dispatch({
                     type: SET_DETAIL_TICKET,
@@ -27,7 +26,6 @@ export const bookingTicketAction = (thongTinDatVe = new ThongTinDatVe) => {
         try {
             dispatch(displayLoadingAction)
             const result = await bookingTicket(thongTinDatVe);
-            console.log(result.data.content);
             await dispatch(getDetailTicketAction(thongTinDatVe.maLichChieu))
             await dispatch({ type: BOOK_TICKETED })
             await dispatch(hideLoadingAction)
