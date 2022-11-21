@@ -26,6 +26,7 @@
     transition: all 0.3s;
     border-radius: 5px;
     border: 1px solid red;
+    overflow: hidden;
 }
 .styleCard:hover {
     transform: translateY(-10px);

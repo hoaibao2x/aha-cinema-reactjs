@@ -30,10 +30,17 @@ import AddNewUser from './pages/Admins/QL.User/AddUser2';
 
 
 
+import Checkout from './pages/Users/Checkout/Checkout';
+import CheckoutTemlate from './templates/Users/CheckoutTemlate'
+import Loading from './components/Loading/Loading';
+// import { Suspense, lazy } from 'react';
 import ShowTime from './pages/Admins/ShowTime';
+import Profile from './pages/Users/Profile/Profile';
 
 
 
+
+// const CheckoutTemlateLazy = lazy(() => import('./templates/Users/CheckoutTemlate'));
 
 export const history = createBrowserHistory();
 
@@ -43,10 +50,16 @@ function App() {
 
 
     <Router history={history}>
+      <Loading />
       <Switch>
         {/* User Route */}
         <Route exact path='/login' component={LoginComponent} />
         <Route exact path='/register' component={RegisterComponent} />
+        <HomeTemplate exact path='/profile' component={Profile} />
+        <CheckoutTemlate exact path='/checkout/:id' component={Checkout} />
+        {/* <Suspense fallback={<h1>Loading...</h1>}>
+          <CheckoutTemlateLazy exact path='/checkout/:id' component={Checkout} />
+        </Suspense> */}
 
 
         {/* Admin Route */}
@@ -54,9 +67,8 @@ function App() {
         <AdminTemplate exact path='/admin/films' component={AdminFilm} />
         <AdminTemplate exact path='/admin/films/addnew' component={AddFilm} />
         <AdminTemplate exact path='/admin/films/edit/:id' component={EditFilm} />
-        <AdminTemplate exact path='/admin/films/showtime/:id/:tenPhim' component={ShowTime} />
 
-       
+
         {/* Default Route */}
         <HomeTemplate exact path={"/home"} component={Home} />
         <HomeTemplate exact path={'/detail/:id'} component={Detail} />
@@ -66,18 +78,19 @@ function App() {
         <HomeTemplate exact path={"/ungdung"} component={UngDung} />
         <Route exact path={"dangky"} component={DangKy} />
         <HomeTemplate exact path={"/"} component={Home} />
-       
+
 
         <AdminTemplate exact path='/admin/users' component={UserComponent} />
         <AdminTemplate exact path='/admin/users/adduser' component={AddNewUser} />
         <AdminTemplate exact path='/admin/users/edituser/:id' component={EditUser} />
 
-        
 
-        
-        
+
+
+
+
       </Switch>
-     
+
     </Router>
 
   );

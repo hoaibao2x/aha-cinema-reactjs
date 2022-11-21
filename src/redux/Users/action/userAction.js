@@ -1,6 +1,9 @@
-import { loginService, registerService } from '../../../services/Users/UserServices'
+import { loginService, registerService, updateUserInfo } from '../../../services/Users/UserServices'
 import { history } from '../../../App';
-import { TOKEN, USERLOGIN } from '../../../util/varsSetting'
+import { TOKEN, USERLOGIN } from '../../../util/varsSetting';
+import { getInfoUser } from '../../../services/Users/UserServices';
+import { SET_INFO_USER } from '../type/UersType';
+import { displayLoadingAction, hideLoadingAction } from './LoadingAction';
 
 
 export const userLoginAction = (loginForm) => {
@@ -40,6 +43,44 @@ export const userRegisAction = (regisForm) => {
             history.push('/login');
         } catch (errors) {
             console.log(errors)
+        }
+    }
+}
+
+export const getInfoUserAction = () => {
+    return async (dispatch) => {
+        try {
+            dispatch(displayLoadingAction)
+            const result = await getInfoUser();
+            if (result.status === 200) {
+                dispatch({
+                    type: SET_INFO_USER,
+                    thongTinNguoiDung: result.data.content
+                })
+            }
+            dispatch(hideLoadingAction)
+        } catch (error) {
+            dispatch(hideLoadingAction)
+            console.log(error)
+            console.log('error', error.response?.data)
+        }
+    }
+}
+
+export const updateInfoAction = (formData) => {
+    return async (dispatch) => {
+        try {
+            let result = await updateUserInfo(formData);
+            alert("Cập nhật thành công !");
+
+            let userInfo = JSON.stringify(result.data.content);
+            localStorage.setItem(USERLOGIN, userInfo);
+
+            window.location.reload()
+
+        } catch (error) {
+            alert(error.response.data.content);
+            console.log(error);
         }
     }
 }

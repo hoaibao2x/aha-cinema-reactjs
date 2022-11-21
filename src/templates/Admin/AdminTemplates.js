@@ -37,8 +37,7 @@ export const AdminTemplate = (props) => {
         getItem("QL. Phim", "sub2", <DatabaseOutlined />, [
             getItem(<NavLink to='/admin/films'>DS. Phim</NavLink>, "6"),
             getItem(<NavLink to='/admin/films/addnew'>Thêm phim</NavLink>, "8"),
-        ]),
-        getItem(<NavLink to='/admin/films/showtime/:id'>Showtime</NavLink>, "9", <CalendarOutlined />)
+        ])
     ];
 
     const accountInLocal = localStorage.userLogin;
@@ -108,7 +107,6 @@ export const AdminTemplate = (props) => {
                                                 Xin chào {parseAccount.hoTen} <i className="fa-solid fa-circle-user"></i>
                                             </button>
                                             <div className="dropdown-menu">
-                                                <a className="dropdown-item" href="#"><i className="fa-solid fa-pen-to-square"></i> Thông tin tài khoản</a>
                                                 <button onClick={() => {
                                                     history.push('/')
                                                 }} className="dropdown-item" href="#"><i className="fa-solid fa-arrow-up-right-from-square"></i> Thoát trang admin</button>
