@@ -79,7 +79,7 @@ function Profile() {
     }
 
     return (
-        <div className='container mx-auto'>
+        <div className='profile-content container mx-auto'>
             <div style={{ height: '110px' }}></div>
             <ul className="nav nav-tabs" id="profileTab myTab" role="tablist">
                 <li className="nav-item" role="presentation">
@@ -89,7 +89,7 @@ function Profile() {
                     <button className="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab">Lịch sử đặt vé</button>
                 </li>
             </ul>
-            <div className="tab-content" id="myTabContent">
+            <div className="tab-content pt-5" id="myTabContent">
                 <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <form onSubmitCapture={formik.handleSubmit} id='myForm'>
                         <div className="row justify-content-between">
@@ -140,7 +140,7 @@ function Profile() {
                     </form>
                 </div>
                 <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <div style={{ height: "254px", overflowX: 'hidden', overflowY: "scroll", padding: "10px 20px" }}>
+                    <div style={{ height: "350px", overflowX: 'hidden', overflowY: "scroll", padding: "10px 20px" }}>
                         {thongTinNguoiDung.thongTinDatVe !== undefined ? renderTicketsHis() : null}
                     </div>
                 </div>
