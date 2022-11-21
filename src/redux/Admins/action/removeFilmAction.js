@@ -8,6 +8,7 @@ export const removeFilmAction = (maPhim) => {
             alert('Xóa phim thành công !');
             dispatch(getFilmsListAction())
         } catch (errors) {
+            alert(errors.response.data.content);
             console.log(errors)
         }
     }

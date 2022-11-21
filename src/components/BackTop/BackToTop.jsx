@@ -4,8 +4,6 @@ import {
   UpOutlined
 } from '@ant-design/icons';
 
-
-
 const style = {
   height: 50,
   width: 50,
@@ -23,4 +21,5 @@ const BackToTop = () => (
   </BackTop>
 
 );
+
 export default BackToTop;

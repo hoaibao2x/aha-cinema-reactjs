@@ -1,10 +1,9 @@
 import React from 'react'
-import { Table, Input, Space, Button } from 'antd'
-import { AudioOutlined, SearchOutlined, EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
+import { Table, Input, Button } from 'antd'
+import { SearchOutlined, EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getFilmsListAction } from '../../../redux/Admins/action/getFilmsListAction';
-import { object } from 'yup';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../App';
 import { removeFilmAction } from '../../../redux/Admins/action/removeFilmAction';
@@ -21,22 +20,9 @@ function AdminFilm(props) {
     }, []);
 
     let getAPI = () => {
-        let { id } = props.match.params;
         let action = getFilmsListAction();
         dispatch(action);
     }
-
-
-    // // Get Films List from API
-    // const { arrFilmDefault } = useSelector(state => state.FilmsManagerReducer)
-
-    // console.log(arrFilmDefault)
-
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     dispatch(getFilmsListAction);
-    // }, [])
 
     const columns = [
         {
@@ -105,7 +91,6 @@ function AdminFilm(props) {
                     <button key={2} className='btn btn-danger mr-2' onClick={() => {
                         if (window.confirm(`Bạn có muỗn xóa phim ${film.tenPhim}`)) {
                             dispatch(removeFilmAction(film.maPhim))
-                            console.log('arr after', arrFilmDefault);
                         }
                     }}><DeleteOutlined /></button>
                     <NavLink className='btn btn-warning' to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}><CalendarOutlined /></NavLink>
@@ -118,7 +103,7 @@ function AdminFilm(props) {
     const data = arrFilmDefault;
 
     const onChange = (pagination, filters, sorter, extra) => {
-        // console.log('params', pagination, filters, sorter, extra);
+        console.log('params', pagination, filters, sorter, extra);
     };
 
     const onSearch = (value) => {

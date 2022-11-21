@@ -1,5 +1,6 @@
 import axios from "axios";
 import { DOMAIN, GP_ID, TOKEN_MOVIE } from "../../../util/varsSetting";
+import { GET_FILMLIST } from "../type/QuanLyPhimType"
 
 export const getFilmListAction = () => {
     return (dispatch) => {
@@ -12,7 +13,7 @@ export const getFilmListAction = () => {
         });
         promise.then((result) => {
             dispatch({
-                type: "GET_FILMLIST",
+                type: GET_FILMLIST,
                 filmList: result.data.content
             })
         });

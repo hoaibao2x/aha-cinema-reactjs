@@ -11,7 +11,6 @@ import { getInfoUserAction } from '../../../redux/Users/action/userAction';
 import moment from 'moment';
 import { history } from '../../../App';
 
-
 function Checkout(props) {
 
   const { uLogin } = useSelector(state => state.UserReducers);
@@ -36,7 +35,6 @@ function Checkout(props) {
       if (uLogin.taiKhoan === ghe.taiKhoanNguoiDat) {
         classGheDaDuocDat = 'gheDaDuocDat';
       }
-
 
       let indexGheDD = danhSachGheDangDat.findIndex(gheDD => gheDD.maGhe === ghe.maGhe);
       if (indexGheDD !== -1) {
@@ -94,7 +92,6 @@ function Checkout(props) {
               </table>
             </div>
           </div>
-
         </div>
         <div className="col-3">
           <h3 className='text-center'>{danhSachGheDangDat.reduce((tongTien, ghe, index) => {
@@ -133,7 +130,6 @@ function Checkout(props) {
               const thongTinDatVe = new ThongTinDatVe();
               thongTinDatVe.maLichChieu = props.match.params.id;
               thongTinDatVe.danhSachVe = danhSachGheDangDat;
-
               dispatch(bookingTicketAction(thongTinDatVe));
             }} className='clickDatve bg-success text-white'>
               Đặt Vé
@@ -179,8 +175,6 @@ export default function CheckoutTab(props) {
     </Tabs>
   </div>
 }
-
-
 
 function HistoryBooking(props) {
   const dispath = useDispatch();

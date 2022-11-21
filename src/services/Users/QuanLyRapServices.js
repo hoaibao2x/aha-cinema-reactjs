@@ -1,7 +1,5 @@
 import { http } from "../../util/setting";
-import { DOMAIN, GP_ID, TOKEN_MOVIE } from "../../util/varsSetting";
-
-
+import { GP_ID } from "../../util/varsSetting";
 
 export const getCinemaSystemList = () => {
     return http.get(`/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GP_ID}`);

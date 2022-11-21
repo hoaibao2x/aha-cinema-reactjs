@@ -2,7 +2,7 @@ import { loginService, registerService, updateUserInfo } from '../../../services
 import { history } from '../../../App';
 import { TOKEN, USERLOGIN } from '../../../util/varsSetting';
 import { getInfoUser } from '../../../services/Users/UserServices';
-import { SET_INFO_USER } from '../type/UersType';
+import { SET_INFO_USER, LOGIN } from '../type/UersType';
 import { displayLoadingAction, hideLoadingAction } from './LoadingAction';
 
 
@@ -16,7 +16,7 @@ export const userLoginAction = (loginForm) => {
             localStorage.setItem(USERLOGIN, userInfo);
 
             let action = {
-                type: 'LOGIN',
+                type: LOGIN,
                 uLogin: userInfo
             }
             dispatch(action);
@@ -72,9 +72,8 @@ export const updateInfoAction = (formData) => {
             let result = await updateUserInfo(formData);
             alert("Cập nhật thành công, vui lòng đăng nhập lại !");
             history.push('/login')
-
             localStorage.removeItem(USERLOGIN);
-
+            
         } catch (error) {
             alert(error.response.data.content);
             console.log(error);

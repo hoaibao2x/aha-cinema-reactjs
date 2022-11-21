@@ -14,7 +14,7 @@ export const getDetailTicketAction = (maLichChieu) => {
                     detailTicket: result.data.content
                 })
             }
-
+            
         } catch (error) {
             console.log('error', error.response?.data)
         }

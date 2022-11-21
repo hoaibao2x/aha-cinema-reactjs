@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import { history } from '../../App'
-
-
 import { Anchor } from 'antd';
 
 const { Link } = Anchor;
-
 
 export default function Header() {
 
@@ -81,7 +77,6 @@ export default function Header() {
             <div>
             </div>
           </ul>
-
         </div>
       </nav>
     </header>

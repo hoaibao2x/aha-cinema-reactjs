@@ -1,5 +1,4 @@
-
-import { Radio, Rate, Space, Tabs } from 'antd';
+import { Rate, Tabs } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetailFilmAction } from '../../../redux/Users/action/GetDetailFilmAction';
@@ -7,18 +6,12 @@ import './index.css';
 import moment from 'moment/moment';
 import { NavLink } from 'react-router-dom';
 
-
-
-
-
-
-
 const { TabPane } = Tabs;
 
 export default function Detail(props) {
 
   const { filmDetail } = useSelector(state => state.QuanLyPhimReducer);
- 
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,19 +20,14 @@ export default function Detail(props) {
     dispatch(action)
   }, [])
 
-
-
-
   const [state, setState] = useState({
     tabPosition: 'left',
   });
+
   const changeTabPosition = (e) => {
     setState({ tabPosition: e.target.value });
   };
   const { tabPosition } = state;
-
-
-
 
   return (
     <div style={{ backgroundImage: `url(${filmDetail.hinhAnh})`, minHeight: "120vh", backgroundSize: 'cover' }}>
@@ -74,7 +62,6 @@ export default function Detail(props) {
           </div>
         </div>
 
-
         <div className='mt-5'>
           <Tabs style={{ background: 'white', minHeight: '300px', padding: "0 20px" }} defaultActiveKey="1">
             <Tabs.TabPane tab="Lịch Chiếu" key="1">
@@ -96,16 +83,13 @@ export default function Detail(props) {
                             </div>
                           </div>
                           <div className='row mt-2 text-danger'>
-                            {cumRap.lichChieuPhim?.slice(0,6).map((lichChieu, index) => {
+                            {cumRap.lichChieuPhim?.slice(0, 6).map((lichChieu, index) => {
                               return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} className="col-4" key={index}>
                                 {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
                               </NavLink>
                             })}
                           </div>
-
                         </div>
-
-
                       })}
                     </TabPane>
                   })}
@@ -120,15 +104,7 @@ export default function Detail(props) {
             </Tabs.TabPane>
           </Tabs>
         </div>
-
-
-
-
-
       </div>
     </div >
-
-
-
   )
 }

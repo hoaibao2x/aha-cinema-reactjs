@@ -56,7 +56,6 @@ function LoginComponent() {
                     </form>
                 </div>
             </div>
-
         </div>
     )
 }

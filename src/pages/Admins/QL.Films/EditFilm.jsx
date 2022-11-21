@@ -1,15 +1,9 @@
 import {
-    Button,
-    Cascader,
     DatePicker,
-    Empty,
     Form,
     Input,
-    InputNumber,
     Radio,
-    Select,
-    Switch,
-    TreeSelect,
+    Switch
 } from 'antd';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -25,7 +19,6 @@ const EditFilm = (props) => {
     const [imgSrc, setImgSrc] = useState('');
     const dispatch = useDispatch();
     let { filmInfoReducer } = useSelector((state) => state.FilmsManagerReducer);
-    // const [submitStatus, setSubmitStatus] = useState(false);
 
     useEffect(() => {
         let { id } = props.match.params;
@@ -55,8 +48,6 @@ const EditFilm = (props) => {
             danhGia: Yup.number().required('Số sao không được để trống !').min(1, 'Đánh giá tối thiểu là 1 !').max(10, 'Đánh giá tối đa là 10 !')
         }),
         onSubmit: (values) => {
-            // setSubmitStatus(true)
-            console.log(values)
             values.maNhom = GP_ID;
 
             // Tạo đối tượng formData => Đưa giá trị values từ formik vào formData
@@ -77,31 +68,14 @@ const EditFilm = (props) => {
 
     const handleChangeDatePicker = (value) => {
         let dateFormat = moment(value);
-        console.log('date changed', dateFormat)
         formik.setFieldValue('ngayKhoiChieu', dateFormat);
     }
-
-    // const checkDateWhenTouched = (e) => {
-    //     let isCheck = false;
-    //     if (e.target.value === '') {
-    //         console.log('Null');
-    //         isCheck = true;
-    //         return isCheck
-    //     }
-    //     return isCheck
-    // }
 
     const handleChangeSwitch = (name) => {
         return (value) => {
             formik.setFieldValue(name, value);
         }
     }
-
-    // const handleChangeInputNumber = (name) => {
-    //     return (value) => {
-    //         formik.setFieldValue(name, value);
-    //     }
-    // }
 
     const handleChangeFile = async (e) => {
         // Lấy file ra từ e
@@ -120,10 +94,6 @@ const EditFilm = (props) => {
             }
         }
     }
-
-    // const isClearDateInput = (e) => {
-    //     console.log(e.name)
-    // }
 
     const [componentSize, setComponentSize] = useState('default');
     const onFormLayoutChange = ({ size }) => {
@@ -239,12 +209,9 @@ const EditFilm = (props) => {
                         className='w-25'
                         type='number'
                         name='danhGia'
-                        // onChange={handleChangeInputNumber('danhGia')}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.danhGia}
-                    // min={1}
-                    // max={10}
                     />
                     {formik.errors.danhGia && formik.touched.danhGia ? (
                         <div

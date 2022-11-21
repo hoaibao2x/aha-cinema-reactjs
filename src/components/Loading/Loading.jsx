@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 export default function Loading() {
 
@@ -14,9 +14,7 @@ export default function Loading() {
         }}>
           <img style={{ height: '100px' }} src="https://movflxx.netlify.app/img/logo/logo.png" alt="..." />
         </div> : ""
-
       }
-
     </Fragment>
 
   )

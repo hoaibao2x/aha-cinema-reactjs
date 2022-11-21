@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Checkbox, Form, Input, Cascader, DatePicker, Space, InputNumber, Select } from 'antd';
+import { Button, Form, DatePicker, Space, InputNumber, Select } from 'antd';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getTheaterCluster, getTheatersInfo } from '../../services/Admins/ManagerTheaters';

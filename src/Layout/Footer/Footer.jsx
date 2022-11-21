@@ -4,8 +4,6 @@ import _ from "lodash";
 import "./index.css";
 import { AppleOutlined, FacebookOutlined } from '@ant-design/icons';
 
-import { NavLink } from 'react-router-dom';
-
 export default function Footer(props) {
   const { arrSystemsCinema } = useSelector((state) => state.QuanLyRapReducer);
 
@@ -48,7 +46,5 @@ export default function Footer(props) {
         </div>
       </div>
     </footer>
-
-
   )
 }

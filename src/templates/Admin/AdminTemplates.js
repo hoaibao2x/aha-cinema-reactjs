@@ -3,18 +3,12 @@ import React, { useState } from "react";
 import { Fragment } from "react";
 import { history } from '../../App'
 import { Redirect } from 'react-router-dom';
-
-
 import {
     DesktopOutlined,
-    FileOutlined,
-    PieChartOutlined,
-    TeamOutlined,
     UserOutlined,
-    DatabaseOutlined,
-    CalendarOutlined
+    DatabaseOutlined
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 
 const { Header, Content, Sider } = Layout;
 
@@ -115,7 +109,6 @@ export const AdminTemplate = (props) => {
                                                 }} className="dropdown-item"><i className="fa-solid fa-right-from-bracket"></i> Đăng xuất</button>
                                             </div>
                                         </div>
-
                                         <props.component {...propsRoute} />
                                     </div>
                                 </Content>

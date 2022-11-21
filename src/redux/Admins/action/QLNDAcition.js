@@ -1,12 +1,7 @@
-
-import { Alert } from "antd";
-import axios from "axios";
-import { render } from "react-dom";
 import { history } from "../../../App";
-import { CapNhatThongTinNguoiDung, layDanhSachLoaiNguoiDung, layThongTinUser, themNguoiDung, TimKiemNguoiDung, xoaUser } from "../../../services/Admins/ManagerUser";
-import { TOKEN, TOKEN_MOVIE, DOMAIN, GP_ID, USERLOGIN } from "../../../util/varsSetting";
-import { QLNDreducer } from "../reducers/QLNDreducer";
+import { CapNhatThongTinNguoiDung, layThongTinUser, themNguoiDung, TimKiemNguoiDung, xoaUser } from "../../../services/Admins/ManagerUser";
 import { getUserListAction } from "./getListUserAction";
+import { GET_THONG_TIN_USER, TIM_USER } from "../type/UserManagerTypes"
 
 export const themNguoiDungAction = (add) => {
     return async (dispatch) => {
@@ -17,8 +12,6 @@ export const themNguoiDungAction = (add) => {
         } catch (errors) {
             console.log(errors.response?.data.content);
             alert("Thêm thất bại! Email hoặc Tài Khoản đã tồn tại")
-        
-           
         }
     }
 }
@@ -26,10 +19,9 @@ export const layThongTinUserAction = (taiKhoan) => {
     return async (dispatch) => {
         try {
             let result = await layThongTinUser(taiKhoan);
-            alert('lấy thông tin người dùng thành công !');
-            console.log('result', result.data.content);
+            alert('Lấy thông tin người dùng thành công !');
             dispatch({
-                type: "GET_THONG_TIN_USER",
+                type: GET_THONG_TIN_USER,
                 thongTinUser: result.data.content
             })
         } catch (errors) {
@@ -40,16 +32,12 @@ export const layThongTinUserAction = (taiKhoan) => {
 export const CapNhatThongTinNguoiDungAction = (add) => {
     return async (dispatch) => {
         try {
-
             let result = await CapNhatThongTinNguoiDung(add);
-            alert('cập nhật người dùng thành công !');
+            alert('Cập nhật người dùng thành công !');
             history.push("/admin/users")
-            console.log('result', result.data.content);
-
         } catch (errors) {
             console.log(errors.response?.data);
             alert('Không thể cập nhật! kiểm tra lại!');
-
         }
 
     }
@@ -58,10 +46,8 @@ export const CapNhatThongTinNguoiDungAction = (add) => {
 export const xoaUserAction = (taiKhoan) => {
     return async (dispatch) => {
         try {
-
             let result = await xoaUser(taiKhoan);
-            alert('xoá người dùng thành công !');
-            // console.log('result', result.data.content);
+            alert('Xoá người dùng thành công !');
             dispatch(getUserListAction())
             history.push("/admin/users")
         } catch (errors) {
@@ -69,41 +55,19 @@ export const xoaUserAction = (taiKhoan) => {
             alert("Người dùng này đã đặt vé xem phim không thể xóa!")
         }
     }
-
 }
-
-//   export const layDanhSachLoaiNguoiDungAction = () => { 
-//     return async (dispatch) => { 
-//         try {
-//             let result = await layDanhSachLoaiNguoiDung()
-//             console.log('result', result.data.content);
-//             let  action =({
-//                 type : "LOAI",
-//                 maLoaiNguoiDung1:result.data.content
-//             })
-//             dispatch(action)
-//         } catch (error) {
-//             console.log(error.response?.data)
-//         }
-//      }
-//    }
 
 export const TimKiemNguoiDungAction = (tuKhoa) => {
     return async (dispatch) => {
         try {
-            let result = await TimKiemNguoiDung(tuKhoa)
-            console.log('result', result.data.content);
-           
+            let result = await TimKiemNguoiDung(tuKhoa);
             let action = ({
-                type: "TIM_USER",
+                type: TIM_USER,
                 timUser: result.data.content
-               
             })
             dispatch(action)
-
         } catch (error) {
             console.log(error.response?.data)
         }
     }
-
 }

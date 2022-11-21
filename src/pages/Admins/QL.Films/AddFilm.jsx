@@ -1,15 +1,9 @@
 import {
-    Button,
-    Cascader,
     DatePicker,
-    Empty,
     Form,
     Input,
-    InputNumber,
     Radio,
-    Select,
     Switch,
-    TreeSelect,
 } from 'antd';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -18,12 +12,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { themPhimUploadHinhAction } from '../../../redux/Admins/action/themPhimUploadHinhAction';
 import { GP_ID } from '../../../util/varsSetting';
-import { history } from '../../../App';
 const AddFilm = () => {
 
     const [imgSrc, setImgSrc] = useState();
     const dispatch = useDispatch();
-    const [submitStatus, setSubmitStatus] = useState(false)
 
     const formik = useFormik({
         initialValues: {
@@ -45,8 +37,6 @@ const AddFilm = () => {
             danhGia: Yup.number().required('Số sao không được để trống !').min(1, 'Đánh giá tối thiểu là 1 !').max(10, 'Đánh giá tối thiểu là 10 !')
         }),
         onSubmit: (values) => {
-            // setSubmitStatus(true)
-            console.log(values);
             values.maNhom = GP_ID;
 
             // Tạo đối tượng formData => Đưa giá trị values từ formik vào formData
@@ -58,11 +48,8 @@ const AddFilm = () => {
                     formData.append('File', values.hinhAnh, values.hinhAnh.name);
                 }
             }
-
             // Gọi API gửi các giá trị formData về back-end
             dispatch(themPhimUploadHinhAction(formData));
-
-            // console.log('formik', formData.get('tenPhim'));
         }
     })
 
@@ -71,23 +58,7 @@ const AddFilm = () => {
         formik.setFieldValue('ngayKhoiChieu', dateFormat);
     }
 
-    const checkDateWhenTouched = (e) => {
-        let isCheck = false;
-        if (e.target.value === '') {
-            console.log('Null');
-            isCheck = true;
-            return isCheck
-        }
-        return isCheck
-    }
-
     const handleChangeSwitch = (name) => {
-        return (value) => {
-            formik.setFieldValue(name, value);
-        }
-    }
-
-    const handleChangeInputNumber = (name) => {
         return (value) => {
             formik.setFieldValue(name, value);
         }
@@ -109,10 +80,6 @@ const AddFilm = () => {
             // Đem dữ liệu file lưu vào formik
             formik.setFieldValue('hinhAnh', file);
         }
-    }
-
-    const isClearDateInput = (e) => {
-        console.log(e.name)
     }
 
     const [componentSize, setComponentSize] = useState('default');
@@ -222,11 +189,8 @@ const AddFilm = () => {
                         className='w-25'
                         type='number'
                         name='danhGia'
-                        // onChange={handleChangeInputNumber('danhGia')}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                    // min={1}
-                    // max={10}
                     />
                     {formik.errors.danhGia && formik.touched.danhGia ? (
                         <div

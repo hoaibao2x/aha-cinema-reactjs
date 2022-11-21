@@ -1,14 +1,12 @@
 import React from "react";
 import Slider from "react-slick";
 import "./index.css";
-
-import { Card, Col, Row } from 'antd';
+import { Card, Col } from 'antd';
 import { useDispatch, useSelector } from "react-redux";
 import { SET_FILM_SHOWING, SET_FILM_COMING_SOON } from "../../redux/Users/type/QuanLyPhimType";
 import { NavLink } from "react-router-dom";
 
 const { Meta } = Card;
-
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -99,7 +97,6 @@ const FilmList = (props) => {
                     }
                     dispath(action)
                 }}>
-
                     PHIM ĐANG CHIẾU
                 </button>
                 <button className={`${activeFilmSC}`} style={{ padding: "10px", borderRadius: "5px", backgroundColor: "#fff", color: "#FF0000", fontWeight: "700" }} onClick={() => {
@@ -110,15 +107,10 @@ const FilmList = (props) => {
                 }}>PHIM SẮP CHIẾU</button>
             </div>
             <Slider className="slider" {...settings}>
-                {/* <Row> */}
-                    {renderFilm()}
-                {/* </Row> */}
+                {renderFilm()}
             </Slider>
         </div>
     );
 }
 
 export default FilmList
-
-
-
