@@ -24,9 +24,7 @@ export const userLoginAction = (loginForm) => {
             alert('Đăng nhập thành công !');
             let loaiNguoiDung = result.data.content.maLoaiNguoiDung;
             if (loaiNguoiDung === 'KhachHang') {
-                // history.push('/');
-                // chuyển hướng đăng nhập về trang trước đó 
-                history.goBack()
+                history.push('/');
             } else {
                 history.push('/admin');
             }
@@ -73,9 +71,16 @@ export const updateInfoAction = (formData) => {
     return async (dispatch) => {
         try {
             let result = await updateUserInfo(formData);
-            
+            alert("Cập nhật thành công !");
+
+            let userInfo = JSON.stringify(result.data.content);
+            localStorage.setItem(USERLOGIN, userInfo);
+
+            window.location.reload()
+
         } catch (error) {
-            console.log(error)
+            alert(error.response.data.content);
+            console.log(error);
         }
     }
 }

@@ -44,7 +44,7 @@ export default function Detail(props) {
   return (
     <div style={{ backgroundImage: `url(${filmDetail.hinhAnh})`, minHeight: "120vh", backgroundSize: 'cover' }}>
       <div className='container' style={{ paddingTop: '150px' }}>
-        <div className="row">
+        <div className="row filmDetail">
           <div className="col-8">
             <div className="row">
               <div className="col-6">
@@ -76,7 +76,7 @@ export default function Detail(props) {
 
 
         <div className='mt-5'>
-          <Tabs style={{ background: 'white', minHeight: '300px' }} defaultActiveKey="1">
+          <Tabs style={{ background: 'white', minHeight: '300px', padding: "0 20px" }} defaultActiveKey="1">
             <Tabs.TabPane tab="Lịch Chiếu" key="1">
               <div>
                 <Tabs tabPosition={tabPosition}>

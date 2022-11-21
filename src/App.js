@@ -55,7 +55,6 @@ function App() {
         <AdminTemplate exact path='/admin/films' component={AdminFilm} />
         <AdminTemplate exact path='/admin/films/addnew' component={AddFilm} />
         <AdminTemplate exact path='/admin/films/edit/:id' component={EditFilm} />
-        <AdminTemplate exact path='/admin/films/showtime/:id/:tenPhim' component={ShowTime} />
 
         {/* Default Route */}
         <HomeTemplate exact path={"/home"} component={Home} />

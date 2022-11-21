@@ -13,5 +13,5 @@ export const getInfoUser = () => {
 }
 
 export const updateUserInfo = (formData) => {
-    return http.post('/QuanLyNguoiDung/CapNhatThongTinNguoiDung', formData);
+    return http.put('/QuanLyNguoiDung/CapNhatThongTinNguoiDung', formData);
 }

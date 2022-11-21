@@ -84,7 +84,7 @@ function Checkout(props) {
                 </thead>
                 <tbody>
                   <tr>
-                    <td> <button className='ghe text-center'><CheckOutlined style={{ fontWeight: 'bold'}} /></button></td>
+                    <td> <button className='ghe text-center'><CheckOutlined style={{ fontWeight: 'bold' }} /></button></td>
                     <td> <button className='ghe gheDangDat text-center'><CheckOutlined style={{ fontWeight: 'bold' }} /></button></td>
                     <td> <button className='ghe gheDaDat text-center'><CheckOutlined style={{ fontWeight: 'bold' }} /></button></td>
                     <td> <button className='ghe gheVip text-center'><CheckOutlined style={{ fontWeight: 'bold' }} /></button></td>
@@ -155,12 +155,12 @@ function callback(key) {
 export default function CheckoutTab(props) {
   const { tabActice } = useSelector(state => state.QuanLyDatVeReducer);
   const dispatch = useDispatch();
-  const {uLogin} = useSelector(state => state.UserReducers)
+  const { uLogin } = useSelector(state => state.UserReducers)
 
   const operations = <Fragment>
-    {!_.isEmpty(uLogin) ? <button className='btn btn-success' onClick={() =>{
+    {!_.isEmpty(uLogin) ? <button className='btn btn-success' onClick={() => {
       history.push('/')
-    }}>Xin chào {uLogin.taiKhoan.substr(0.,1)}</button> : ''}
+    }}>Xin chào {uLogin.taiKhoan.substr(0, 1)}</button> : ''}
   </Fragment>
 
   return <div className='p-4'>
